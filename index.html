@@ -212,105 +212,6 @@
         .brand-item img { width: 36px; height: 36px; object-fit: contain; }
         .brand-item span { font-size: 10px; font-weight: 600; color: #fff; }
 
-        /* Exact Fixma Before & After Card Match */
-        .ba-slider-card {
-            background: #ffffff;
-            color: #1a1a1a;
-            border-radius: 12px;
-            padding: 24px 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(255,26,26,0.3);
-            max-width: 380px;
-            margin: 0 auto;
-        }
-
-        .ba-device-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 18px;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 4px;
-        }
-
-        .ba-repair-type {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .ba-image-box {
-            position: relative;
-            margin-bottom: 15px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #ddd;
-            height: 240px;
-            background: #f9f9f9;
-        }
-
-        .ba-image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background: #000;
-        }
-
-        .ba-label {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ffffff;
-            color: #1a1a1a;
-            padding: 4px 16px;
-            font-size: 11px;
-            font-weight: 800;
-            border-radius: 12px;
-            text-transform: uppercase;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .ba-controls {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .ba-btn {
-            flex: 1;
-            background: #94a3b8;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-
-        .ba-btn:hover { background: #64748b; }
-
-        .ba-dots {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 15px;
-        }
-
-        .ba-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #cbd5e1;
-            cursor: pointer;
-        }
-
-        .ba-dot.active { background: #475569; }
-
         /* Service Process Toggle */
         .process-toggle-box {
             background: var(--card-color);
@@ -573,33 +474,7 @@
         </div>
     </section>
 
-    <!-- EXACT Before & After Images from User Screenshots -->
-    <section class="section-container">
-        <h2 class="section-title">Mobile Repairs by <span>Red Apple</span></h2>
-        <p class="section-subtitle">Real Before & After Repair Showcase</p>
-        
-        <div class="ba-slider-card">
-            <div class="ba-device-title" id="baTitle">Iphone 14</div>
-            <div class="ba-repair-type" id="baType">Display replacement (front)</div>
-            
-            <div class="ba-image-box">
-                <img id="baBeforeImg" src="" alt="Before">
-                <div class="ba-label">Before</div>
-            </div>
-
-            <div class="ba-image-box">
-                <img id="baAfterImg" src="" alt="After">
-                <div class="ba-label">After</div>
-            </div>
-
-            <div class="ba-controls">
-                <button class="ba-btn" onclick="prevBaSlide()">prev</button>
-                <button class="ba-btn" onclick="nextBaSlide()">next</button>
-            </div>
-
-            <div class="ba-dots" id="baDots"></div>
-        </div>
-    </section>
+    <!-- BEFORE & AFTER SECTION REMOVED COMPLETELY -->
 
     <section class="section-container" id="process-section">
         <h2 class="section-title">Our Service <span>Process</span></h2>
@@ -703,7 +578,6 @@
         </div>
     </section>
 
-    <!-- Exact Fixma Lead Form Match -->
     <section class="section-container" id="booking-section">
         <h2 class="section-title">Book A <span>Repair</span></h2>
         <p class="section-subtitle" style="margin-bottom:15px;">10000+ mobile repairs done</p>
@@ -769,7 +643,7 @@
 
     <div class="fixed-bottom-bar">
         <a href="https://wa.me/918660663776?text=Hi%20Red%20Apple%20Mobile%20Repair,%20I%20want%20to%20schedule%20a%20pickup." class="action-bar-btn whatsapp" target="_blank">
-            <i class="fa-solid fa-whatsapp" style="font-size: 16px;"></i> WHATSAPP
+            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> WHATSAPP
         </a>
         <a href="tel:+918660663776" class="action-bar-btn call">
             <i class="fa-solid fa-phone-volume"></i> CALL US
@@ -824,72 +698,6 @@
         function toggleMenu() {
             document.getElementById('navModal').classList.toggle('active');
         }
-
-        // EXACT Before & After Images from User's Uploaded Screenshots
-        const baSlides = [
-            {
-                title: "Iphone 14",
-                type: "Display replacement (front)",
-                before: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=800&q=80",
-                after: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80"
-            },
-            {
-                title: "Iphone 14 Plus",
-                type: "Back Glass Replacement",
-                before: "https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=800&q=80",
-                after: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80"
-            },
-            {
-                title: "Oneplus 7 Pro",
-                type: "Display replacement (front)",
-                before: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-                after: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=800&q=80"
-            },
-            {
-                title: "Samsung M335G",
-                type: "Display replacement (front)",
-                before: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80",
-                after: "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=800&q=80"
-            },
-            {
-                title: "Pixel 6A",
-                type: "Display replacement (front)",
-                before: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=800&q=80",
-                after: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80"
-            }
-        ];
-
-        let currentBaIndex = 0;
-
-        function renderBaSlide() {
-            const slide = baSlides[currentBaIndex];
-            document.getElementById('baTitle').innerText = slide.title;
-            document.getElementById('baType').innerText = slide.type;
-            document.getElementById('baBeforeImg').src = slide.before;
-            document.getElementById('baAfterImg').src = slide.after;
-
-            const dotsContainer = document.getElementById('baDots');
-            dotsContainer.innerHTML = '';
-            baSlides.forEach((_, idx) => {
-                const dot = document.createElement('div');
-                dot.className = `ba-dot ${idx === currentBaIndex ? 'active' : ''}`;
-                dot.onclick = () => { currentBaIndex = idx; renderBaSlide(); };
-                dotsContainer.appendChild(dot);
-            });
-        }
-
-        function nextBaSlide() {
-            currentBaIndex = (currentBaIndex + 1) % baSlides.length;
-            renderBaSlide();
-        }
-
-        function prevBaSlide() {
-            currentBaIndex = (currentBaIndex - 1 + baSlides.length) % baSlides.length;
-            renderBaSlide();
-        }
-
-        renderBaSlide();
-        setInterval(nextBaSlide, 4500);
 
         function switchProcess(type) {
             const tabs = document.querySelectorAll('.toggle-tab');

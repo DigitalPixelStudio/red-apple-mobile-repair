@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Red Apple Mobile Repair | Bangalore's Premier Expert Repair</title>
-    <meta name="description" content="Red Apple Mobile Repair offers fast, affordable mobile repair in Bangalore with free pickup & drop. Screen, battery & hardware repairs.">
+    <title>Red Apple Mobile Repair | Bangalore's Premier Expert Repair & Service Center</title>
+    <meta name="description" content="Red Apple Mobile Repair offers fast, affordable mobile repair in Bangalore with free pickup & drop. Screen, battery & hardware repairs trusted by 10000+ customers.">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -132,24 +132,6 @@
             cursor: pointer;
         }
 
-        .menu-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .menu-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: color 0.3s;
-        }
-
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -172,17 +154,17 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
-            padding-bottom: 100px;
+            padding-bottom: 110px;
         }
 
-        /* Massive Hero Banner */
+        /* Hero Banner with Workshop Image Background */
         .hero {
-            background: linear-gradient(145deg, #1a0004, #000000);
+            background: linear-gradient(135deg, rgba(26,0,4,0.9), rgba(0,0,0,0.95)), url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80') center/cover;
             border: 2px solid #ff0033;
             border-radius: 20px;
-            padding: 35px 20px;
+            padding: 40px 20px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             box-shadow: 0 0 35px rgba(255, 0, 51, 0.4);
             position: relative;
             overflow: hidden;
@@ -215,11 +197,11 @@
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .badge-pill {
-            background: rgba(255, 0, 51, 0.15);
+            background: rgba(255, 0, 51, 0.2);
             border: 1px solid #ff0033;
             color: #ff0033;
             padding: 6px 14px;
@@ -309,6 +291,45 @@
             display: block;
         }
 
+        /* Rich Banner Image Section */
+        .promo-banner {
+            border: 2px solid #ff0033;
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 35px;
+            position: relative;
+            box-shadow: 0 0 25px rgba(255, 0, 51, 0.3);
+        }
+
+        .promo-banner img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            filter: brightness(70%) contrast(120%);
+        }
+
+        .promo-banner-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+            padding: 20px 15px 15px;
+        }
+
+        .promo-banner-text h3 {
+            font-size: 18px;
+            font-weight: 900;
+            color: #ff0033;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255,0,51,0.5);
+        }
+
+        .promo-banner-text p {
+            font-size: 12px;
+            color: #ccc;
+        }
+
         /* Service Process */
         .process-container {
             background: #080808;
@@ -381,7 +402,7 @@
             font-weight: 600;
         }
 
-        /* Services Grid */
+        /* Services Grid with Images */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -393,9 +414,9 @@
             background: #0a0a0a;
             border: 1px solid #333;
             border-radius: 16px;
-            padding: 22px 15px;
-            text-align: center;
+            overflow: hidden;
             transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
         }
 
         .service-card:hover {
@@ -403,22 +424,27 @@
             box-shadow: 0 0 20px rgba(255, 0, 51, 0.4);
         }
 
-        .service-card i {
-            font-size: 32px;
-            color: #ff0033;
-            margin-bottom: 12px;
-            filter: drop-shadow(0 0 8px #ff0033);
+        .service-img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            filter: brightness(80%);
         }
 
-        .service-card h3 {
-            font-size: 15px;
+        .service-content {
+            padding: 15px 12px;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            font-size: 14px;
             font-weight: 800;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: #fff;
         }
 
-        .service-card p {
-            font-size: 12px;
+        .service-content p {
+            font-size: 11px;
             color: #999;
             line-height: 1.4;
         }
@@ -682,7 +708,7 @@
             <h1>Bangalore's #1 Expert Mobile Repair within 2 Hours</h1>
             <p>Welcome to Red Apple Mobile Repair — Bangalore's most trusted destination for genuine parts, lightning-fast turnaround times, and professional technician expertise right at your doorstep or with free pickup & drop.</p>
             <div class="hero-badges">
-                <div class="badge-pill"><i class="fa-solid fa-check"></i> 10,0+ Repairs Done</div>
+                <div class="badge-pill"><i class="fa-solid fa-check"></i> 10,000+ Repairs</div>
                 <div class="badge-pill"><i class="fa-solid fa-shield"></i> 6 Months Warranty</div>
                 <div class="badge-pill"><i class="fa-solid fa-bolt"></i> Same Day Delivery</div>
             </div>
@@ -728,6 +754,15 @@
             </div>
         </div>
 
+        <!-- Rich Promo Banner -->
+        <div class="promo-banner">
+            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80" alt="Advanced Repair Lab">
+            <div class="promo-banner-text">
+                <h3>State-of-the-Art Repair Lab</h3>
+                <p>Equipped with advanced laser glass removal and optical lamination machines for pristine finishes.</p>
+            </div>
+        </div>
+
         <!-- Service Process -->
         <div class="process-container" id="process">
             <div class="section-title" style="border:none; padding:0; margin-bottom:15px;">Our Seamless Service Process</div>
@@ -751,38 +786,50 @@
             </div>
         </div>
 
-        <!-- Services Grid -->
+        <!-- Services Grid with Images -->
         <div class="section-title" id="services">Comprehensive Repair Services</div>
         <div class="services-grid">
             <div class="service-card">
-                <i class="fa-solid fa-mobile-screen"></i>
-                <h3>Screen Repair</h3>
-                <p>Original Display & Touch Glass Replacement with warranty.</p>
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80" alt="Screen Repair" class="service-img">
+                <div class="service-content">
+                    <h3>Screen Repair</h3>
+                    <p>Original Display & Touch Glass Replacement.</p>
+                </div>
             </div>
             <div class="service-card">
-                <i class="fa-solid fa-battery-full"></i>
-                <h3>Battery Replacement</h3>
-                <p>High capacity cells restoring 100% battery health.</p>
+                <img src="https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=400&q=80" alt="Battery Repair" class="service-img">
+                <div class="service-content">
+                    <h3>Battery Repair</h3>
+                    <p>High capacity cells with 100% health warranty.</p>
+                </div>
             </div>
             <div class="service-card">
-                <i class="fa-solid fa-water"></i>
-                <h3>Water Damage</h3>
-                <p>Advanced ultrasonic cleaning & board-level chip repair.</p>
+                <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=400&q=80" alt="Water Damage" class="service-img">
+                <div class="service-content">
+                    <h3>Water Damage</h3>
+                    <p>Ultrasonic cleaning & motherboard repair.</p>
+                </div>
             </div>
             <div class="service-card">
-                <i class="fa-solid fa-camera"></i>
-                <h3>Camera Repair</h3>
-                <p>High precision front & rear camera glass and sensor fixing.</p>
+                <img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=400&q=80" alt="Camera Repair" class="service-img">
+                <div class="service-content">
+                    <h3>Camera Repair</h3>
+                    <p>Lens & sensor glass replacement.</p>
+                </div>
             </div>
             <div class="service-card">
-                <i class="fa-solid fa-charging-station"></i>
-                <h3>Charging Port</h3>
-                <p>Fast charging flex cable & Type-C port replacement.</p>
+                <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=400&q=80" alt="Charging Port" class="service-img">
+                <div class="service-content">
+                    <h3>Charging Port</h3>
+                    <p>Fast charging flex cable fixing.</p>
+                </div>
             </div>
             <div class="service-card">
-                <i class="fa-solid fa-microchip"></i>
-                <h3>Motherboard Fix</h3>
-                <p>Expert micro-soldering and IC chip troubleshooting.</p>
+                <img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=400&q=80" alt="Motherboard" class="service-img">
+                <div class="service-content">
+                    <h3>Motherboard Fix</h3>
+                    <p>Micro-soldering & IC chip repair.</p>
+                </div>
             </div>
         </div>
 

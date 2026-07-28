@@ -2,716 +2,807 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RED APPLE MOBILE REPAIR | Bangalore's Elite Mobile Repair & Doorstep Pickup</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Red Apple Mobile Repair | Bangalore's Premier Expert Repair</title>
+    <meta name="description" content="Red Apple Mobile Repair offers fast, affordable mobile repair in Bangalore with free pickup & drop. Screen, battery & hardware repairs.">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg-color: #000000;
-            --surface-color: #080101;
-            --card-color: #120303;
-            --primary-red: #ff1a1a;
-            --dark-red: #b30000;
-            --glow-red: rgba(255, 26, 26, 0.6);
-            --text-main: #ffffff;
-            --text-muted: #b0b0b0;
-            --border-red: #ff1a1a;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: #000000;
+            color: #ffffff;
             overflow-x: hidden;
-            width: 100vw;
+            position: relative;
         }
 
-        #particle-canvas {
+        /* Floating background red particles */
+        .particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: #ff0033;
+            box-shadow: 0 0 8px #ff0033;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: floatParticle 8s infinite linear;
+            z-index: 1;
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 2px solid #ff0033;
+            box-shadow: 0 4px 20px rgba(255, 0, 51, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container i {
+            color: #ff0033;
+            font-size: 26px;
+            filter: drop-shadow(0 0 8px #ff0033);
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            color: #ff0033;
+            text-shadow: 0 0 10px #ff0033;
+        }
+
+        .hamburger-btn {
+            background: transparent;
+            border: 2px solid #ff0033;
+            color: #ff0033;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0 0 10px rgba(255, 0, 51, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn:active {
+            background: #ff0033;
+            color: #000;
+        }
+
+        /* Slide-out Menu Modal */
+        .menu-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: #0a0a0a;
+            border-left: 2px solid #ff0033;
+            box-shadow: -10px 0 30px rgba(255, 0, 51, 0.4);
+            z-index: 2000;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+        }
+
+        .menu-modal.active {
+            right: 0;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 0, 51, 0.3);
+            padding-bottom: 15px;
+        }
+
+        .close-menu {
+            background: transparent;
+            border: none;
+            color: #ff0033;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .menu-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .menu-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: color 0.3s;
+        }
+
+        .menu-links a:hover, .menu-links a:active {
+            color: #ff0033;
+        }
+
+        .menu-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            pointer-events: none;
-            z-index: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 1500;
+            display: none;
         }
 
-        header, section, footer {
-            position: relative;
-            z-index: 1;
-        }
-
-        .top-bar {
-            background: #0d0101;
-            border-bottom: 1px solid rgba(255, 26, 26, 0.3);
-            padding: 10px 16px;
-            font-size: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .top-bar a {
-            color: var(--primary-red);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            background: rgba(0, 0, 0, 0.95);
-            border-bottom: 2px solid var(--primary-red);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 18px;
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-shadow: 0 0 10px var(--glow-red);
-        }
-
-        .logo span {
-            color: var(--primary-red);
-        }
-
-        .menu-toggle {
-            background: #120303;
-            border: 1px solid var(--border-red);
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            box-shadow: 0 0 10px var(--glow-red);
-        }
-
-        .nav-modal {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100vh;
-            background: rgba(12, 2, 2, 0.98);
-            border-left: 2px solid var(--primary-red);
-            z-index: 3000;
-            transition: right 0.3s ease;
-            padding: 30px 20px;
-            box-shadow: -10px 0 30px rgba(255,26,26,0.5);
-        }
-
-        .nav-modal.active { right: 0; }
-        .nav-modal .close-btn {
-            font-size: 22px;
-            color: var(--primary-red);
-            cursor: pointer;
-            text-align: right;
-            margin-bottom: 20px;
-        }
-        .nav-modal a {
+        .menu-overlay.active {
             display: block;
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 15px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,26,26,0.2);
-            font-weight: 600;
         }
 
+        /* Main Container */
+        .container {
+            padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            padding-bottom: 100px;
+        }
+
+        /* Hero Banner */
         .hero {
-            padding: 50px 20px;
+            background: linear-gradient(145deg, #120002, #000000);
+            border: 2px solid #ff0033;
+            border-radius: 16px;
+            padding: 25px 15px;
             text-align: center;
-            background: radial-gradient(circle at center, #1a0202 0%, #000000 70%);
-            border-bottom: 2px solid rgba(255, 26, 26, 0.4);
+            margin-bottom: 25px;
+            box-shadow: 0 0 25px rgba(255, 0, 51, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
         .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
-            margin-bottom: 12px;
+            color: #fff;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            animation: breathing-glow 3s infinite ease-in-out;
+            animation: breathingGlow 3s infinite alternate;
         }
 
-        @keyframes breathing-glow {
-            0%, 100% { text-shadow: 0 0 10px rgba(255,26,26,0.5), 0 0 20px #ff1a1a; }
-            50% { text-shadow: 0 0 30px #ff1a1a, 0 0 50px #ff1a1a; }
+        @keyframes breathingGlow {
+            0% { text-shadow: 0 0 5px #ff0033; }
+            100% { text-shadow: 0 0 20px #ff0033, 0 0 30px #ff0033; }
         }
 
         .hero p {
-            font-size: 13px;
-            color: var(--text-muted);
+            color: #ccc;
+            font-size: 14px;
             margin-bottom: 20px;
-            line-height: 1.5;
         }
 
-        .section-container {
-            padding: 45px 16px;
-            border-bottom: 1px solid rgba(255, 26, 26, 0.2);
-        }
-
+        /* Brand Ticker & Search */
         .section-title {
-            font-family: 'Orbitron', sans-serif;
             font-size: 18px;
             font-weight: 800;
-            margin-bottom: 6px;
-            text-align: center;
+            margin-bottom: 15px;
+            color: #fffff;
+            border-left: 4px solid #ff0033;
+            padding-left: 10px;
             text-transform: uppercase;
+        }
+
+        .search-box {
+            width: 100%;
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 12px 15px;
             color: #fff;
-            text-shadow: 0 0 10px rgba(255,26,26,0.6);
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
         }
 
-        .section-title span { color: var(--primary-red); }
-        .section-subtitle {
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 25px;
+        .search-box:focus {
+            outline: none;
+            border-color: #ff0033;
+            box-shadow: 0 0 10px rgba(255, 0, 51, 0.4);
         }
 
-        .brand-grid {
+        /* Brands Grid */
+        .brands-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
+            margin-bottom: 30px;
         }
 
-        .brand-item {
-            background: var(--card-color);
-            border: 1px solid rgba(255, 26, 26, 0.4);
-            padding: 14px 8px;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .brand-item img { width: 36px; height: 36px; object-fit: contain; }
-        .brand-item span { font-size: 10px; font-weight: 600; color: #fff; }
-
-        /* Service Process Toggle */
-        .process-toggle-box {
-            background: var(--card-color);
-            border: 2px solid var(--border-red);
+        .brand-card {
+            background: #0a0a0a;
+            border: 1px solid #333;
             border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(255,26,26,0.2);
+            padding: 12px 8px;
             text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
 
-        .toggle-tabs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: #000;
-            border: 1px solid var(--border-red);
-            border-radius: 8px;
+        .brand-card:hover, .brand-card:active {
+            border-color: #ff0033;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
+        }
+
+        .brand-card img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 5px;
+        }
+
+        .brand-card span {
+            font-size: 11px;
+            font-weight: 600;
+            color: #ddd;
+            display: block;
+        }
+
+        /* Service Process */
+        .process-container {
+            background: #080808;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 20px 15px;
+            margin-bottom: 30px;
+        }
+
+        .process-toggle {
+            display: flex;
+            background: #111;
+            border-radius: 30px;
             padding: 4px;
             margin-bottom: 20px;
+            border: 1px solid #333;
         }
 
-        .toggle-tab {
+        .toggle-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #aaa;
             padding: 10px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 11px;
             font-weight: 700;
-            color: var(--text-muted);
-            border-radius: 6px;
+            font-size: 13px;
+            border-radius: 25px;
             cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .toggle-tab.active {
-            background: var(--primary-red);
+        .toggle-btn.active {
+            background: #ff0033;
             color: #fff;
-            box-shadow: 0 0 10px var(--glow-red);
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
         }
 
-        .process-content { display: none; }
-        .process-content.active { display: block; }
-
-        .process-steps-row {
+        .process-steps {
             display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 15px;
         }
 
-        .step-circle {
+        .step-item {
+            text-align: center;
+            flex: 1;
+            z-index: 2;
+        }
+
+        .step-num {
             width: 36px;
             height: 36px;
-            background: var(--primary-red);
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
+            background: #120002;
+            border: 2px solid #ff0033;
+            color: #ff0033;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 8px auto;
-            box-shadow: 0 0 10px var(--glow-red);
+            margin: 0 auto 8px;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 0 10px rgba(255, 0, 51, 0.4);
         }
 
-        .step-item h5 { font-family: 'Orbitron', sans-serif; font-size: 11px; margin-bottom: 4px; }
-        .step-item p { font-size: 9px; color: var(--text-muted); }
-
-        /* Fixma Exact Lead Form */
-        .form-box {
-            background: #ffffff;
-            color: #1a1a1a;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        .step-text {
+            font-size: 11px;
+            color: #bbb;
+            font-weight: 600;
         }
 
-        .form-notice {
-            background: #fff1f2;
-            border-left: 4px solid var(--primary-red);
-            padding: 12px;
-            font-size: 12px;
-            color: #e11d48;
-            margin-bottom: 20px;
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .service-card {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            border-radius: 14px;
+            padding: 18px 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: #ff0033;
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.3);
+        }
+
+        .service-card i {
+            font-size: 28px;
+            color: #ff0033;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 6px #ff0033);
+        }
+
+        .service-card h3 {
+            font-size: 14px;
             font-weight: 700;
+            margin-bottom: 6px;
+            color: #fff;
         }
 
-        .form-group { margin-bottom: 16px; }
+        .service-card p {
+            font-size: 11px;
+            color: #888;
+        }
+
+        /* Pickup Areas */
+        .areas-box {
+            background: #080808;
+            border: 1px solid #222;
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .area-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 10px;
+            border-bottom: 1px solid #1a1a1a;
+            font-size: 13px;
+            color: #ddd;
+            font-weight: 600;
+        }
+
+        .area-item:last-child {
+            border-bottom: none;
+        }
+
+        .area-item i {
+            color: #ff0033;
+        }
+
+        /* Booking Form */
+        .form-container {
+            background: linear-gradient(145deg, #0a0a0a, #000);
+            border: 2px solid #ff0033;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 0 25px rgba(255, 0, 51, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .form-title {
+            font-size: 16px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
         .form-group label {
             display: block;
             font-size: 12px;
             font-weight: 700;
+            color: #ff0033;
             margin-bottom: 6px;
-            color: #334155;
-            font-family: 'Orbitron', sans-serif;
         }
 
         .form-control {
             width: 100%;
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
             padding: 12px;
-            border-radius: 6px;
-            color: #1e293b;
-            font-size: 14px;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #ff0033;
+            box-shadow: 0 0 10px rgba(255, 0, 51, 0.4);
         }
 
         .submit-btn {
             width: 100%;
-            background: #2563eb;
+            background: #ff0033;
             color: #fff;
             border: none;
+            border-radius: 8px;
             padding: 14px;
-            font-family: 'Orbitron', sans-serif;
             font-weight: 800;
             font-size: 14px;
-            border-radius: 6px;
-            cursor: pointer;
             text-transform: uppercase;
-        }
-
-        /* Areas Accordion */
-        .areas-box {
-            background: var(--card-color);
-            border: 1px solid var(--border-red);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(255,26,26,0.2);
-        }
-
-        .area-item {
-            border-bottom: 1px solid rgba(255, 26, 26, 0.2);
-            padding: 14px 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 13px;
             cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
+            transition: background 0.3s;
         }
-        .area-item span { color: var(--primary-red); }
 
+        .submit-btn:active {
+            background: #cc0029;
+        }
+
+        /* Map Section */
         .map-container {
-            border-radius: 12px;
+            border: 2px solid #333;
+            border-radius: 14px;
             overflow: hidden;
-            border: 2px solid var(--border-red);
-            height: 240px;
-            box-shadow: 0 0 20px rgba(255,26,26,0.3);
-            margin-top: 20px;
+            height: 220px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.9);
         }
-        .map-container iframe { width: 100%; height: 100%; border: none; filter: invert(90%) hue-rotate(180deg) contrast(120%) brightness(90%); }
 
-        footer {
-            background: #080101;
-            padding: 30px 16px 95px 16px;
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: invert(90%) hue-rotate(180deg) contrast(120%);
+        }
+
+        /* Footer */
+        .footer {
             text-align: center;
-            border-top: 2px solid var(--primary-red);
+            font-size: 12px;
+            color: #666;
+            padding-bottom: 20px;
         }
-        footer h2 { font-family: 'Orbitron', sans-serif; font-size: 16px; margin-bottom: 8px; color: #fff; }
-        footer p { font-size: 11px; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px; }
 
-        .social-icons { display: flex; justify-content: center; gap: 12px; margin-bottom: 15px; }
-        .social-icons a { width: 34px; height: 34px; background: #120303; border: 1px solid var(--primary-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; }
+        .footer span {
+            color: #ff0033;
+            font-weight: 700;
+        }
 
-        .fixed-bottom-bar {
+        /* Fixed Bottom Bar */
+        .bottom-bar {
             position: fixed;
             bottom: 0;
             left: 0;
-            width: 100vw;
-            background: rgba(8, 1, 1, 0.95);
-            border-top: 2px solid var(--primary-red);
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            padding: 10px;
-            z-index: 2000;
-            backdrop-filter: blur(10px);
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 2px solid #ff0033;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 10px;
+            z-index: 1000;
+            box-shadow: 0 -4px 20px rgba(255, 0, 51, 0.3);
         }
 
-        .action-bar-btn {
-            background: #120303;
-            border: 1px solid var(--border-red);
-            color: #fff;
-            padding: 10px 4px;
+        .bottom-action-btn {
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px 0;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 11px;
+            font-size: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
             text-transform: uppercase;
-            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
-        .action-bar-btn.whatsapp { background: #00b33c; border-color: #00ff66; color: #000; font-weight: 900; }
-        .action-bar-btn.call { background: var(--primary-red); }
-        .action-bar-btn.map { background: #1a0202; }
+
+        .whatsapp-action {
+            background: #00e676;
+            color: #000;
+            box-shadow: 0 0 12px rgba(0, 230, 118, 0.4);
+        }
+
+        .call-action {
+            background: #ff0033;
+            color: #fff;
+            box-shadow: 0 0 12px rgba(255, 0, 51, 0.6);
+        }
+
+        .locate-action {
+            background: #222;
+            color: #fff;
+            border: 1px solid #444;
+        }
     </style>
 </head>
 <body>
 
-    <canvas id="particle-canvas"></canvas>
+    <!-- Floating Particles -->
+    <script>
+        for(let i=0; i<15; i++) {
+            let p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = (6 + Math.random() * 6) + 's';
+            p.style.animationDelay = (Math.random() * 5) + 's';
+            document.body.appendChild(p);
+        }
+    </script>
 
-    <div class="top-bar">
-        <span><i class="fa-solid fa-location-dot"></i> Halasuru, Bangalore</span>
-        <a href="tel:+918660663776"><i class="fa-solid fa-phone"></i> +91 86606-63776</a>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo-container">
+            <i class="fa-solid fa-apple-whole"></i>
+            <div class="logo-text">Red <span>Apple</span></div>
+        </div>
+        <button class="hamburger-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    </header>
+
+    <!-- Slide-out Menu -->
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <div class="menu-modal" id="menuModal">
+        <div class="menu-header">
+            <div class="logo-text">Red <span>Apple</span></div>
+            <button class="close-menu" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul class="menu-links">
+            <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="#services"><i class="fa-solid fa-screwdriver-wrench"></i> Services</a></li>
+            <li><a href="#process"><i class="fa-solid fa-truck-fast"></i> Repair Process</a></li>
+            <li><a href="#areas"><i class="fa-solid fa-map-location-dot"></i> Pickup Areas</a></li>
+            <li><a href="#contact"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+        </ul>
     </div>
 
-    <navbar>
-        <a href="#" class="logo">
-            <i class="fa-solid fa-apple-whole" style="color: var(--primary-red);"></i> RED <span>APPLE</span>
-        </a>
-        <button class="menu-toggle" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
-    </navbar>
+    <!-- Main Container -->
+    <div class="container" id="home">
 
-    <div class="nav-modal" id="navModal">
-        <div class="close-btn" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></div>
-        <a href="#" onclick="toggleMenu()">HOME</a>
-        <a href="#process-section" onclick="toggleMenu()">ABOUT</a>
-        <a href="#services-section" onclick="toggleMenu()">SERVICES</a>
-        <a href="#areas-section" onclick="toggleMenu()">PICKUP AREAS</a>
-        <a href="#booking-section" onclick="toggleMenu()">CONTACT & BOOK</a>
-    </div>
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Mobile Repair in Bangalore within 2 Hrs</h1>
+            <p>Expert Doorstep & Pickup Service. Trusted by 10,000+ Customers.</p>
+        </div>
 
-    <section class="hero">
-        <h1>Mobile Repair in Bangalore within 2 Hrs</h1>
-        <p>Expert Smartphone & Tablet Repair with Free Pickup & Drop. Trusted by 10,000+ Customers across Bangalore.</p>
-        
-        <div class="search-brand-box" style="margin-top: 25px;">
-            <h3 style="font-family:'Orbitron'; font-size: 14px; margin-bottom: 15px; color:#fff;">POPULAR REPAIRED BRANDS</h3>
-            <div class="brand-grid">
-                <div class="brand-item">
-                    <img src="https://www.fixma.in/storage/brands/cuyu622SuiGWoLl8ZVGslsUf0969bA85DZFMh9s9.png" alt="Apple">
-                    <span>Apple</span>
+        <!-- Brand Search -->
+        <div class="section-title">Select Your Brand</div>
+        <input type="text" class="search-box" placeholder="Search brand or model (e.g. iPhone 14, Samsung)...">
+
+        <div class="brands-grid">
+            <div class="brand-card">
+                <img src="https://www.fixma.in/storage/brands/cuyu622SuiGWoLl8ZVGslsUf0969bA85DZFMh9s9.png" alt="Apple">
+                <span>Apple</span>
+            </div>
+            <div class="brand-card">
+                <img src="https://www.fixma.in/storage/brands/GnlvcS6ZJ9vEBTXg43KDfQSj0pL8SorFH69awKZU.png" alt="Samsung">
+                <span>Samsung</span>
+            </div>
+            <div class="brand-card">
+                <img src="https://www.fixma.in/storage/brands/9KVBCLbrE7CiiqvmaChiZFBoybcxCMyLFVuwujAw.png" alt="OnePlus">
+                <span>OnePlus</span>
+            </div>
+            <div class="brand-card">
+                <img src="https://www.fixma.in/storage/brands/rirEpG0fYFBS8RCSrAMRMniv1kWdmAnlBdgdhj82.png" alt="Vivo">
+                <span>Vivo</span>
+            </div>
+            <div class="brand-card">
+                <img src="https://www.fixma.in/storage/brands/7NgtnsgbIYc1i0BCVmm08EghBY1IFcxC1NobjvH0.png" alt="Oppo">
+                <span>Oppo</span>
+            </div>
+            <div class="brand-card">
+                <img src="https://www.fixma.in/storage/brands/QTf3S51DPIoP98zcTyBNjEtTazvXAsfszRONdZ5e.png" alt="Redmi">
+                <span>Redmi</span>
+            </div>
+            <div class="brand-card">
+                <img src="https://www.fixma.in/storage/brands/Ex7l08cvKfOm6X969hAcBwtlIEIYdKHrNjuzG1Mr.png" alt="Realme">
+                <span>Realme</span>
+            </div>
+            <div class="brand-card">
+                <img src="https://www.fixma.in/storage/brands/ffxTZpHn0A8xxVqUyf2EzWWoBHqhlFygZGhEbjZ8.png" alt="Google">
+                <span>Google</span>
+            </div>
+        </div>
+
+        <!-- Service Process -->
+        <div class="process-container" id="process">
+            <div class="section-title" style="border:none; padding:0; margin-bottom:12px;">Our Service Process</div>
+            <div class="process-toggle">
+                <button class="toggle-btn active" onclick="switchProcess('pickup')">Pickup & Delivery</button>
+                <button class="toggle-btn" onclick="switchProcess('doorstep')">Doorstep Service</button>
+            </div>
+            <div class="process-steps">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-text">Schedule Pickup</div>
                 </div>
-                <div class="brand-item">
-                    <img src="https://www.fixma.in/storage/brands/GnlvcS6ZJ9vEBTXg43KDfQSj0pL8SorFH69awKZU.png" alt="Samsung">
-                    <span>Samsung</span>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-text">Expert Repair</div>
                 </div>
-                <div class="brand-item">
-                    <img src="https://www.fixma.in/storage/brands/9KVBCLbrE7CiiqvmaChiZFBoybcxCMyLFVuwujAw.png" alt="OnePlus">
-                    <span>OnePlus</span>
-                </div>
-                <div class="brand-item">
-                    <img src="https://www.fixma.in/storage/brands/rirEpG0fYFBS8RCSrAMRMniv1kWdmAnlBdgdhj82.png" alt="Vivo">
-                    <span>Vivo</span>
-                </div>
-                <div class="brand-item">
-                    <img src="https://www.fixma.in/storage/brands/7NgtnsgbIYc1i0BCVmm08EghBY1IFcxC1NobjvH0.png" alt="Oppo">
-                    <span>Oppo</span>
-                </div>
-                <div class="brand-item">
-                    <img src="https://www.fixma.in/storage/brands/QTf3S51DPIoP98zcTyBNjEtTazvXAsfszRONdZ5e.png" alt="Redmi">
-                    <span>Redmi</span>
-                </div>
-                <div class="brand-item">
-                    <img src="https://www.fixma.in/storage/brands/Ex7l08cvKfOm6X969hAcBwtlIEIYdKHrNjuzG1Mr.png" alt="Realme">
-                    <span>Realme</span>
-                </div>
-                <div class="brand-item">
-                    <img src="https://www.fixma.in/storage/brands/ffxTZpHn0A8xxVqUyf2EzWWoBHqhlFygZGhEbjZ8.png" alt="Google">
-                    <span>Google</span>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-text">Safe Delivery</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- BEFORE & AFTER SECTION REMOVED COMPLETELY -->
-
-    <section class="section-container" id="process-section">
-        <h2 class="section-title">Our Service <span>Process</span></h2>
-        <p class="section-subtitle">Choose your preferred repair convenience</p>
-        
-        <div class="process-toggle-box">
-            <div class="toggle-tabs">
-                <div class="toggle-tab active" onclick="switchProcess('pickup')">Pickup & Delivery</div>
-                <div class="toggle-tab" onclick="switchProcess('doorstep')">Doorstep Service</div>
+        <!-- Services Grid -->
+        <div class="section-title" id="services">Our Expert Services</div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h3>Screen Repair</h3>
+                <p>Original Display & Glass Replacement</p>
             </div>
-
-            <div class="process-content active" id="processPickup">
-                <div class="form-notice" style="background:#1a0202; color:#ff8080; border-left-color:var(--primary-red);">* Our Pickup and Delivery service is highly recommended</div>
-                <div class="process-steps-row">
-                    <div class="step-item">
-                        <div class="step-circle">1</div>
-                        <h5>Schedule Pickup</h5>
-                        <p>Book online or call us.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-circle">2</div>
-                        <h5>Expert Repair</h5>
-                        <p>Fixed at our lab.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-circle">3</div>
-                        <h5>Safe Delivery</h5>
-                        <p>Returned to you.</p>
-                    </div>
-                </div>
+            <div class="service-card">
+                <i class="fa-solid fa-battery-full"></i>
+                <h3>Battery Replacement</h3>
+                <p>High Performance & Health</p>
             </div>
-
-            <div class="process-content" id="processDoorstep">
-                <div class="form-notice" style="background:#1a0202; color:#ff8080; border-left-color:var(--primary-red);">* Technician visits your home or office</div>
-                <div class="process-steps-row">
-                    <div class="step-item">
-                        <div class="step-circle">1</div>
-                        <h5>Book Slot</h5>
-                        <p>Pick convenient time.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-circle">2</div>
-                        <h5>On-Site Fix</h5>
-                        <p>Repaired in front of you.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-circle">3</div>
-                        <h5>Tested & Paid</h5>
-                        <p>Complete satisfaction.</p>
-                    </div>
-                </div>
+            <div class="service-card">
+                <i class="fa-solid fa-water"></i>
+                <h3>Water Damage</h3>
+                <p>Advanced Ultrasonic Cleaning</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-camera"></i>
+                <h3>Camera Repair</h3>
+                <p>Lens & Sensor Fix</p>
             </div>
         </div>
-    </section>
 
-    <section class="section-container" id="services-section">
-        <h2 class="section-title">Our Expert <span>Services</span></h2>
-        <p class="section-subtitle">Professional microsoldering & parts replacement</p>
-        <div class="brand-grid" style="grid-template-columns: repeat(2, 1fr);">
-            <div class="brand-item" style="padding:20px; align-items:flex-start; text-align:left;">
-                <i class="fa-solid fa-mobile-screen-button" style="font-size:24px; color:var(--primary-red); margin-bottom:8px;"></i>
-                <span style="font-size:13px; font-family:'Orbitron';">Screen Replacement</span>
-                <span style="font-size:10px; color:var(--text-muted); font-weight:normal;">Original OLED/LCD touch glass repair.</span>
-            </div>
-            <div class="brand-item" style="padding:20px; align-items:flex-start; text-align:left;">
-                <i class="fa-solid fa-battery-full" style="font-size:24px; color:var(--primary-red); margin-bottom:8px;"></i>
-                <span style="font-size:13px; font-family:'Orbitron';">Battery Swap</span>
-                <span style="font-size:10px; color:var(--text-muted); font-weight:normal;">High-capacity cells with health reset.</span>
-            </div>
-            <div class="brand-item" style="padding:20px; align-items:flex-start; text-align:left;">
-                <i class="fa-solid fa-charging-station" style="font-size:24px; color:var(--primary-red); margin-bottom:8px;"></i>
-                <span style="font-size:13px; font-family:'Orbitron';">Charging Port</span>
-                <span style="font-size:10px; color:var(--text-muted); font-weight:normal;">Fast-charging flex cable & USB-C fix.</span>
-            </div>
-            <div class="brand-item" style="padding:20px; align-items:flex-start; text-align:left;">
-                <i class="fa-solid fa-microchip" style="font-size:24px; color:var(--primary-red); margin-bottom:8px;"></i>
-                <span style="font-size:13px; font-family:'Orbitron';">Motherboard</span>
-                <span style="font-size:10px; color:var(--text-muted); font-weight:normal;">Dead phone recovery & IC microsoldering.</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-container" id="areas-section">
-        <h2 class="section-title">Pickup & Delivery <span>Areas</span></h2>
-        <p class="section-subtitle">We cover all major locations across Bangalore</p>
-        
+        <!-- Pickup & Delivery Areas -->
+        <div class="section-title" id="areas">Pickup & Delivery Areas</div>
         <div class="areas-box">
-            <div class="area-item">Koramangala <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">Indiranagar <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">Jayanagar <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">Rajajinagar <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">Malleshwaram <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">Whitefield <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">Electronic City <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">BTM Layout <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">HSR Layout <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">JP Nagar <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">Hebbal <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">Basavanagudi <span><i class="fa-solid fa-chevron-right"></i></span></div>
-            <div class="area-item">Halasuru (Main Hub) <span><i class="fa-solid fa-chevron-right"></i></span></div>
+            <div class="area-item"><span>Koramangala</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>Indiranagar</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>Jayanagar</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>Whitefield</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>Electronic City</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>HSR Layout</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>JP Nagar</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>Hebbal</span> <i class="fa-solid fa-chevron-right"></i></div>
         </div>
-    </section>
 
-    <section class="section-container" id="booking-section">
-        <h2 class="section-title">Book A <span>Repair</span></h2>
-        <p class="section-subtitle" style="margin-bottom:15px;">10000+ mobile repairs done</p>
-        
-        <div class="form-box">
-            <div class="form-notice">* Our Pickup and Delivery service is highly recommended</div>
-            <form onsubmit="event.preventDefault(); alert('Thank you! Your repair booking has been confirmed. Red Apple Mobile Repair will call you shortly.');">
+        <!-- Booking Form -->
+        <div class="form-container" id="contact">
+            <div class="form-title">Book Free Pickup & Repair</div>
+            <form onsubmit="handleBooking(event)">
                 <div class="form-group">
-                    <label>Brand</label>
-                    <select class="form-control">
-                        <option>Select a Brand</option>
+                    <label>Select Brand</label>
+                    <select class="form-control" required>
+                        <option value="">Select a Brand</option>
                         <option>Apple</option>
                         <option>Samsung</option>
                         <option>OnePlus</option>
                         <option>Vivo</option>
                         <option>Oppo</option>
-                        <option>Redmi / Xiaomi</option>
+                        <option>Redmi</option>
                         <option>Realme</option>
-                        <option>Google Pixel</option>
+                        <option>Google</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Device</label>
-                    <input type="text" class="form-control" placeholder="Select a Model" required>
+                    <label>Device Model</label>
+                    <input type="text" class="form-control" placeholder="e.g. iPhone 14 Pro, Galaxy S23" required>
                 </div>
                 <div class="form-group">
-                    <label>Service</label>
-                    <select class="form-control">
-                        <option>Select an Service</option>
+                    <label>Required Service</label>
+                    <select class="form-control" required>
+                        <option value="">Select Service</option>
                         <option>Display / Screen Replacement</option>
                         <option>Battery Replacement</option>
                         <option>Charging Port Repair</option>
-                        <option>Motherboard Repair</option>
-                        <option>Water Damage Service</option>
+                        <option>Camera Repair</option>
+                        <option>Back Glass Replacement</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Phone no.</label>
-                    <input type="tel" class="form-control" placeholder="Phone no." required>
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" placeholder="+91 8660663776" required>
                 </div>
-                <button type="submit" class="submit-btn">Submit</button>
+                <button type="submit" class="submit-btn">Submit Booking</button>
             </form>
         </div>
 
+        <!-- Map Section -->
+        <div class="section-title">Our Location</div>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.985942478346!2d77.6186981748535!3d12.972322387342938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1684c311c1d1%3A0x6b840e53a35560cb!2sHalasuru%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.045618485292!2d77.618!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzE3LjgiTiA3N8KwMzcnMDUuOCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
         </div>
-    </section>
 
-    <footer>
-        <h2>RED APPLE MOBILE REPAIR</h2>
-        <p>#36, Halasuru Metro Road, Opp. Halasuru Police Station, Bangalore - 560008<br>
-        Phone: +91 86606 63776 / +91 63623 03419<br>
-        Open Daily: 10:00 AM - 11:30 PM</p>
-        <div class="social-icons">
-            <a href="https://wa.me/918660663776" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="tel:+918660663776"><i class="fa-solid fa-phone"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <!-- Footer -->
+        <div class="footer">
+            &copy; 2026 <span>Red Apple Mobile Repair</span>. All Rights Reserved.<br>
+            #36, Halasuru Metro Road, Opp. Halasuru Police Station, Bangalore - 560008
         </div>
-        <p>&copy; 2026 Red Apple Mobile Repair. All rights reserved. Built by Digital Pixel Forge.</p>
-    </footer>
 
-    <div class="fixed-bottom-bar">
-        <a href="https://wa.me/918660663776?text=Hi%20Red%20Apple%20Mobile%20Repair,%20I%20want%20to%20schedule%20a%20pickup." class="action-bar-btn whatsapp" target="_blank">
-            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> WHATSAPP
+    </div>
+
+    <!-- Fixed Bottom Action Bar -->
+    <div class="bottom-bar">
+        <a href="https://wa.me/918660663776?text=Hi,%20I%20want%20to%20repair%20my%20mobile%20device." class="bottom-action-btn whatsapp-action" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
         </a>
-        <a href="tel:+918660663776" class="action-bar-btn call">
-            <i class="fa-solid fa-phone-volume"></i> CALL US
+        <a href="tel:+918660663776" class="bottom-action-btn call-action">
+            <i class="fa-solid fa-phone"></i> Call Us
         </a>
-        <a href="https://maps.google.com/?q=Halasuru+Metro+Road+Bangalore" class="action-bar-btn map" target="_blank">
-            <i class="fa-solid fa-location-dot"></i> LOCATE US
+        <a href="https://maps.google.com/?q=Halasuru+Metro+Road+Bangalore" class="bottom-action-btn locate-action" target="_blank">
+            <i class="fa-solid fa-location-dot"></i> Locate Us
         </a>
     </div>
 
     <script>
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
-
-        const particles = [];
-        for(let i=0; i<45; i++) {
-            particles.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                radius: Math.random() * 2 + 1,
-                speedX: (Math.random() - 0.5) * 0.8,
-                speedY: (Math.random() - 0.5) * 0.8,
-                opacity: Math.random() * 0.7 + 0.3
-            });
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => {
-                p.x += p.speedX;
-                p.y += p.speedY;
-                if(p.x < 0) p.x = width;
-                if(p.x > width) p.x = 0;
-                if(p.y < 0) p.y = height;
-                if(p.y > height) p.y = 0;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 26, 26, ${p.opacity})`;
-                ctx.fill();
-            });
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-
         function toggleMenu() {
-            document.getElementById('navModal').classList.toggle('active');
+            document.getElementById('menuModal').classList.toggle('active');
+            document.getElementById('menuOverlay').classList.toggle('active');
         }
 
         function switchProcess(type) {
-            const tabs = document.querySelectorAll('.toggle-tab');
-            tabs.forEach(t => t.classList.remove('active'));
-            
-            if(type === 'pickup') {
-                tabs[0].classList.add('active');
-                document.getElementById('processPickup').classList.add('active');
-                document.getElementById('processDoorstep').classList.remove('active');
-            } else {
-                tabs[1].classList.add('active');
-                document.getElementById('processDoorstep').classList.add('active');
-                document.getElementById('processPickup').classList.remove('active');
-            }
+            let btns = document.querySelectorAll('.toggle-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function handleBooking(e) {
+            e.preventDefault();
+            alert('Booking request received successfully! Our technician will call you within 10 minutes.');
         }
     </script>
 </body>

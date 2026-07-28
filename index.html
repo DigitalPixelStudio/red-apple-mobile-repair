@@ -154,7 +154,7 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
-            padding-bottom: 110px;
+            padding-bottom: 120px;
         }
 
         /* Hero Banner with Workshop Image Background */
@@ -610,6 +610,145 @@
             font-weight: 700;
         }
 
+        /* AI Chatbot Widget Styles */
+        .ai-fab {
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background: #ff0033;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 0, 51, 0.7);
+            z-index: 2500;
+            transition: transform 0.3s;
+        }
+
+        .ai-fab:active {
+            transform: scale(0.9);
+        }
+
+        .ai-chat-window {
+            position: fixed;
+            bottom: 150px;
+            right: 20px;
+            width: 320px;
+            max-width: 90vw;
+            height: 420px;
+            background: #0d0d0d;
+            border: 2px solid #ff0033;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(255, 0, 51, 0.5);
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            display: none;
+        }
+
+        .ai-chat-window.active {
+            display: flex;
+        }
+
+        .ai-chat-header {
+            background: #1a0004;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ff0033;
+        }
+
+        .ai-chat-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-chat-title i {
+            color: #ff0033;
+        }
+
+        .ai-close-btn {
+            background: transparent;
+            border: none;
+            color: #ff0033;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .ai-chat-messages {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .ai-msg {
+            padding: 10px 12px;
+            border-radius: 12px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .ai-msg.bot {
+            background: #1a1a1a;
+            color: #ddd;
+            align-self: flex-start;
+            border: 1px solid #333;
+        }
+
+        .ai-msg.user {
+            background: #ff0033;
+            color: #fff;
+            align-self: flex-end;
+        }
+
+        .ai-chat-input-area {
+            padding: 10px;
+            background: #0a0a0a;
+            border-top: 1px solid #222;
+            display: flex;
+            gap: 8px;
+        }
+
+        .ai-chat-input {
+            flex: 1;
+            background: #141414;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .ai-chat-input:focus {
+            outline: none;
+            border-color: #ff0033;
+        }
+
+        .ai-send-btn {
+            background: #ff0033;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
         /* Fixed Bottom Bar */
         .bottom-bar {
             position: fixed;
@@ -698,6 +837,22 @@
             <li><a href="#areas" style="color:#fff; text-decoration:none; font-size:18px; font-weight:600;"><i class="fa-solid fa-map-location-dot" style="color:#ff0033; width:25px;"></i> Pickup Areas</a></li>
             <li><a href="#contact" style="color:#fff; text-decoration:none; font-size:18px; font-weight:600;"><i class="fa-solid fa-phone" style="color:#ff0033; width:25px;"></i> Contact</a></li>
         </ul>
+    </div>
+
+    <!-- AI Chatbot FAB & Window -->
+    <div class="ai-fab" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></div>
+    <div class="ai-chat-window" id="aiChatWindow">
+        <div class="ai-chat-header">
+            <div class="ai-chat-title"><i class="fa-solid fa-robot"></i> Red Apple Assistant</div>
+            <button class="ai-close-btn" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="ai-chat-messages" id="aiMessages">
+            <div class="ai-msg bot">Hello! Welcome to Red Apple Mobile Repair. How can I assist you with your phone repair today? Ask me about pickup, warranty, pricing or locations!</div>
+        </div>
+        <div class="ai-chat-input-area">
+            <input type="text" class="ai-chat-input" id="aiInput" placeholder="Type your question..." onkeypress="handleChatKey(event)">
+            <button class="ai-send-btn" onclick="sendChatMsg()">Send</button>
+        </div>
     </div>
 
     <!-- Main Container -->
@@ -965,6 +1120,59 @@
         function handleBooking(e) {
             e.preventDefault();
             alert('Booking request received successfully! Our technician will call you within 10 minutes.');
+        }
+
+        // Offline AI Chatbot Logic
+        function toggleChat() {
+            document.getElementById('aiChatWindow').classList.toggle('active');
+        }
+
+        function handleChatKey(e) {
+            if (e.key === 'Enter') {
+                sendChatMsg();
+            }
+        }
+
+        function sendChatMsg() {
+            let input = document.getElementById('aiInput');
+            let text = input.value.trim();
+            if (!text) return;
+
+            let msgArea = document.getElementById('aiMessages');
+            
+            // Append User Message
+            let userDiv = document.createElement('div');
+            userDiv.className = 'ai-msg user';
+            userDiv.textContent = text;
+            msgArea.appendChild(userDiv);
+            input.value = '';
+            msgArea.scrollTop = msgArea.scrollHeight;
+
+            // Generate Bot Response
+            setTimeout(() => {
+                let botDiv = document.createElement('div');
+                botDiv.className = 'ai-msg bot';
+                botDiv.textContent = getBotReply(text);
+                msgArea.appendChild(botDiv);
+                msgArea.scrollTop = msgArea.scrollHeight;
+            }, 600);
+        }
+
+        function getBotReply(query) {
+            let q = query.toLowerCase();
+            if (q.includes('price') || q.includes('cost') || q.includes('charges')) {
+                return 'Repair pricing depends on your device model and specific issue (e.g. screen vs battery). Screen repairs start at ₹999. Please share your phone model!';
+            } else if (q.includes('pickup') || q.includes('drop') || q.includes('home')) {
+                return 'We offer FREE pickup & drop across all major Bangalore areas including Koramangala, Indiranagar, Whitefield, Jayanagar and HSR Layout within 2 hours!';
+            } else if (q.includes('warranty') || q.includes('guarantee')) {
+                return 'All our repairs come with up to 6 months written warranty on parts and labor!';
+            } else if (q.includes('address') || q.includes('location') || q.includes('where')) {
+                return 'Our main service center is at #36, Halasuru Metro Road, Opp. Halasuru Police Station, Bangalore - 560008.';
+            } else if (q.includes('time') || q.includes('duration') || q.includes('how long')) {
+                return 'Most screen and battery replacements are finished lightning fast within 45 to 120 minutes.';
+            } else {
+                return 'Thanks for reaching out! You can call us directly at +91 8660663776 or WhatsApp us for instant booking and custom quotes.';
+            }
         }
     </script>
 </body>

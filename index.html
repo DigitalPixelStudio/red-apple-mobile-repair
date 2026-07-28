@@ -638,9 +638,9 @@
             position: fixed;
             bottom: 150px;
             right: 20px;
-            width: 320px;
+            width: 340px;
             max-width: 90vw;
-            height: 420px;
+            height: 480px;
             background: #0d0d0d;
             border: 2px solid #ff0033;
             border-radius: 16px;
@@ -697,10 +697,10 @@
         }
 
         .ai-msg {
-            padding: 10px 12px;
+            padding: 10px 14px;
             border-radius: 12px;
-            max-width: 80%;
-            line-height: 1.4;
+            max-width: 85%;
+            line-height: 1.5;
         }
 
         .ai-msg.bot {
@@ -843,14 +843,14 @@
     <div class="ai-fab" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></div>
     <div class="ai-chat-window" id="aiChatWindow">
         <div class="ai-chat-header">
-            <div class="ai-chat-title"><i class="fa-solid fa-robot"></i> Red Apple Assistant</div>
+            <div class="ai-chat-title"><i class="fa-solid fa-robot"></i> Red Apple Expert Assistant</div>
             <button class="ai-close-btn" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="ai-chat-messages" id="aiMessages">
-            <div class="ai-msg bot">Hello! Welcome to Red Apple Mobile Repair. How can I assist you with your phone repair today? Ask me about pickup, warranty, pricing or locations!</div>
+            <div class="ai-msg bot">Hi there! ❤️ Welcome to Red Apple Mobile Repair. I'm your personal assistant here to help with anything you need—pricing, screen replacements, battery health, free pickup & drop across Bangalore, or booking a repair. What device are you looking to fix today?</div>
         </div>
         <div class="ai-chat-input-area">
-            <input type="text" class="ai-chat-input" id="aiInput" placeholder="Type your question..." onkeypress="handleChatKey(event)">
+            <input type="text" class="ai-chat-input" id="aiInput" placeholder="Ask me anything..." onkeypress="handleChatKey(event)">
             <button class="ai-send-btn" onclick="sendChatMsg()">Send</button>
         </div>
     </div>
@@ -1122,7 +1122,7 @@
             alert('Booking request received successfully! Our technician will call you within 10 minutes.');
         }
 
-        // Offline AI Chatbot Logic
+        // Conversational Natural AI Assistant Logic
         function toggleChat() {
             document.getElementById('aiChatWindow').classList.toggle('active');
         }
@@ -1148,30 +1148,34 @@
             input.value = '';
             msgArea.scrollTop = msgArea.scrollHeight;
 
-            // Generate Bot Response
+            // Generate Conversational Bot Response
             setTimeout(() => {
                 let botDiv = document.createElement('div');
                 botDiv.className = 'ai-msg bot';
-                botDiv.textContent = getBotReply(text);
+                botDiv.textContent = getConversationalReply(text);
                 msgArea.appendChild(botDiv);
                 msgArea.scrollTop = msgArea.scrollHeight;
             }, 600);
         }
 
-        function getBotReply(query) {
+        function getConversationalReply(query) {
             let q = query.toLowerCase();
-            if (q.includes('price') || q.includes('cost') || q.includes('charges')) {
-                return 'Repair pricing depends on your device model and specific issue (e.g. screen vs battery). Screen repairs start at ₹999. Please share your phone model!';
-            } else if (q.includes('pickup') || q.includes('drop') || q.includes('home')) {
-                return 'We offer FREE pickup & drop across all major Bangalore areas including Koramangala, Indiranagar, Whitefield, Jayanagar and HSR Layout within 2 hours!';
-            } else if (q.includes('warranty') || q.includes('guarantee')) {
-                return 'All our repairs come with up to 6 months written warranty on parts and labor!';
-            } else if (q.includes('address') || q.includes('location') || q.includes('where')) {
-                return 'Our main service center is at #36, Halasuru Metro Road, Opp. Halasuru Police Station, Bangalore - 560008.';
-            } else if (q.includes('time') || q.includes('duration') || q.includes('how long')) {
-                return 'Most screen and battery replacements are finished lightning fast within 45 to 120 minutes.';
+            if (q.includes('price') || q.includes('cost') || q.includes('charges') || q.includes('rate') || q.includes('how much')) {
+                return 'Great question! Our repair pricing depends entirely on your exact phone model and the nature of the issue. For instance, screen replacements start at ₹999 with original quality glass. If you tell me your brand and model right here or fill out our booking form, I can give you an exact estimate immediately!';
+            } else if (q.includes('pickup') || q.includes('drop') || q.includes('home') || q.includes('doorstep')) {
+                return 'We make things super easy for you! We provide FREE pickup & drop service across all major Bangalore neighborhoods including Koramangala, Indiranagar, Jayanagar, Whitefield, HSR Layout, and Electronic City. Our delivery executive picks up your phone, and we return it repaired within 2 hours!';
+            } else if (q.includes('warranty') || q.includes('guarantee') || q.includes('assurance')) {
+                return 'You can rest completely assured! Every single repair at Red Apple is backed by up to 6 months of comprehensive written warranty covering parts and workmanship.';
+            } else if (q.includes('address') || q.includes('location') || q.includes('where') || q.includes('shop') || q.includes('store')) {
+                return 'Our flagship service center is located at #36, Halasuru Metro Road, Right Opposite Halasuru Police Station, Bangalore - 560008. You can drop by anytime between 10 AM and 11:30 PM!';
+            } else if (q.includes('time') || q.includes('duration') || q.includes('how long') || q.includes('fast')) {
+                return 'We pride ourselves on lightning-fast speed! Most screen replacements and battery swaps are completed in just 45 to 120 minutes so you are never disconnected for long.';
+            } else if (q.includes('brand') || q.includes('device') || q.includes('model') || q.includes('repair') || q.includes('fix')) {
+                return 'We repair all major smartphone brands including Apple iPhone, Samsung Galaxy, OnePlus, Vivo, Oppo, Redmi, Realme, and Google Pixel. What device are you trying to fix today?';
+            } else if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('good morning') || q.includes('good evening')) {
+                return 'Hello there! ❤️ How can I help you with your phone today? Whether you need a screen fix, battery check, or free pickup, I am here to answer everything!';
             } else {
-                return 'Thanks for reaching out! You can call us directly at +91 8660663776 or WhatsApp us for instant booking and custom quotes.';
+                return 'I would love to help you with that! For immediate assistance, custom quotes, or instant technician dispatch, you can call us directly at +91 8660663776 or tap the WhatsApp button below to chat with our lead technician!';
             }
         }
     </script>

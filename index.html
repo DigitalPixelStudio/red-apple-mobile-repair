@@ -638,9 +638,9 @@
             position: fixed;
             bottom: 150px;
             right: 20px;
-            width: 340px;
+            width: 350px;
             max-width: 90vw;
-            height: 500px;
+            height: 520px;
             background: #0d0d0d;
             border: 2px solid #ff0033;
             border-radius: 16px;
@@ -699,7 +699,7 @@
         .ai-msg {
             padding: 10px 14px;
             border-radius: 12px;
-            max-width: 85%;
+            max-width: 88%;
             line-height: 1.5;
         }
 
@@ -843,14 +843,14 @@
     <div class="ai-fab" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></div>
     <div class="ai-chat-window" id="aiChatWindow">
         <div class="ai-chat-header">
-            <div class="ai-chat-title"><i class="fa-solid fa-robot"></i> Red Apple Expert Assistant</div>
+            <div class="ai-chat-title"><i class="fa-solid fa-robot"></i> Red Apple AI Assistant</div>
             <button class="ai-close-btn" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="ai-chat-messages" id="aiMessages">
-            <div class="ai-msg bot">Hi there! ❤️ Welcome to Red Apple Mobile Repair. I know everything about our mobile repair services in Bangalore! Ask me about screen replacements, water damage, battery health, free pickup & drop, pricing, or warranties. What can I help you fix today?</div>
+            <div class="ai-msg bot">Hello! I'm the assistant for Red Apple service centre here in Bengaluru. I'd be happy to help you get your mobile device fixed! 🛠️<br><br>What model are you using, and could you tell me a bit about what happened to it? If you have a photo of the damage, that would be great too!</div>
         </div>
         <div class="ai-chat-input-area">
-            <input type="text" class="ai-chat-input" id="aiInput" placeholder="Ask about screen, battery, price..." onkeypress="handleChatKey(event)">
+            <input type="text" class="ai-chat-input" id="aiInput" placeholder="Type your model or issue..." onkeypress="handleChatKey(event)">
             <button class="ai-send-btn" onclick="sendChatMsg()">Send</button>
         </div>
     </div>
@@ -1122,7 +1122,7 @@
             alert('Booking request received successfully! Our technician will call you within 10 minutes.');
         }
 
-        // Deep Expert Repair Knowledgebase AI Chatbot Logic
+        // Meta AI Style Conversational Assistant Logic
         function toggleChat() {
             document.getElementById('aiChatWindow').classList.toggle('active');
         }
@@ -1148,41 +1148,39 @@
             input.value = '';
             msgArea.scrollTop = msgArea.scrollHeight;
 
-            // Generate Specific Expert Bot Response
+            // Generate Meta-AI Style Conversational Response
             setTimeout(() => {
                 let botDiv = document.createElement('div');
                 botDiv.className = 'ai-msg bot';
-                botDiv.textContent = getExpertRepairReply(text);
+                botDiv.textContent = getMetaAIResponse(text);
                 msgArea.appendChild(botDiv);
                 msgArea.scrollTop = msgArea.scrollHeight;
             }, 600);
         }
 
-        function getExpertRepairReply(query) {
+        function getMetaAIResponse(query) {
             let q = query.toLowerCase();
             
-            if (q.includes('screen') || q.includes('display') || q.includes('glass') || q.includes('broken') || q.includes('crack')) {
-                return 'We specialize in original display and touch glass replacements! For cracked screens, we use OCA optical lamination machines for a bubble-free factory finish. Most screen repairs take 45-60 minutes and come with a 6-month warranty. What phone model needs a screen fix?';
-            } else if (q.includes('battery') || q.includes('drain') || q.includes('charge') || q.includes('backup')) {
-                return 'Is your phone dying too fast or shutting down unexpectedly? We replace worn-out batteries with high-capacity original cells that restore 100% health and peak performance. Takes only 30 minutes!';
-            } else if (q.includes('water') || q.includes('liquid') || q.includes('wet') || q.includes('spill')) {
-                return 'Yes! We handle water-damaged devices. Bring it in immediately or book a free pickup. We perform ultrasonic chemical board cleaning, corrosion removal, and micro-soldering to rescue your phone and data.';
-            } else if (q.includes('camera') || q.includes('lens') || q.includes('blur') || q.includes('flash')) {
-                return 'We fix front and rear camera modules, cracked outer camera glass lenses, and autofocus sensor issues so your photos come out crystal clear again.';
-            } else if (q.includes('port') || q.includes('charging') || q.includes('usb') || q.includes('plug')) {
-                return 'If your phone is not charging or loose when plugged in, we clean out pocket lint or replace the Type-C / Lightning charging port flex cable assembly on the spot.';
-            } else if (q.includes('price') || q.includes('cost') || q.includes('charges') || q.includes('rate') || q.includes('how much')) {
-                return 'Repair pricing is transparent and depends on your exact device model. For example, Android screen repairs start at ₹999 and iPhone screens vary by model. Share your brand and model for an exact quote!';
-            } else if (q.includes('pickup') || q.includes('drop') || q.includes('home') || q.includes('doorstep') || q.includes('area')) {
-                return 'We offer FREE pickup & drop across all major Bangalore locations (Koramangala, Indiranagar, Whitefield, Jayanagar, HSR Layout, Electronic City, etc.). Our agent collects your phone and returns it repaired within 2 hours!';
+            if (q.includes('screen') || q.includes('display') || q.includes('glass') || q.includes('crack') || q.includes('broken')) {
+                return 'Got it! A cracked or broken display is definitely stressful, but our technicians fix that every single day. We use original display assemblies with optical lamination so touch sensitivity and colors are 100% factory-grade. It takes about 45-60 minutes and comes with our 6-month warranty. Would you like to schedule a free pickup for your phone?';
+            } else if (q.includes('battery') || q.includes('drain') || q.includes('charge') || q.includes('backup') || q.includes('shutting')) {
+                return 'Ah, battery issues are super annoying! When your battery health drops or drains too fast, it usually means the lithium cells have completed their cycle life. We replace it with a fresh high-capacity cell in about 30 minutes. What specific model is experiencing this battery drain?';
+            } else if (q.includes('water') || q.includes('liquid') || q.includes('wet') || q.includes('spill') || q.includes('juice')) {
+                return 'Oh no, liquid damage requires immediate attention! Please do not plug it into a charger or turn it on. We perform professional ultrasonic board cleaning and chemical corrosion removal to rescue your motherboard and personal data. Shall I dispatch our pickup executive right away?';
+            } else if (q.includes('price') || q.includes('cost') || q.includes('charges') || q.includes('rate') || q.includes('how much') || q.includes('estimate')) {
+                return 'Because every device model uses different screen panels and parts, pricing varies slightly—for example, screen repairs start at ₹999. If you let me know your exact brand and model (like iPhone 13, OnePlus 9, or Samsung S22), I can give you the exact quote right here!';
+            } else if (q.includes('pickup') || q.includes('drop') || q.includes('home') || q.includes('doorstep') || q.includes('area') || q.includes('service')) {
+                return 'We make the repair process completely effortless! We offer FREE pickup & drop across all major areas in Bengaluru including Koramangala, Indiranagar, Jayanagar, Whitefield, HSR Layout, Electronic City, and more. Our agent picks it up, we repair it, and drop it back within 2 hours!';
             } else if (q.includes('warranty') || q.includes('guarantee')) {
-                return 'Every single repair comes with our rock-solid up to 6 months written warranty covering all replaced parts and service workmanship.';
-            } else if (q.includes('address') || q.includes('location') || q.includes('where') || q.includes('shop') || q.includes('store')) {
-                return 'Our workshop is at #36, Halasuru Metro Road, Opp. Halasuru Police Station, Bangalore - 560008. Open daily from 10:00 AM to 11:30 PM!';
+                return 'Yes, absolutely! We provide up to 6 months of comprehensive written warranty on all our repairs and parts, so you can have complete peace of mind.';
+            } else if (q.includes('address') || q.includes('location') || q.includes('where') || q.includes('shop') || q.includes('store') || q.includes('visit')) {
+                return 'Our primary service center is located at #36, Halasuru Metro Road, right opposite Halasuru Police Station, Bengaluru - 560008. You can walk in anytime between 10:00 AM and 11:30 PM!';
             } else if (q.includes('time') || q.includes('duration') || q.includes('how long') || q.includes('fast')) {
-                return 'Speed is our forte! 90% of repairs like screen and battery replacements are completed within 45 to 120 minutes.';
+                return 'Speed is our superpower! 90% of our repairs—including screen replacements and battery swaps—are completed within 45 to 120 minutes.';
+            } else if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('good morning') || q.includes('good evening')) {
+                return 'Hello there! ❤️ I\'m here to help you get your mobile device fixed as smoothly as possible. What model are you using, and what seems to be the issue with it?';
             } else {
-                return 'That is a great question! For specific part availability, instant technician dispatch, or custom pricing, please call us directly at +91 8660663776 or WhatsApp us anytime!';
+                return 'That is super helpful to know! To get this sorted out for you right away, would you like me to book a free pickup, or would you prefer to call our lead technician directly at +91 8660663776?';
             }
         }
     </script>

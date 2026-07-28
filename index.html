@@ -21,7 +21,7 @@
             color: #eeeeee;
             overflow-x: hidden;
             position: relative;
-            font-size: 15px; /* Slightly lighter/larger readable font */
+            font-size: 15px;
             line-height: 1.6;
         }
 
@@ -293,7 +293,7 @@
             display: block;
         }
 
-        /* Rich Gallery Grid (Jasmine Enhanced Looks) */
+        /* Rich Gallery Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -488,7 +488,7 @@
             line-height: 1.6;
         }
 
-        /* Testimonials Slider / List (10 Testimonials) */
+        /* Testimonials Section */
         .testimonials-container {
             display: flex;
             flex-direction: column;
@@ -616,19 +616,43 @@
             box-shadow: 0 0 12px rgba(255, 0, 51, 0.5);
         }
 
+        .form-actions-row {
+            display: flex;
+            gap: 10px;
+        }
+
         .submit-btn {
-            width: 100%;
+            flex: 1;
             background: #ff0033;
             color: #fff;
             border: none;
             border-radius: 10px;
             padding: 16px;
             font-weight: 900;
-            font-size: 15px;
+            font-size: 14px;
             text-transform: uppercase;
             cursor: pointer;
             box-shadow: 0 0 20px rgba(255, 0, 51, 0.6);
             transition: background 0.3s;
+        }
+
+        .whatsapp-submit-btn {
+            flex: 1;
+            background: #00e676;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            padding: 16px;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 230, 118, 0.5);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         /* Map Section */
@@ -698,7 +722,7 @@
             font-weight: 700;
         }
 
-        /* AI Chatbot Widget Styles (Jasmine Enhanced Looks) */
+        /* AI Chatbot Widget Styles */
         .ai-fab {
             position: fixed;
             bottom: 85px;
@@ -938,7 +962,7 @@
         </ul>
     </div>
 
-    <!-- AI Chatbot FAB & Window (Jasmine Enhanced Pure AI Brain) -->
+    <!-- AI Chatbot FAB & Window -->
     <div class="ai-fab" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></div>
     <div class="ai-chat-window" id="aiChatWindow">
         <div class="ai-chat-header">
@@ -1008,7 +1032,7 @@
             </div>
         </div>
 
-        <!-- Rich Gallery Showcase (Jasmine Enhanced Looks) -->
+        <!-- Rich Gallery Showcase -->
         <div class="section-title">Our Workshop & Expertise</div>
         <div class="gallery-grid">
             <div class="gallery-item">
@@ -1132,7 +1156,7 @@
             </div>
         </div>
 
-        <!-- Testimonials Section (10 Verified Reviews) -->
+        <!-- Testimonials Section -->
         <div class="section-title" id="testimonials">Customer Testimonials (10,000+ Happy Clients)</div>
         <div class="testimonials-container">
             <div class="testimonial-card">
@@ -1211,7 +1235,7 @@
                 <div class="testimonial-header">
                     <span class="testimonial-name">Siddharth Nambiar</span>
                     <span class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
-                </tr>
+                </div>
                 <p class="testimonial-text">"Top-notch component level micro-soldering expertise. Other shops told me my motherboard was dead, but Red Apple fixed the power IC cleanly."</p>
                 <div class="testimonial-device">OnePlus 8T Motherboard Repair</div>
             </div>
@@ -1241,13 +1265,13 @@
             <div class="area-item"><span>Malleshwaram</span> <i class="fa-solid fa-chevron-right"></i></div>
         </div>
 
-        <!-- Booking Form -->
+        <!-- Booking Form with WhatsApp Integration -->
         <div class="form-container" id="contact">
             <div class="form-title">Book Free Pickup & Repair</div>
-            <form onsubmit="handleBooking(event)">
+            <form id="bookingForm" onsubmit="handleWhatsAppBooking(event)">
                 <div class="form-group">
                     <label>Select Brand</label>
-                    <select class="form-control" required>
+                    <select class="form-control" id="formBrand" required>
                         <option value="">Select a Brand</option>
                         <option>Apple</option>
                         <option>Samsung</option>
@@ -1261,11 +1285,11 @@
                 </div>
                 <div class="form-group">
                     <label>Device Model</label>
-                    <input type="text" class="form-control" placeholder="e.g. iPhone 14 Pro, Galaxy S23" required>
+                    <input type="text" class="form-control" id="formModel" placeholder="e.g. iPhone 14 Pro, Galaxy S23" required>
                 </div>
                 <div class="form-group">
                     <label>Required Service</label>
-                    <select class="form-control" required>
+                    <select class="form-control" id="formService" required>
                         <option value="">Select Service</option>
                         <option>Display / Screen Replacement</option>
                         <option>Battery Replacement</option>
@@ -1276,9 +1300,12 @@
                 </div>
                 <div class="form-group">
                     <label>Phone Number</label>
-                    <input type="tel" class="form-control" placeholder="+91 8660663776" required>
+                    <input type="tel" class="form-control" id="formPhone" placeholder="+91 8660663776" required>
                 </div>
-                <button type="submit" class="submit-btn">Submit Booking Request</button>
+                <div class="form-actions-row">
+                    <button type="submit" class="submit-btn">Submit Booking</button>
+                    <a href="#" id="whatsappSubmit" class="whatsapp-submit-btn" onclick="sendToWhatsApp(event)"><i class="fa-brands fa-whatsapp"></i> WhatsApp Booking</a>
+                </div>
             </form>
         </div>
 
@@ -1335,12 +1362,29 @@
             event.target.classList.add('active');
         }
 
-        function handleBooking(e) {
+        function handleWhatsAppBooking(e) {
             e.preventDefault();
-            alert('Booking request received successfully! Our technician will call you within 10 minutes.');
+            sendToWhatsApp();
         }
 
-        // Pure AI Brain handling ALL top mobile repair FAQs autonomously
+        function sendToWhatsApp(e) {
+            if(e) e.preventDefault();
+            let brand = document.getElementById('formBrand').value;
+            let model = document.getElementById('formModel').value;
+            let service = document.getElementById('formService').value;
+            let phone = document.getElementById('formPhone').value;
+
+            if(!brand || !model || !service || !phone) {
+                alert('Please fill in all form fields before opening WhatsApp.');
+                return;
+            }
+
+            let msg = `Hello Red Apple Repair! I want to book a pickup.\n\nBrand: ${brand}\nModel: ${model}\nService: ${service}\nPhone: ${phone}`;
+            let url = `https://wa.me/918660663776?text=` + encodeURIComponent(msg);
+            window.open(url, '_blank');
+        }
+
+        // AI Chatbot Logic
         function toggleChat() {
             document.getElementById('aiChatWindow').classList.toggle('active');
         }
@@ -1357,8 +1401,6 @@
             if (!text) return;
 
             let msgArea = document.getElementById('aiMessages');
-            
-            // Append User Message
             let userDiv = document.createElement('div');
             userDiv.className = 'ai-msg user';
             userDiv.textContent = text;
@@ -1366,7 +1408,6 @@
             input.value = '';
             msgArea.scrollTop = msgArea.scrollHeight;
 
-            // Generate Comprehensive Pure AI Response
             setTimeout(() => {
                 let botDiv = document.createElement('div');
                 botDiv.className = 'ai-msg bot';
@@ -1379,30 +1420,28 @@
         function getComprehensiveFAQReply(query) {
             let q = query.toLowerCase();
             
-            if (q.includes('screen') || q.includes('display') || q.includes('glass') || q.includes('crack') || q.includes('broken') || q.includes('touch')) {
-                return 'We specialize in original display & touch glass replacements! For cracked screens, we use advanced OCA optical lamination machines for a bubble-free factory finish. Most screen repairs take 45-60 minutes and come with our 6-month warranty. What phone model needs a screen fix?';
-            } else if (q.includes('battery') || q.includes('drain') || q.includes('charge') || q.includes('backup') || q.includes('shutting') || q.includes('percentage')) {
-                return 'When your battery health drops or drains too fast, it usually means the lithium cells have completed their lifecycle. We replace it with a fresh high-capacity cell restoring 100% health in about 30 minutes with warranty!';
-            } else if (q.includes('water') || q.includes('liquid') || q.includes('wet') || q.includes('spill') || q.includes('rain')) {
-                return 'Liquid damage requires immediate attention! Please do not plug it into a charger. We perform professional ultrasonic board cleaning and chemical corrosion removal to rescue your motherboard and personal data. Shall I dispatch our pickup executive?';
-            } else if (q.includes('price') || q.includes('cost') || q.includes('charges') || q.includes('rate') || q.includes('how much') || q.includes('estimate') || q.includes('budget')) {
-                return 'Our pricing is transparent and highly competitive. Screen repairs start at ₹999 and battery replacements start at ₹799 depending on your exact model. Tell me your brand and model for an exact quote!';
-            } else if (q.includes('pickup') || q.includes('drop') || q.includes('home') || q.includes('doorstep') || q.includes('area') || q.includes('service') || q.includes('come')) {
-                return 'We provide FREE pickup & drop across all major Bangalore locations (Koramangala, Indiranagar, Whitefield, Jayanagar, HSR Layout, Electronic City, etc.). Our agent picks up your phone, repairs it, and returns it within 2 hours!';
-            } else if (q.includes('warranty') || q.includes('guarantee') || q.includes('assurance')) {
-                return 'Every single repair at Red Apple is backed by up to 6 months of comprehensive written warranty covering both parts and technician workmanship.';
-            } else if (q.includes('address') || q.includes('location') || q.includes('where') || q.includes('shop') || q.includes('store') || q.includes('visit') || q.includes('map')) {
-                return 'Our flagship service center is located at #36, Halasuru Metro Road, right opposite Halasuru Police Station, Bangalore - 560008. Open daily from 10:00 AM to 11:30 PM!';
-            } else if (q.includes('time') || q.includes('duration') || q.includes('how long') || q.includes('fast') || q.includes('hours')) {
-                return 'Speed is our superpower! 90% of our repairs—including screen replacements and battery swaps—are completed within 45 to 120 minutes.';
-            } else if (q.includes('data') || q.includes('safe') || q.includes('loss') || q.includes('backup')) {
-                return 'Yes, your data is 100% safe! We do not wipe your phone data for standard screen or battery repairs. Your photos, chats, and apps remain intact.';
-            } else if (q.includes('original') || q.includes('genuine') || q.includes('quality') || q.includes('fake')) {
-                return 'We strictly use 100% original manufacturer-grade OEM parts and components to ensure exact color accuracy, brightness, and touch response.';
-            } else if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('good morning') || q.includes('good evening')) {
-                return 'Hello there! ❤️ I\'m your Red Apple expert assistant. How can I help you fix your phone today? Ask me about screen repairs, battery health, or free pickup!';
+            if (q.includes('screen') || q.includes('display') || q.includes('glass') || q.includes('crack') || q.includes('broken')) {
+                return 'We specialize in original display & touch glass replacements using OCA optical lamination. Takes 45-60 mins with 6-month warranty. What model needs fixing?';
+            } else if (q.includes('battery') || q.includes('drain') || q.includes('charge') || q.includes('backup')) {
+                return 'We replace worn-out batteries with high-capacity original cells restoring 100% health in ~30 minutes with warranty!';
+            } else if (q.includes('water') || q.includes('liquid') || q.includes('wet') || q.includes('spill')) {
+                return 'Liquid damage requires immediate attention! We perform professional ultrasonic board cleaning and corrosion removal to rescue your phone and data.';
+            } else if (q.includes('price') || q.includes('cost') || q.includes('charges') || q.includes('how much')) {
+                return 'Screen repairs start at ₹999 and batteries at ₹799. Share your exact brand and model for an exact quote right here!';
+            } else if (q.includes('pickup') || q.includes('drop') || q.includes('home') || q.includes('doorstep') || q.includes('area')) {
+                return 'We offer FREE pickup & drop across all Bangalore areas (Koramangala, Indiranagar, Whitefield, Jayanagar, etc.) within 2 hours!';
+            } else if (q.includes('warranty') || q.includes('guarantee')) {
+                return 'Every repair comes with up to 6 months of comprehensive written warranty covering parts and workmanship.';
+            } else if (q.includes('address') || q.includes('location') || q.includes('where') || q.includes('shop') || q.includes('store')) {
+                return 'We are located at #36, Halasuru Metro Road, Opp. Halasuru Police Station, Bangalore - 560008. Open 10 AM - 11:30 PM!';
+            } else if (q.includes('time') || q.includes('duration') || q.includes('how long') || q.includes('fast')) {
+                return 'Most repairs like screen and battery replacements are finished within 45 to 120 minutes.';
+            } else if (q.includes('data') || q.includes('safe') || q.includes('backup')) {
+                return 'Your data is 100% safe! We do not wipe your phone data for standard screen or battery repairs.';
+            } else if (q.includes('original') || q.includes('genuine')) {
+                return 'We strictly use 100% original OEM parts and components for exact color accuracy and responsiveness.';
             } else {
-                return 'That is a great question! For specific part availability or instant technician dispatch, you can call us directly at +91 8660663776 or WhatsApp us anytime. Shall I help you book a free pickup?';
+                return 'For instant technician dispatch or custom quotes, call us directly at +91 8660663776 or tap our WhatsApp booking button!';
             }
         }
     </script>

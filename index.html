@@ -23,8 +23,8 @@
         }
 
         body {
-            background-color: #000000;
-            color: #eeeeee;
+            background-color: #ffffff;
+            color: #222222;
             overflow-x: hidden;
             position: relative;
             font-size: 15px;
@@ -36,12 +36,12 @@
             position: fixed;
             width: 3px;
             height: 3px;
-            background: #ff0033;
-            box-shadow: 0 0 10px #ff0033;
+            background: linear-gradient(135deg, #ff0033, #ffcc00);
+            box-shadow: 0 0 10px #ffcc00;
             pointer-events: none;
-            opacity: 0.7;
+            opacity: 0.5;
             animation: floatParticle 8s infinite linear;
-            z-index: 1;
+            z-index: 0;
         }
 
         @keyframes floatParticle {
@@ -60,8 +60,8 @@
             width: 100%;
             height: 100%;
             background-image:
-                radial-gradient(circle at 25px 25px, rgba(255, 0, 51, 0.03) 1px, transparent 1px),
-                radial-gradient(circle at 75px 75px, rgba(255, 0, 51, 0.05) 1px, transparent 1px);
+                radial-gradient(circle at 25px 25px, rgba(255, 0, 51, 0.06) 1px, transparent 1px),
+                radial-gradient(circle at 75px 75px, rgba(255, 204, 0, 0.06) 1px, transparent 1px);
             background-size: 50px 50px, 150px 150px;
             pointer-events: none;
             z-index: 0;
@@ -191,14 +191,15 @@
             margin-bottom: 35px;
         }
         .pricing-card {
-            background: linear-gradient(145deg, #0a0a0a, #111);
-            border: 1px solid #333;
+            background: #ffffff;
+            border: 1px solid #eee;
             border-radius: 14px;
-            padding: 16px 14px;
+            padding: 18px 14px;
             text-align: center;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
         }
         .pricing-card::before {
             content: '';
@@ -207,8 +208,8 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(255,0,51,0.05), transparent, rgba(255,0,51,0.05), transparent);
-            animation: rotateGlow 6s linear infinite;
+            background: conic-gradient(from 0deg, transparent, rgba(255,204,0,0.1), transparent, rgba(255,0,51,0.1), transparent);
+            animation: rotateGlow 4s linear infinite;
             opacity: 0;
             transition: opacity 0.4s;
         }
@@ -216,9 +217,9 @@
             opacity: 1;
         }
         .pricing-card:hover {
-            border-color: #ff0033;
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 0 30px rgba(255,0,51,0.4);
+            border-color: #ffcc00;
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 0 40px rgba(255,204,0,0.25), 0 10px 30px rgba(0,0,0,0.08);
         }
         @keyframes rotateGlow {
             0% { transform: rotate(0deg); }
@@ -234,7 +235,7 @@
         .pricing-name {
             font-size: 14px;
             font-weight: 800;
-            color: #fff;
+            color: #222;
             margin-bottom: 4px;
             position: relative;
             z-index: 1;
@@ -253,7 +254,7 @@
         }
         .pricing-warranty {
             font-size: 10px;
-            color: #ff3355;
+            color: #ff6600;
             margin-top: 4px;
             position: relative;
             z-index: 1;
@@ -267,19 +268,20 @@
             margin-bottom: 35px;
         }
         .device-type-card {
-            background: #0a0a0a;
-            border: 2px solid #222;
+            background: #ffffff;
+            border: 2px solid #eee;
             border-radius: 16px;
             padding: 22px 14px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
         }
         .device-type-card:hover {
-            border-color: #ff0033;
-            transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 0 35px rgba(255,0,51,0.5);
-            background: linear-gradient(145deg, #0d0002, #111);
+            border-color: #ffcc00;
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 40px rgba(255,204,0,0.25), 0 10px 30px rgba(0,0,0,0.08);
+            background: linear-gradient(145deg, #fffdf5, #ffffff);
         }
         .device-type-card i {
             font-size: 36px;
@@ -289,19 +291,19 @@
         }
         .device-type-card h4 {
             font-size: 15px;
-            color: #fff;
+            color: #222;
             font-weight: 800;
         }
         .device-type-card p {
             font-size: 12px;
-            color: #aaa;
+            color: #888;
             margin-top: 4px;
         }
 
         /* ===== SERVICE STEPS ===== */
         .service-steps-container {
-            background: #080808;
-            border: 1px solid #333;
+            background: #fafafa;
+            border: 1px solid #eee;
             border-radius: 18px;
             padding: 24px 18px;
             margin-bottom: 35px;
@@ -311,7 +313,7 @@
             align-items: center;
             gap: 15px;
             padding: 14px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         .service-step:last-child {
             border-bottom: none;
@@ -320,7 +322,7 @@
             width: 40px;
             height: 40px;
             min-width: 40px;
-            background: linear-gradient(135deg, #ff0033, #cc0029);
+            background: linear-gradient(135deg, #ff0033, #ffcc00);
             color: #fff;
             border-radius: 50%;
             display: flex;
@@ -328,31 +330,31 @@
             justify-content: center;
             font-weight: 900;
             font-size: 16px;
-            box-shadow: 0 0 20px rgba(255,0,51,0.5);
+            box-shadow: 0 0 25px rgba(255,204,0,0.3);
         }
         .service-step-content h4 {
             font-size: 15px;
-            color: #fff;
+            color: #222;
             font-weight: 800;
         }
         .service-step-content p {
             font-size: 13px;
-            color: #bbb;
+            color: #666;
         }
 
         /* ===== WARRANTY BANNER ===== */
         .warranty-banner {
-            background: linear-gradient(135deg, rgba(255,0,51,0.15), rgba(0,0,0,0.9));
-            border: 2px solid #ff0033;
+            background: linear-gradient(135deg, #ff0033, #ffcc00);
             border-radius: 18px;
-            padding: 25px 20px;
+            padding: 30px 20px;
             text-align: center;
             margin-bottom: 35px;
-            box-shadow: 0 0 30px rgba(255,0,51,0.2);
+            box-shadow: 0 0 40px rgba(255,204,0,0.2);
         }
         .warranty-banner i {
-            font-size: 42px;
-            color: #ff0033;
+            font-size: 48px;
+            color: #fff;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.2));
             margin-bottom: 10px;
         }
         .warranty-banner h3 {
@@ -360,9 +362,10 @@
             color: #fff;
             font-weight: 900;
             margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .warranty-banner p {
-            color: #ddd;
+            color: rgba(255,255,255,0.95);
             font-size: 14px;
             max-width: 500px;
             margin: 0 auto;
@@ -376,8 +379,8 @@
             align-items: center;
             gap: 8px;
             background: transparent;
-            border: 2px solid #ff0033;
-            color: #ff0033;
+            border: 2px solid #ffcc00;
+            color: #cc0000;
             padding: 10px 20px;
             border-radius: 25px;
             font-size: 13px;
@@ -387,18 +390,19 @@
             text-decoration: none;
         }
         .download-icon-btn:hover {
-            background: #ff0033;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(255,0,51,0.5);
+            background: linear-gradient(135deg, #ffcc00, #ffd700);
+            color: #cc0000;
+            box-shadow: 0 0 25px rgba(255,204,0,0.5);
+            transform: translateY(-2px);
         }
 
 /* Navbar */
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(0, 0, 0, 0.96);
-            border-bottom: 2px solid #ff0033;
-            box-shadow: 0 4px 25px rgba(255, 0, 51, 0.4);
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 3px solid #ff0033;
+            box-shadow: 0 4px 25px rgba(255, 0, 51, 0.15);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -422,13 +426,12 @@
             font-size: 22px;
             font-weight: 900;
             letter-spacing: 1.5px;
-            color: #ffffff;
+            color: #222222;
             text-transform: uppercase;
         }
 
         .logo-text span {
             color: #ff0033;
-            text-shadow: 0 0 12px #ff0033;
         }
 
         .hamburger-btn {
@@ -439,7 +442,7 @@
             border-radius: 8px;
             cursor: pointer;
             font-size: 18px;
-            box-shadow: 0 0 12px rgba(255, 0, 51, 0.5);
+            box-shadow: 0 0 12px rgba(255, 0, 51, 0.2);
             transition: all 0.3s ease;
         }
 
@@ -451,9 +454,9 @@
             width: 80%;
             max-width: 320px;
             height: 100vh;
-            background: #0a0a0a;
+            background: #ffffff;
             border-left: 2px solid #ff0033;
-            box-shadow: -10px 0 30px rgba(255, 0, 51, 0.4);
+            box-shadow: -10px 0 30px rgba(255, 0, 51, 0.15);
             z-index: 2000;
             transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             display: flex;
@@ -488,7 +491,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.4);
             z-index: 1500;
             display: none;
         }
@@ -509,15 +512,28 @@
 
         /* Hero Banner with Workshop Image Background */
         .hero {
-            background: linear-gradient(135deg, rgba(26,0,4,0.92), rgba(0,0,0,0.96)), url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80') center/cover;
-            border: 2px solid #ff0033;
+            background: linear-gradient(135deg, #ff0033 0%, #ff1a1a 30%, #ffcc00 70%, #ffd700 100%);
             border-radius: 20px;
-            padding: 45px 20px;
+            padding: 50px 20px;
             text-align: center;
             margin-bottom: 35px;
-            box-shadow: 0 0 40px rgba(255, 0, 51, 0.5);
+            box-shadow: 0 0 50px rgba(255, 204, 0, 0.3);
             position: relative;
             overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.15) 0%, transparent 50%);
+            animation: heroShimmer 6s ease-in-out infinite;
+        }
+        @keyframes heroShimmer {
+            0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
+            50% { transform: translate(10%, 10%) rotate(5deg); }
         }
 
         .hero h1 {
@@ -527,16 +543,15 @@
             margin-bottom: 15px;
             text-transform: uppercase;
             line-height: 1.3;
-            animation: breathingGlow 3s infinite alternate;
+            animation: heroTitleBounce 3s ease-in-out infinite;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.2);
         }
-
-        @keyframes breathingGlow {
-            0% { text-shadow: 0 0 6px #ff0033; }
-            100% { text-shadow: 0 0 30px #ff0033, 0 0 50px #ff0033; }
+        @keyframes heroTitleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
-
         .hero p {
-            color: #e0e0e0;
+            color: rgba(255,255,255,0.95);
             font-size: 16px;
             line-height: 1.6;
             margin-bottom: 25px;
@@ -551,26 +566,34 @@
         }
 
         .badge-pill {
-            background: rgba(255, 0, 51, 0.25);
-            border: 1px solid #ff0033;
-            color: #ff3355;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.5);
+            color: #ffffff;
             padding: 7px 15px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: 700;
+            backdrop-filter: blur(5px);
         }
 
         .hero-cta {
-            background: #ff0033;
-            color: #fff;
+            background: #ffcc00;
+            color: #cc0000;
             text-decoration: none;
-            padding: 15px 30px;
+            padding: 16px 35px;
             border-radius: 30px;
             font-weight: 900;
             font-size: 15px;
             display: inline-block;
-            box-shadow: 0 0 25px rgba(255, 0, 51, 0.7);
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.5);
             text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            animation: ctaBounce 2s ease-in-out infinite;
+        }
+        @keyframes ctaBounce {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(255, 204, 0, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 45px rgba(255, 204, 0, 0.8); }
         }
 
         /* Section Titles */
@@ -578,19 +601,22 @@
             font-size: 22px;
             font-weight: 900;
             margin-bottom: 18px;
-            color: #fff;
+            color: #222222;
             border-left: 5px solid #ff0033;
             padding-left: 12px;
             text-transform: uppercase;
+            background: linear-gradient(90deg, rgba(255,204,0,0.1) 0%, transparent 100%);
+            padding: 8px 12px;
+            border-radius: 0 8px 8px 0;
         }
 
         .search-box {
             width: 100%;
-            background: #111;
-            border: 2px solid #333;
+            background: #f5f5f5;
+            border: 2px solid #ddd;
             border-radius: 12px;
             padding: 15px 18px;
-            color: #fff;
+            color: #333;
             font-size: 16px;
             margin-bottom: 20px;
             transition: border-color 0.3s;
@@ -599,7 +625,7 @@
         .search-box:focus {
             outline: none;
             border-color: #ff0033;
-            box-shadow: 0 0 15px rgba(255, 0, 51, 0.5);
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.2);
         }
 
         /* Brands Grid */
@@ -611,20 +637,20 @@
         }
 
         .brand-card {
-            background: #0a0a0a;
-            border: 1px solid #333;
+            background: #ffffff;
+            border: 1px solid #eee;
             border-radius: 14px;
             padding: 16px 8px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
         }
 
         .brand-card:hover {
-            border-color: #ff0033;
-            transform: translateY(-4px);
-            box-shadow: 0 0 20px rgba(255, 0, 51, 0.6);
+            border-color: #ffcc00;
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.3), 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .brand-card img {
@@ -637,7 +663,7 @@
         .brand-card span {
             font-size: 13px;
             font-weight: 700;
-            color: #e0e0e0;
+            color: #444;
             display: block;
         }
 
@@ -650,15 +676,17 @@
         }
 
         .gallery-item {
-            border: 2px solid #333;
+            border: 2px solid #eee;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.9);
-            transition: border-color 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s ease;
         }
 
         .gallery-item:hover {
-            border-color: #ff0033;
+            border-color: #ffcc00;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 40px rgba(255,204,0,0.2);
         }
 
         .gallery-item img {
@@ -669,18 +697,18 @@
         }
 
         .gallery-caption {
-            background: #0a0a0a;
+            background: linear-gradient(135deg, #ff0033, #ff1a1a);
             padding: 10px;
             text-align: center;
             font-size: 13px;
             font-weight: 700;
-            color: #ff3355;
+            color: #fff;
         }
 
         /* Service Process */
         .process-container {
-            background: #080808;
-            border: 1px solid #333;
+            background: #fafafa;
+            border: 1px solid #eee;
             border-radius: 18px;
             padding: 24px 18px;
             margin-bottom: 35px;
@@ -688,18 +716,18 @@
 
         .process-toggle {
             display: flex;
-            background: #111;
+            background: #f0f0f0;
             border-radius: 30px;
             padding: 5px;
             margin-bottom: 20px;
-            border: 1px solid #444;
+            border: 1px solid #ddd;
         }
 
         .toggle-btn {
             flex: 1;
             background: transparent;
             border: none;
-            color: #aaa;
+            color: #888;
             padding: 12px;
             font-weight: 700;
             font-size: 14px;
@@ -709,9 +737,9 @@
         }
 
         .toggle-btn.active {
-            background: #ff0033;
+            background: linear-gradient(135deg, #ff0033, #ffcc00);
             color: #fff;
-            box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
         }
 
         .process-steps {
@@ -730,9 +758,8 @@
         .step-num {
             width: 42px;
             height: 42px;
-            background: #120002;
-            border: 2px solid #ff0033;
-            color: #ff0033;
+            background: linear-gradient(135deg, #ff0033, #ffcc00);
+            color: #fff;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -740,12 +767,13 @@
             margin: 0 auto 10px;
             font-weight: 900;
             font-size: 16px;
-            box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+            animation: stepPulse 2s ease-in-out infinite;
         }
 
         .step-text {
             font-size: 13px;
-            color: #ddd;
+            color: #666;
             font-weight: 600;
         }
 
@@ -854,7 +882,9 @@
         }
 
         .testimonial-card:hover {
-            border-color: #ff0033;
+            border-color: #ffcc00;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(255,204,0,0.15), 0 8px 25px rgba(0,0,0,0.06);
         }
 
         .testimonial-header {
@@ -1107,10 +1137,10 @@
             right: 20px;
             width: 360px;
             max-width: 92vw;
-            background: #0d0d0d;
-            border: 2px solid #ff0033;
+            background: #ffffff;
+            border: 2px solid #ffcc00;
             border-radius: 18px;
-            box-shadow: 0 15px 40px rgba(255, 0, 51, 0.6);
+            box-shadow: 0 15px 40px rgba(255, 204, 0, 0.15);
             z-index: 3000;
             display: flex;
             flex-direction: column;
@@ -1134,12 +1164,12 @@
         }
 
         .ai-chat-header {
-            background: linear-gradient(135deg, #1a0004, #2c0008);
+            background: linear-gradient(135deg, #ff0033, #ffcc00);
             padding: 14px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #ff0033;
+            border-bottom: 2px solid #ffcc00;
         }
 
         .ai-chat-title {
@@ -1159,7 +1189,7 @@
         .ai-close-btn {
             background: transparent;
             border: none;
-            color: #ff0033;
+            color: #fff;
             font-size: 20px;
             cursor: pointer;
         }
@@ -1183,13 +1213,13 @@
 
         .ai-msg.bot {
             background: #171717;
-            color: #e0e0e0;
+            color: #444;
             align-self: flex-start;
             border: 1px solid #333;
         }
 
         .ai-msg.user {
-            background: #ff0033;
+            background: linear-gradient(135deg, #ff0033, #ff6600);
             color: #fff;
             align-self: flex-end;
             box-shadow: 0 0 10px rgba(255, 0, 51, 0.4);
@@ -1293,6 +1323,15 @@
             0%, 100% { box-shadow: 0 0 25px rgba(255, 0, 51, 0.7); }
             50% { box-shadow: 0 0 45px rgba(255, 0, 51, 0.9), 0 0 60px rgba(255, 0, 51, 0.3); }
         }
+
+        @keyframes stepPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(255,0,51,0.3); }
+            50% { box-shadow: 0 0 30px rgba(255,204,0,0.5); }
+        }
+        @keyframes fabPulse {
+            0%, 100% { box-shadow: 0 6px 25px rgba(255,204,0,0.4); }
+            50% { box-shadow: 0 6px 40px rgba(255,204,0,0.7); }
+        }
 </style>
     <!-- PWA: manifest in head, icon.svg as apple-touch-icon -->
     <script>
@@ -1373,6 +1412,7 @@
                 <div class="badge-pill"><i class="fa-solid fa-check"></i> 10,000+ Repairs</div>
                 <div class="badge-pill"><i class="fa-solid fa-shield"></i> 6 Months Warranty</div>
                 <div class="badge-pill"><i class="fa-solid fa-bolt"></i> Same Day Delivery</div>
+                <div class="badge-pill"><i class="fa-solid fa-truck-fast"></i> Free Pickup & Drop</div>
             </div>
             <a href="#contact" class="hero-cta">Book Free Pickup Now</a>
         </div>

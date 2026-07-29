@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Red Apple Mobile Repair | Bangalore's Premier Expert Repair & Service Center</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ff0033">
     <meta name="description" content="Red Apple Mobile Repair offers fast, affordable mobile repair in Bangalore with free pickup & drop. Screen, battery & hardware repairs trusted by 10000+ customers.">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -44,7 +50,349 @@
             100% { transform: translateY(-10vh) translateX(60px); opacity: 0; }
         }
 
-        /* Navbar */
+        
+        /* ===== TECH CIRCUIT PATTERN OVERLAY ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 25px 25px, rgba(255, 0, 51, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 75px 75px, rgba(255, 0, 51, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px, 150px 150px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Hex tech grid overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(30deg, rgba(255,0,51,0.02) 12%, transparent 12.5%, transparent 87%, rgba(255,0,51,0.02) 87.5%),
+                linear-gradient(150deg, rgba(255,0,51,0.02) 12%, transparent 12.5%, transparent 87%, rgba(255,0,51,0.02) 87.5%),
+                linear-gradient(270deg, rgba(255,0,51,0.02) 12%, transparent 12.5%, transparent 87%, rgba(255,0,51,0.02) 87.5%);
+            background-size: 60px 104px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== SCROLL REVEAL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== WIDE VIEW / DESKTOP ===== */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 900px;
+                padding: 20px 30px;
+                padding-bottom: 130px;
+            }
+            .brands-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .hero h1 {
+                font-size: 42px;
+            }
+            .hero p {
+                font-size: 18px;
+                max-width: 700px;
+                margin: 0 auto 25px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .testimonials-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .device-types-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .features-box {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .areas-box {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .form-container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1100px;
+            }
+            .brands-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 420px) {
+            .brands-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== PRICING TABLE ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+        .pricing-card {
+            background: linear-gradient(145deg, #0a0a0a, #111);
+            border: 1px solid #333;
+            border-radius: 14px;
+            padding: 16px 14px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,0,51,0.05), transparent, rgba(255,0,51,0.05), transparent);
+            animation: rotateGlow 6s linear infinite;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .pricing-card:hover::before {
+            opacity: 1;
+        }
+        .pricing-card:hover {
+            border-color: #ff0033;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 30px rgba(255,0,51,0.4);
+        }
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .pricing-icon {
+            font-size: 28px;
+            color: #ff0033;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .pricing-name {
+            font-size: 14px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .pricing-price {
+            font-size: 18px;
+            font-weight: 900;
+            color: #ff0033;
+            position: relative;
+            z-index: 1;
+        }
+        .pricing-price small {
+            font-size: 11px;
+            color: #999;
+            font-weight: 400;
+        }
+        .pricing-warranty {
+            font-size: 10px;
+            color: #ff3355;
+            margin-top: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== DEVICE TYPES GRID ===== */
+        .device-types-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+        .device-type-card {
+            background: #0a0a0a;
+            border: 2px solid #222;
+            border-radius: 16px;
+            padding: 22px 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .device-type-card:hover {
+            border-color: #ff0033;
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 0 35px rgba(255,0,51,0.5);
+            background: linear-gradient(145deg, #0d0002, #111);
+        }
+        .device-type-card i {
+            font-size: 36px;
+            color: #ff0033;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px rgba(255,0,51,0.5));
+        }
+        .device-type-card h4 {
+            font-size: 15px;
+            color: #fff;
+            font-weight: 800;
+        }
+        .device-type-card p {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+
+        /* ===== SERVICE STEPS ===== */
+        .service-steps-container {
+            background: #080808;
+            border: 1px solid #333;
+            border-radius: 18px;
+            padding: 24px 18px;
+            margin-bottom: 35px;
+        }
+        .service-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .service-step:last-child {
+            border-bottom: none;
+        }
+        .service-step-num {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: linear-gradient(135deg, #ff0033, #cc0029);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 16px;
+            box-shadow: 0 0 20px rgba(255,0,51,0.5);
+        }
+        .service-step-content h4 {
+            font-size: 15px;
+            color: #fff;
+            font-weight: 800;
+        }
+        .service-step-content p {
+            font-size: 13px;
+            color: #bbb;
+        }
+
+        /* ===== WARRANTY BANNER ===== */
+        .warranty-banner {
+            background: linear-gradient(135deg, rgba(255,0,51,0.15), rgba(0,0,0,0.9));
+            border: 2px solid #ff0033;
+            border-radius: 18px;
+            padding: 25px 20px;
+            text-align: center;
+            margin-bottom: 35px;
+            box-shadow: 0 0 30px rgba(255,0,51,0.2);
+        }
+        .warranty-banner i {
+            font-size: 42px;
+            color: #ff0033;
+            margin-bottom: 10px;
+        }
+        .warranty-banner h3 {
+            font-size: 20px;
+            color: #fff;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .warranty-banner p {
+            color: #ddd;
+            font-size: 14px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+
+
+        /* Icon download button */
+        .download-icon-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 2px solid #ff0033;
+            color: #ff0033;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .download-icon-btn:hover {
+            background: #ff0033;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255,0,51,0.5);
+        }
+
+/* Navbar */
         .navbar {
             position: sticky;
             top: 0;
@@ -759,7 +1107,6 @@
             right: 20px;
             width: 360px;
             max-width: 92vw;
-            height: 540px;
             background: #0d0d0d;
             border: 2px solid #ff0033;
             border-radius: 18px;
@@ -768,11 +1115,22 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            display: none;
+            height: 0;
+            opacity: 0;
+            transition: height 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.3s ease;
         }
 
         .ai-chat-window.active {
-            display: flex;
+            height: 540px;
+            opacity: 1;
+        }
+
+        .ai-msg {
+            animation: msgSlide 0.3s ease;
+        }
+        @keyframes msgSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .ai-chat-header {
@@ -919,10 +1277,24 @@
             color: #fff;
             border: 1px solid #444;
         }
-    </style>
-    <link rel="manifest" href="./manifest.json">
-    <meta name="theme-color" content="#ff0033">
-    <link rel="apple-touch-icon" href="https://www.fixma.in/phonfix/img/fixmaicon.png">
+    
+        /* Smooth page load & CTA animations */
+        .container {
+            animation: pageFadeIn 0.8s ease;
+        }
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-cta {
+            animation: ctaPulse 2s infinite;
+        }
+        @keyframes ctaPulse {
+            0%, 100% { box-shadow: 0 0 25px rgba(255, 0, 51, 0.7); }
+            50% { box-shadow: 0 0 45px rgba(255, 0, 51, 0.9), 0 0 60px rgba(255, 0, 51, 0.3); }
+        }
+</style>
+    <!-- PWA: manifest in head, icon.svg as apple-touch-icon -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -1143,7 +1515,119 @@
             </div>
         </div>
 
-        <!-- Why Choose Us Expanded -->
+                <!-- Pricing Table -->
+        <div class="section-title" style="margin-top:35px;">Transparent Pricing — Starting From</div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                <div class="pricing-name">Screen Replacement</div>
+                <div class="pricing-price">₹999 <small>onwards</small></div>
+                <div class="pricing-warranty"><i class="fa-solid fa-shield"></i> 6 Months Warranty</div>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-icon"><i class="fa-solid fa-battery-full"></i></div>
+                <div class="pricing-name">Battery Replacement</div>
+                <div class="pricing-price">₹799 <small>onwards</small></div>
+                <div class="pricing-warranty"><i class="fa-solid fa-shield"></i> 6 Months Warranty</div>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-icon"><i class="fa-solid fa-plug"></i></div>
+                <div class="pricing-name">Charging Port Repair</div>
+                <div class="pricing-price">₹499 <small>onwards</small></div>
+                <div class="pricing-warranty"><i class="fa-solid fa-shield"></i> 6 Months Warranty</div>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-icon"><i class="fa-solid fa-droplet"></i></div>
+                <div class="pricing-name">Water Damage Repair</div>
+                <div class="pricing-price">₹999 <small>onwards</small></div>
+                <div class="pricing-warranty"><i class="fa-solid fa-shield"></i> 6 Months Warranty</div>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-icon"><i class="fa-solid fa-camera"></i></div>
+                <div class="pricing-name">Camera Repair</div>
+                <div class="pricing-price">₹699 <small>onwards</small></div>
+                <div class="pricing-warranty"><i class="fa-solid fa-shield"></i> 6 Months Warranty</div>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-icon"><i class="fa-solid fa-microchip"></i></div>
+                <div class="pricing-name">Motherboard Repair</div>
+                <div class="pricing-price">₹1499 <small>onwards</small></div>
+                <div class="pricing-warranty"><i class="fa-solid fa-shield"></i> 6 Months Warranty</div>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-icon"><i class="fa-solid fa-volume-high"></i></div>
+                <div class="pricing-name">Speaker/Mic Repair</div>
+                <div class="pricing-price">₹399 <small>onwards</small></div>
+                <div class="pricing-warranty"><i class="fa-solid fa-shield"></i> 6 Months Warranty</div>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-icon"><i class="fa-solid fa-key"></i></div>
+                <div class="pricing-name">Software Unlock</div>
+                <div class="pricing-price">₹299 <small>onwards</small></div>
+                <div class="pricing-warranty"><i class="fa-solid fa-shield"></i> Service Guarantee</div>
+            </div>
+        </div>
+
+        <!-- Device Types We Repair -->
+        <div class="section-title">Devices We Expertly Repair</div>
+        <div class="device-types-grid">
+            <div class="device-type-card">
+                <i class="fa-solid fa-mobile-button"></i>
+                <h4>All Smartphones</h4>
+                <p>Apple, Samsung, OnePlus, Vivo, Oppo, Redmi, Realme & more</p>
+            </div>
+            <div class="device-type-card">
+                <i class="fa-solid fa-tablet-screen-button"></i>
+                <h4>iPads & Tablets</h4>
+                <p>iPad Pro, iPad Air, iPad Mini & Android Tablets</p>
+            </div>
+            <div class="device-type-card">
+                <i class="fa-brands fa-apple"></i>
+                <h4>Apple iWatch</h4>
+                <p>All Series including Ultra — Screen, Battery & Sensors</p>
+            </div>
+            <div class="device-type-card">
+                <i class="fa-solid fa-headphones"></i>
+                <h4>AirPods</h4>
+                <p>AirPods Pro, AirPods Max — Battery & Charging Fix</p>
+            </div>
+        </div>
+
+        <!-- Warranty Banner -->
+        <div class="warranty-banner">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3><i class="fa-solid fa-check-circle"></i> Up to 6 Months Comprehensive Warranty</h3>
+            <p>Every single repair is backed by our rock-solid written warranty covering both parts and workmanship. We stand by our service, always.</p>
+        </div>
+
+        <!-- Service Steps -->
+        <div class="service-steps-container">
+            <div class="section-title" style="border:none; padding:0; margin-bottom:18px;">How It Works — 3 Simple Steps</div>
+            <div class="service-step">
+                <div class="service-step-num">1</div>
+                <div class="service-step-content">
+                    <h4><i class="fa-solid fa-calendar-check"></i> Book a Repair</h4>
+                    <p>Fill the form or WhatsApp us your device model and issue. Get an instant quote and schedule free pickup within 2 hours.</p>
+                </div>
+            </div>
+            <div class="service-step">
+                <div class="service-step-num">2</div>
+                <div class="service-step-content">
+                    <h4><i class="fa-solid fa-truck-fast"></i> Free Pickup & Diagnosis</h4>
+                    <p>Our technician arrives at your doorstep, diagnoses the issue at no cost, and shares the exact repair plan with transparent pricing.</p>
+                </div>
+            </div>
+            <div class="service-step">
+                <div class="service-step-num">3</div>
+                <div class="service-step-content">
+                    <h4><i class="fa-solid fa-award"></i> Expert Repair with Warranty</h4>
+                    <p>Certified repair with genuine parts, 6-month warranty, and free drop-off. Pay only after you're fully satisfied with the repair.</p>
+                </div>
+            </div>
+        </div>
+
+
+<!-- Why Choose Us Expanded -->
         <div class="section-title" id="whyus">Why Choose Red Apple?</div>
         <div class="features-box">
             <div class="feature-item">
@@ -1275,6 +1759,12 @@
         <div class="areas-box">
             <div class="area-item"><span>Koramangala</span> <i class="fa-solid fa-chevron-right"></i></div>
             <div class="area-item"><span>Indiranagar</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>Marathahalli</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>BTM Layout</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>Banashankari</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>Rajajinagar</span> <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="area-item"><span>Yelahanka</span> <i class="fa-solid fa-chevron-right"></i></div>
+
             <div class="area-item"><span>Jayanagar</span> <i class="fa-solid fa-chevron-right"></i></div>
             <div class="area-item"><span>Whitefield</span> <i class="fa-solid fa-chevron-right"></i></div>
             <div class="area-item"><span>Electronic City</span> <i class="fa-solid fa-chevron-right"></i></div>
@@ -1440,30 +1930,92 @@
         function getComprehensiveFAQReply(query) {
             let q = query.toLowerCase();
             
-            if (q.includes('screen') || q.includes('display') || q.includes('glass') || q.includes('crack') || q.includes('broken')) {
-                return 'We specialize in original display & touch glass replacements using OCA optical lamination. Takes 45-60 mins with 6-month warranty. What model needs fixing?';
-            } else if (q.includes('battery') || q.includes('drain') || q.includes('charge') || q.includes('backup')) {
-                return 'We replace worn-out batteries with high-capacity original cells restoring 100% health in ~30 minutes with warranty!';
-            } else if (q.includes('water') || q.includes('liquid') || q.includes('wet') || q.includes('spill')) {
-                return 'Liquid damage requires immediate attention! We perform professional ultrasonic board cleaning and corrosion removal to rescue your phone and data.';
-            } else if (q.includes('price') || q.includes('cost') || q.includes('charges') || q.includes('how much')) {
-                return 'Screen repairs start at ₹999 and batteries at ₹799. Share your exact brand and model for an exact quote right here!';
-            } else if (q.includes('pickup') || q.includes('drop') || q.includes('home') || q.includes('doorstep') || q.includes('area')) {
-                return 'We offer FREE pickup & drop across all Bangalore areas (Koramangala, Indiranagar, Whitefield, Jayanagar, etc.) within 2 hours!';
+            if (q.includes('screen') || q.includes('display') || q.includes('glass') || q.includes('crack') || q.includes('broken') || q.includes('oled') || q.includes('lcd')) {
+                return '🔧 We specialize in original display & touch glass replacements using OCA optical lamination. Takes 45-60 mins with 6-month warranty. Screen repair starts at ₹999. What brand/model needs fixing?';
+            } else if (q.includes('battery') || q.includes('drain') || q.includes('charge') || q.includes('backup') || q.includes('fast charging') || q.includes('charging slow')) {
+                return '🔋 Battery replacement restores 100% health in ~30 mins. Starts at ₹799 for most models with 6-month warranty. We use high-capacity original-grade cells. Share your model for exact quote!';
+            } else if (q.includes('water') || q.includes('liquid') || q.includes('wet') || q.includes('spill') || q.includes('corrosion')) {
+                return '💧 Liquid damage needs URGENT attention! We do professional ultrasonic board cleaning & corrosion removal to rescue your phone + data. Don\'t charge it — bring it in ASAP! Starts at ₹999.';
+            } else if (q.includes('price') || q.includes('cost') || q.includes('charges') || q.includes('how much') || q.includes('rate') || q.includes('quote')) {
+                return '💰 Transparent Pricing: Screen ₹999+, Battery ₹799+, Charging Port ₹499+, Camera ₹699+, Water Damage ₹999+, Motherboard ₹1499+. Share brand & model for exact quote!';
+            } else if (q.includes('pickup') || q.includes('drop') || q.includes('home') || q.includes('doorstep') || q.includes('area') || q.includes('delivery')) {
+                return '🚚 We offer FREE pickup & drop across 20+ Bangalore areas: Koramangala, Indiranagar, Whitefield, Jayanagar, HSR Layout, Electronic City, Marathahalli, BTM, Banashankari & more! Within 2 hours.';
             } else if (q.includes('warranty') || q.includes('guarantee')) {
-                return 'Every repair comes with up to 6 months of comprehensive written warranty covering parts and workmanship.';
-            } else if (q.includes('address') || q.includes('location') || q.includes('where') || q.includes('shop') || q.includes('store')) {
-                return 'We are located at #36, Halasuru Metro Road, Opp. Halasuru Police Station, Bangalore - 560008. Open 10 AM - 11:30 PM!';
-            } else if (q.includes('time') || q.includes('duration') || q.includes('how long') || q.includes('fast')) {
-                return 'Most repairs like screen and battery replacements are finished within 45 to 120 minutes.';
-            } else if (q.includes('data') || q.includes('safe') || q.includes('backup')) {
-                return 'Your data is 100% safe! We do not wipe your phone data for standard screen or battery repairs.';
-            } else if (q.includes('original') || q.includes('genuine')) {
-                return 'We strictly use 100% original OEM parts and components for exact color accuracy and responsiveness.';
+                return '🛡️ Every repair comes with up to 6 MONTHS comprehensive written warranty covering parts AND workmanship. No questions asked replacement if issue reoccurs within warranty period!';
+            } else if (q.includes('address') || q.includes('location') || q.includes('where') || q.includes('shop') || q.includes('store') || q.includes('reach')) {
+                return '📍 Red Apple Mobile Repair, #36, Halasuru Metro Road, Opp. Halasuru Police Station, Bangalore - 560008. 🕐 Open 10 AM - 11:30 PM (All 7 days). Near Halasuru Metro Station!';
+            } else if (q.includes('time') || q.includes('duration') || q.includes('how long') || q.includes('fast') || q.includes('quick') || q.includes('minute')) {
+                return '⏱️ Most repairs: Screen 45-60 min, Battery 30 min, Charging Port 20-30 min, Camera 30 min, Water Damage 2-4 hrs. Free pickup & drop saves you time!';
+            } else if (q.includes('data') || q.includes('safe') || q.includes('backup') || q.includes('lost') || q.includes('photos') || q.includes('contacts')) {
+                return '🔒 Your data is 100% SAFE! We NEVER wipe your phone for screen, battery, charging port, or button repairs. For motherboard/software work, we recommend a backup just in case.';
+            } else if (q.includes('original') || q.includes('genuine') || q.includes('oem') || q.includes('authentic')) {
+                return '✅ We use ONLY 100% genuine OEM-grade parts — original-quality displays, batteries, and components with exact color accuracy & responsiveness. No cheap Chinese replicas!';
+            } else if (q.includes('ipad') || q.includes('tablet')) {
+                return '📱 iPads & Tablets: We repair iPad Pro, iPad Air, iPad Mini, Samsung Tabs & more! Screen replacement, battery, charging port. Screen starts at ₹1999. Share model for quote!';
+            } else if (q.includes('iwatch') || q.includes('watch') || q.includes('apple watch') || q.includes('smartwatch')) {
+                return '⌚ Apple iWatch & Smartwatch repair: Screen replacement, battery swap, sensor calibration. All Series including Ultra. Starting ₹1499. Free pickup available!';
+            } else if (q.includes('airpod') || q.includes('earphone') || q.includes('headphone') || q.includes('earbud')) {
+                return '🎧 AirPods & wireless earbuds: Battery replacement, charging case repair, connection issues. AirPods Pro, AirPods Max all models. Starting ₹999 per pod.';
+            } else if (q.includes('camera') || q.includes('photo') || q.includes('lens') || q.includes('blurry')) {
+                return '📸 Camera repair: Lens replacement, sensor cleaning, glass replacement. Front/back camera fix. Starting ₹699 with warranty. Most repairs done in 30 mins!';
+            } else if (q.includes('speaker') || q.includes('sound') || q.includes('audio') || q.includes('mic') || q.includes('microphone') || q.includes('no sound') || q.includes('earpiece') || q.includes('loud')) {
+                return '🔊 Speaker & Mic repair: Earpiece, loudspeaker, microphone replacement. Sound issues fixed. Starting ₹399 with 6-month warranty.';
+            } else if (q.includes('button') || q.includes('power') || q.includes('volume') || q.includes('key') || q.includes('switch') || q.includes('not working button')) {
+                return '🔘 Button repair: Power button, volume keys, silent switch. Flex cable replacement starting ₹399. Quick 20-min fix!';
+            } else if (q.includes('software') || q.includes('unlock') || q.includes('update') || q.includes('hang') || q.includes('slow') || q.includes('reset') || q.includes('boot') || q.includes('frp') || q.includes('network') || q.includes('signal') || q.includes('imei')) {
+                return '💻 Software & Unlocking: FRP unlock, network unlock, OS reinstall, boot loop fix, hang issues. Starting ₹299. Most issues resolved within 1 hour!';
+            } else if (q.includes('motherboard') || q.includes('ic') || q.includes('chip') || q.includes('dead') || q.includes('power on') || q.includes('not turning') || q.includes('hardware')) {
+                return '🔬 Motherboard & IC repair: Micro-soldering, power IC, charging IC replacement. Component-level repair for dead phones. Starting ₹1499 with warranty. Expert technician assessment required.';
+            } else if (q.includes('face id') || q.includes('fingerprint') || q.includes('touch id') || q.includes('sensor') || q.includes('biometric') || q.includes('face unlock')) {
+                return '👤 Face ID / Fingerprint repair: Sensor calibration, flex replacement. Note: Face ID requires original TrueDepth camera. Starting ₹999. We\'ll advise the best solution.';
+            } else if (q.includes('back glass') || q.includes('back cover') || q.includes('back panel') || q.includes('frame')) {
+                return '🔙 Back glass replacement: Full back glass & frame repair for iPhones & Androids. Starting ₹999. Laser-based removal ensures no damage to internal components!';
+            } else if (q.includes('hello') || q.includes('hi ') || q.includes('hey') || q.includes('good morning') || q.includes('good evening')) {
+                return '👋 Hello! Welcome to Red Apple Mobile Repair. I\'m your repair assistant. Tell me your device & issue, or ask about prices, warranty, pickup, or anything else!';
             } else {
-                return 'For instant technician dispatch or custom quotes, call us directly at +91 8660663776 or tap our WhatsApp booking button!';
+                return '🤖 For instant technician dispatch, custom quotes, or any specific query, call +91 8660663776 or tap the WhatsApp button below! You can also ask me about: screen, battery, water damage, camera, speaker, iPad, iWatch, AirPods, software, unlock, motherboard, Face ID, back glass, pricing & more!';
             }
         }
-    </script>
+    
+        // Scroll Reveal Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            
+            function checkReveal() {
+                const windowHeight = window.innerHeight;
+                const revealPoint = 120;
+                
+                revealElements.forEach(el => {
+                    const revealTop = el.getBoundingClientRect().top;
+                    if (revealTop < windowHeight - revealPoint) {
+                        el.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkReveal();
+            
+            // Check on scroll with passive listener
+            window.addEventListener('scroll', checkReveal, { passive: true });
+            window.addEventListener('resize', checkReveal, { passive: true });
+            
+            // Add reveal classes to elements
+            document.querySelectorAll('.brand-card, .gallery-item, .service-card, .pricing-card, .device-type-card, .feature-item, .testimonial-card, .area-item, .service-step').forEach((el, i) => {
+                if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right')) {
+                    if (i % 3 === 1) {
+                        el.classList.add('reveal-left');
+                    } else if (i % 3 === 2) {
+                        el.classList.add('reveal-right');
+                    } else {
+                        el.classList.add('reveal');
+                    }
+                }
+            });
+            
+            // Re-check after adding classes
+            setTimeout(checkReveal, 100);
+        });
+</script>
 </body>
 </html>

@@ -16,7 +16,7 @@ export default function Workshop() {
       <div className="relative mx-auto max-w-[1200px] px-6 lg:px-8">
         <Reveal className="text-center">
           <p className="font-apple text-[13px] font-semibold uppercase tracking-[0.2em] text-[#86868b]">Behind the bench</p>
-          <h2 className="section-title font-apple text-white mt-3">Where precision<br/>meets <span className="gradient-text">craftsmanship.</span></h2>
+          <h2 className="section-title font-apple text-[#1d1d1f] mt-3">Where precision<br/>meets <span className="gradient-text">craftsmanship.</span></h2>
           <p className="section-subtitle mx-auto mt-5">Every repair happens in a purpose-built, ESD-safe workspace with professional-grade equipment.</p>
         </Reveal>
 
@@ -24,7 +24,7 @@ export default function Workshop() {
           {FEATURES.map((f, i) => (
             <Reveal key={f.t} delay={i * 70} className="glass-card group rounded-[24px] p-7 transition-all duration-300 hover:border-[#ff2d55]/15">
               <div className="text-3xl">{f.icon}</div>
-              <h3 className="mt-3 font-apple text-[17px] font-bold text-white">{f.t}</h3>
+              <h3 className="mt-3 font-apple text-[17px] font-bold text-[#1d1d1f]">{f.t}</h3>
               <p className="mt-1.5 text-[14px] leading-relaxed text-[#86868b]">{f.d}</p>
             </Reveal>
           ))}

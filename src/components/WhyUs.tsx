@@ -18,14 +18,14 @@ export default function WhyUs() {
       <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
         <Reveal className="text-center">
           <p className="font-apple text-[13px] font-semibold uppercase tracking-[0.2em] text-[#86868b]">Why Red Apple</p>
-          <h2 className="section-title font-apple text-white mt-3">Built like Apple.<br/><span className="text-[#86868b]">Priced for Bangalore.</span></h2>
+          <h2 className="section-title font-apple text-[#1d1d1f] mt-3">Built like Apple.<br/><span className="text-[#86868b]">Priced for Bangalore.</span></h2>
         </Reveal>
         {/* Bento layout for first 3 items */}
         <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {POINTS.map((p, i) => (
             <Reveal key={p.t} delay={i * 60} className="glass-card group rounded-[24px] p-7 transition-all duration-300 hover:border-[#ff2d55]/20 hover:shadow-xl hover:shadow-[#ff2d55]/5">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-white/[0.06] to-transparent text-2xl">{p.icon}</div>
-              <h3 className="mt-4 font-apple text-[17px] font-bold text-white">{p.t}</h3>
+              <h3 className="mt-4 font-apple text-[17px] font-bold text-[#1d1d1f]">{p.t}</h3>
               <p className="mt-1.5 text-[14px] leading-relaxed text-[#86868b]">{p.d}</p>
             </Reveal>
           ))}

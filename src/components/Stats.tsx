@@ -30,7 +30,7 @@ function Counter({ target, suffix }: { target: string; suffix: string }) {
     return () => io.disconnect();
   }, [numeric, target]);
 
-  return <div ref={ref} className="font-apple text-[44px] font-bold text-white md:text-[56px]">{count}{suffix}</div>;
+  return <div ref={ref} className="font-apple text-[44px] font-bold text-[#1d1d1f] md:text-[56px]">{count}{suffix}</div>;
 }
 
 export default function Stats() {
@@ -39,7 +39,7 @@ export default function Stats() {
       <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
         <Reveal className="text-center">
           <p className="font-apple text-[13px] font-semibold uppercase tracking-[0.2em] text-[#86868b]">Proven numbers</p>
-          <h2 className="section-title font-apple text-white mt-3">
+          <h2 className="section-title font-apple text-[#1d1d1f] mt-3">
             Trusted by <span className="gradient-text">thousands</span> in Bangalore.
           </h2>
         </Reveal>

@@ -19,10 +19,10 @@ export default function DynamicIsland() {
   const s = STATES[idx];
 
   return (
-    <a href="#selector" className="fixed left-1/2 top-4 z-40 hidden -translate-x-1/2 items-center gap-3 rounded-full border border-white/[0.08] bg-black/70 px-5 py-2.5 shadow-2xl backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-[#ff2d55]/30 md:flex">
+    <a href="#selector" className="fixed left-1/2 top-4 z-40 hidden -translate-x-1/2 items-center gap-3 rounded-full border border-black/[0.06] bg-white/80 px-5 py-2.5 shadow-2xl backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-[#ff2d55]/30 md:flex">
       <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-[#ff2d55] to-[#ff9500] text-sm shadow-md shadow-[#ff2d55]/20">{s.icon}</span>
       <span className="leading-tight">
-        <span className="block text-[13px] font-semibold text-white">{s.text}</span>
+        <span className="block text-[13px] font-semibold text-[#1d1d1f]">{s.text}</span>
         <span className="block text-[10px] text-[#86868b]">Live · {s.sub}</span>
       </span>
       <span className="relative ml-1 flex h-1.5 w-1.5">

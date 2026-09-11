@@ -10,7 +10,7 @@ export default function Services() {
       <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
         <Reveal className="text-center">
           <p className="font-apple text-[13px] font-semibold uppercase tracking-[0.2em] text-[#86868b]">Every iPhone repair</p>
-          <h2 className="section-title font-apple text-white mt-3">Specialist repairs.<br/>Transparent pricing.</h2>
+          <h2 className="section-title font-apple text-[#1d1d1f] mt-3">Specialist repairs.<br/>Transparent pricing.</h2>
           <p className="section-subtitle mx-auto mt-5">Indicative starting prices. Final quote after free diagnosis. Every repair backed by a 90-day warranty.</p>
         </Reveal>
 
@@ -23,7 +23,7 @@ export default function Services() {
                 <span className="text-4xl">{r.icon}</span>
                 <span className="rounded-full bg-[#ff9500]/10 px-4 py-1.5 text-[12px] font-bold text-[#ff9500]">from {r.price}</span>
               </div>
-              <h3 className="mt-5 font-apple text-[20px] font-bold text-white">{r.name}</h3>
+              <h3 className="mt-5 font-apple text-[20px] font-bold text-[#1d1d1f]">{r.name}</h3>
               <p className="mt-2 text-[14px] leading-relaxed text-[#86868b]">{r.desc}</p>
               <div className="mt-5 flex items-center justify-between text-[13px]">
                 <span className="text-[#86868b]">⏱️ {r.time}</span>
@@ -42,7 +42,7 @@ export default function Services() {
                 <span className="text-2xl">{r.icon}</span>
                 <span className="text-[12px] font-bold text-[#ff9500]">from {r.price}</span>
               </div>
-              <h3 className="mt-3 font-apple text-[16px] font-bold text-white">{r.name}</h3>
+              <h3 className="mt-3 font-apple text-[16px] font-bold text-[#1d1d1f]">{r.name}</h3>
               <p className="mt-1 text-[13px] text-[#86868b]">{r.desc}</p>
               <div className="mt-3 flex items-center justify-between text-[12px]">
                 <span className="text-[#86868b]">⏱️ {r.time}</span>

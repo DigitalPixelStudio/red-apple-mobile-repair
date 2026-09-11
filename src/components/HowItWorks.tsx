@@ -14,14 +14,14 @@ export default function HowItWorks() {
       <div className="relative mx-auto max-w-[1200px] px-6 lg:px-8">
         <Reveal className="text-center">
           <p className="font-apple text-[13px] font-semibold uppercase tracking-[0.2em] text-[#86868b]">How it works</p>
-          <h2 className="section-title font-apple text-white mt-3">Zero hassle.<br/>Full transparency.</h2>
+          <h2 className="section-title font-apple text-[#1d1d1f] mt-3">Zero hassle.<br/>Full transparency.</h2>
         </Reveal>
         <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((s, i) => (
             <Reveal key={s.n} delay={i * 100} className="glass-card group relative rounded-[24px] p-7 transition-all duration-300 hover:border-[#ff2d55]/20">
-              <div className="font-display text-[48px] font-extrabold text-white/[0.04] group-hover:text-[#ff2d55]/10 transition-colors duration-300">{s.n}</div>
+              <div className="font-display text-[48px] font-extrabold text-[#1d1d1f]/[0.04] group-hover:text-[#ff2d55]/10 transition-colors duration-300">{s.n}</div>
               <div className="mt-1 text-3xl">{s.icon}</div>
-              <h3 className="mt-3 font-apple text-[17px] font-bold text-white">{s.t}</h3>
+              <h3 className="mt-3 font-apple text-[17px] font-bold text-[#1d1d1f]">{s.t}</h3>
               <p className="mt-1.5 text-[14px] leading-relaxed text-[#86868b]">{s.d}</p>
             </Reveal>
           ))}

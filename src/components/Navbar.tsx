@@ -28,8 +28,8 @@ export default function Navbar() {
     <header className={`fixed inset-x-0 top-[38px] z-50 transition-all duration-500 ${scrolled ? "bg-white/80 backdrop-blur-2xl border-b border-black/[0.06] shadow-sm" : "bg-white/60 backdrop-blur-xl"}`}>
       <nav className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-3.5 lg:px-8">
         <a href="#top" className="group flex items-center gap-3">
-          <img src="/icon.svg" alt="Red Apple" className="h-9 w-9 rounded-xl" />
-          <span className="font-apple text-[15px] font-semibold tracking-tight text-[#1d1d1f]">Red Apple</span>
+          <img src="/icon.svg" alt="Red Apple Mobile Store" className="h-9 w-9 rounded-xl" />
+          <span className="font-apple text-[15px] font-semibold tracking-tight text-[#1d1d1f]">Red Apple Mobile Store</span>
         </a>
 
         <div className="hidden items-center gap-7 lg:flex">

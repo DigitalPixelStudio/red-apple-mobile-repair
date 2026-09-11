@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: "Expert iPhone repair in Halasuru, Bangalore. Genuine-grade parts, 90-day warranty, free pickup.",
     url, siteName: SITE.name, locale: "en_IN", type: "website",
   },
-  twitter: { card: "summary_large_image", title: "Red Apple — Bengaluru", description: "Premium iPhone repair, 30-minute service, 90-day warranty." },
+  twitter: { card: "summary_large_image", title: "Red Apple Mobile Store — Bengaluru", description: "Premium iPhone repair, 30-minute service, 90-day warranty." },
   robots: { index: true, follow: true },
 };
 

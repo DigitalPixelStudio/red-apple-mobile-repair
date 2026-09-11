@@ -7,6 +7,7 @@ import Stats from "@/components/Stats";
 import RepairSelector from "@/components/RepairSelector";
 import Services from "@/components/Services";
 import BeforeAfter from "@/components/BeforeAfter";
+import Gallery from "@/components/Gallery";
 import DeviceGallery from "@/components/DeviceGallery";
 import PriceCompare from "@/components/PriceCompare";
 import ProcessTimeline from "@/components/ProcessTimeline";
@@ -16,6 +17,11 @@ import EmergencyRepair from "@/components/EmergencyRepair";
 import Workshop from "@/components/Workshop";
 import BrandStory from "@/components/BrandStory";
 import CorporateSection from "@/components/CorporateSection";
+import Offers from "@/components/Offers";
+import Awards from "@/components/Awards";
+import EcoRepair from "@/components/EcoRepair";
+import Community from "@/components/Community";
+import PromoBanner from "@/components/PromoBanner";
 import Testimonials from "@/components/Testimonials";
 import Tips from "@/components/Tips";
 import ServiceAreas from "@/components/ServiceAreas";
@@ -40,15 +46,21 @@ export default function Home() {
         <RepairSelector />
         <Services />
         <BeforeAfter />
+        <Gallery />
         <DeviceGallery />
         <PriceCompare />
         <ProcessTimeline />
         <HowItWorks />
         <WhyUs />
+        <PromoBanner />
         <EmergencyRepair />
+        <Offers />
         <Workshop />
         <BrandStory />
         <CorporateSection />
+        <Awards />
+        <EcoRepair />
+        <Community />
         <Testimonials />
         <Tips />
         <ServiceAreas />

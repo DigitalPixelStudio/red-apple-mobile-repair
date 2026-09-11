@@ -24,7 +24,7 @@ export default function RepairSelector() {
   const prev = () => setStep((s) => Math.max(s - 1, 0));
 
   const handleSend = () => {
-    const msg = `📱 *Red Apple Repair Quote Request*\n\n` +
+    const msg = `📱 *Red Apple Mobile Store Quote Request*\n\n` +
       `Model: ${model}\nRepair: ${repair}\nCondition: ${condition}\nService: ${method}\nCustomer: ${name}\nPhone: ${phone}\n\n` +
       `Please share the final quote. 🍎`;
     window.open(wa(msg), "_blank");

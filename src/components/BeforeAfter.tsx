@@ -3,9 +3,9 @@ import { useRef, useState, useEffect } from "react";
 import Reveal from "./Reveal";
 
 const CASES = [
-  { before: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80", after: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800&q=80", label: "Screen Replacement" },
-  { before: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=800&q=80", after: "https://images.unsplash.com/photo-1591337676887-a217a6c1e561?w=800&q=80", label: "Water Damage Revival" },
-  { before: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&q=80", after: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&q=80", label: "Battery Health Restore" },
+  { before: "https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=800&q=80", after: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80", label: "Screen Replacement" },
+  { before: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=800&q=80", after: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800&q=80", label: "Water Damage Revival" },
+  { before: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&q=80", after: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&q=80", label: "Battery Health Restore" },
 ];
 
 function Slider({ before, after, label }: { before: string; after: string; label: string }) {
@@ -34,7 +34,7 @@ function Slider({ before, after, label }: { before: string; after: string; label
   }, []);
 
   return (
-    <div className="rounded-[28px] overflow-hidden">
+    <div className="rounded-[28px] overflow-hidden shadow-lg shadow-black/5">
       <div ref={ref} className="ba-slider relative aspect-[4/3]"
         onMouseDown={(e) => { dragging.current = true; update(e.clientX); }}
         onTouchStart={(e) => { dragging.current = true; update(e.touches[0].clientX); }}>

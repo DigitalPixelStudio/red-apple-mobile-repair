@@ -36,7 +36,7 @@ export default function LocationSection() {
           </Reveal>
 
           <Reveal delay={120} className="overflow-hidden rounded-[32px] border border-black/[0.04] lg:col-span-3">
-            <iframe title="Red Apple Mobile Repair — Halasuru, Bengaluru"
+            <iframe title="Red Apple Mobile Store — Halasuru, Bengaluru"
               src="https://www.google.com/maps?q=Halasuru%20Police%20Station%2C%20Bengaluru%20560008&output=embed"
               className="h-full min-h-[450px] w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen/>
           </Reveal>

@@ -10,11 +10,11 @@ const url = "https://red-apple-repair.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
-  title: { default: "Red Apple Mobile Repair | iPhone Repair in Halasuru, Bangalore — 30-Min Service", template: "%s | Red Apple" },
+  title: { default: "Red Apple Mobile Store | iPhone Repair in Halasuru, Bangalore — 30-Min Service", template: "%s | Red Apple" },
   description: "Bangalore's expert iPhone repair studio in Halasuru. Screen, battery, back glass, camera & water damage — 90-day warranty, free pickup, 30-minute service. 4.9★ rated.",
-  keywords: ["iPhone repair Bangalore", "iPhone screen replacement Halasuru", "iPhone battery replacement", "mobile repair Bangalore", "Red Apple Mobile Repair"],
+  keywords: ["iPhone repair Bangalore", "iPhone screen replacement Halasuru", "iPhone battery replacement", "mobile repair Bangalore", "Red Apple Mobile Store"],
   openGraph: {
-    title: "Red Apple Mobile Repair — Precision Repair. Premium Care.",
+    title: "Red Apple Mobile Store — Precision Repair. Premium Care.",
     description: "Expert iPhone repair in Halasuru, Bangalore. Genuine-grade parts, 90-day warranty, free pickup.",
     url, siteName: SITE.name, locale: "en_IN", type: "website",
   },
@@ -26,7 +26,7 @@ export const viewport: Viewport = { themeColor: "#000000", width: "device-width"
 
 const businessSchema = {
   "@context": "https://schema.org", "@type": "LocalBusiness",
-  name: "Red Apple Mobile Repair", image: `${url}/icon.svg`,
+  name: "Red Apple Mobile Store", image: `${url}/icon.svg`,
   telephone: "+918660663776", priceRange: "₹499 - ₹4000",
   address: { "@type": "PostalAddress", streetAddress: "#36, Opposite Halasuru Police Station, Halasuru Metro Road", addressLocality: "Bengaluru", addressRegion: "Karnataka", postalCode: "560008", addressCountry: "IN" },
   geo: { "@type": "GeoCoordinates", latitude: 12.9833, longitude: 77.6361 },

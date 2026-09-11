@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "Red Apple Mobile Repair",
+  name: "Red Apple Mobile Store",
   tagline: "Precision repair. Premium care.",
   phone: "+918660663776",
   phoneHref: "tel:+918660663776",

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Red Apple Mobile Repair",
+    name: "Red Apple Mobile Store",
     short_name: "Red Apple",
     description: "Bangalore's premier iPhone repair studio — Halasuru",
     start_url: "/",

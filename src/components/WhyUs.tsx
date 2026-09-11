@@ -2,35 +2,35 @@ import Reveal from "./Reveal";
 
 const POINTS = [
   { icon: "🛡️", t: "90-Day Warranty", d: "On every part & repair. Displays and batteries carry 6-month health guarantees." },
-  { icon: "🔬", t: "Genuine-Grade Parts", d: "OEM-level quality panels, batteries & flexes — with a written diagnostic report." },
-  { icon: "🥇", t: "4.9★ from 905 Reviews", d: "Ranked among Bangalore's most trusted repair studios across Google & JustDial." },
-  { icon: "⚡", t: "30-Minute Most Repairs", d: "Certified technicians who repair screens, batteries & ports while you wait." },
-  { icon: "🚗", t: "Free Doorstep Pickup", d: "Drop your device from home anywhere in Bangalore — we bring it back fixed." },
-  { icon: "💰", t: "Pay After Approval", d: "You approve the fix and price before we touch your device. No hidden charges." },
+  { icon: "🔬", t: "Genuine-Grade Parts", d: "OEM-quality panels, batteries and flexes — with a written diagnostic report." },
+  { icon: "🥇", t: "4.9★ from 905 Reviews", d: "Ranked among Bangalore's most trusted repair studios on Google and JustDial." },
+  { icon: "⚡", t: "30-Minute Average", d: "Most repairs — screen, battery, port — done while you wait at the studio." },
+  { icon: "🚗", t: "Free Doorstep Pickup", d: "We collect and deliver your device anywhere in Bangalore. Zero hassle." },
+  { icon: "💰", t: "Pay After Approval", d: "You approve the fix before we charge. No hidden costs, no surprises." },
+  { icon: "🧠", t: "Chip-Level Engineers", d: "Motherboard, IC and micro-soldering work — the repair others can't do." },
+  { icon: "📱", t: "All Models Supported", d: "iPhone 6 through iPhone 16 Pro Max — every variant, every generation." },
+  { icon: "⏰", t: "Open Every Day", d: "10:30 AM to 9:00 PM, 7 days a week. Including weekends and holidays." },
 ];
 
 export default function WhyUs() {
   return (
-    <Reveal as="section" id="why" className="relative py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="mb-12 text-center">
-          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold text-red-300">
-            💎 Why Red Apple
-          </span>
-          <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-            Built like Apple. <span className="text-zinc-500">Priced for Bangalore.</span>
-          </h2>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <section id="why" className="section-apple">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+        <Reveal className="text-center">
+          <p className="font-apple text-[13px] font-semibold uppercase tracking-[0.2em] text-[#86868b]">Why Red Apple</p>
+          <h2 className="section-title font-apple text-white mt-3">Built like Apple.<br/><span className="text-[#86868b]">Priced for Bangalore.</span></h2>
+        </Reveal>
+        {/* Bento layout for first 3 items */}
+        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {POINTS.map((p, i) => (
-            <Reveal key={p.t} delay={i * 60} className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition-colors hover:border-red-500/30">
-              <div className="text-3xl">{p.icon}</div>
-              <h3 className="mt-3 font-display text-lg font-bold text-white">{p.t}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">{p.d}</p>
+            <Reveal key={p.t} delay={i * 60} className="glass-card group rounded-[24px] p-7 transition-all duration-300 hover:border-[#ff2d55]/20 hover:shadow-xl hover:shadow-[#ff2d55]/5">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-white/[0.06] to-transparent text-2xl">{p.icon}</div>
+              <h3 className="mt-4 font-apple text-[17px] font-bold text-white">{p.t}</h3>
+              <p className="mt-1.5 text-[14px] leading-relaxed text-[#86868b]">{p.d}</p>
             </Reveal>
           ))}
         </div>
       </div>
-    </Reveal>
+    </section>
   );
 }

@@ -3,45 +3,55 @@ import Reveal from "./Reveal";
 
 export default function LocationSection() {
   return (
-    <Reveal as="section" id="contact" className="relative py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold text-red-300">
-              📍 Visit The Studio
-            </span>
-            <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Right next to <span className="text-orange-400">Halasuru Metro</span>
-            </h2>
-            <div className="mt-6 space-y-4 text-sm text-zinc-300">
-              <p className="leading-relaxed">📌 {SITE.address}</p>
-              <p>🕙 Open daily: <span className="font-semibold text-white">{SITE.hours}</span></p>
-              <p>📞 <a href={SITE.phoneHref} className="font-semibold text-white hover:text-red-400">{SITE.phone}</a></p>
-              <p>⭐ Rated 4.9/5 by 905+ customers</p>
+    <section id="contact" className="section-apple">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+        <Reveal className="text-center">
+          <p className="font-apple text-[13px] font-semibold uppercase tracking-[0.2em] text-[#86868b]">Visit us</p>
+          <h2 className="section-title font-apple text-white mt-3">Right next to<br/><span className="gradient-text">Halasuru Metro.</span></h2>
+        </Reveal>
+
+        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <Reveal className="glass-card flex flex-col rounded-[32px] p-9">
+            <div className="space-y-6">
+              {[
+                { icon: "📍", label: "Address", value: SITE.address, href: undefined },
+                { icon: "🕙", label: "Open daily", value: SITE.hours, href: undefined },
+                { icon: "📞", label: "Call us", value: SITE.phone, href: SITE.phoneHref },
+                { icon: "💬", label: "WhatsApp", value: "Chat with our team", href: wa("Hi Red Apple! 🍎") },
+              ].map((c) => (
+                <div key={c.label} className="flex gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white/[0.04] text-lg">{c.icon}</span>
+                  <div>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.15em] text-[#86868b]">{c.label}</div>
+                    {c.href ? (
+                      <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="mt-1 block font-apple text-[15px] font-semibold text-white hover:text-[#ff2d55]">{c.value}</a>
+                    ) : (
+                      <div className="mt-1 font-apple text-[15px] leading-relaxed text-[#a1a1a6]">{c.value}</div>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a href="https://www.google.com/maps/dir/?api=1&destination=Halasuru+Police+Station,+Bengaluru+560008" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-orange-400 px-6 py-3 text-sm font-bold text-white shadow-xl shadow-red-500/20 transition-all hover:scale-[1.03]">
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ff2d55] to-[#ff9500] px-6 py-3.5 text-[14px] font-bold text-white transition-all hover:scale-[1.03]">
                 🧭 Get Directions
               </a>
-              <a href={wa("Hi Red Apple! I'm on my way / need directions. 🍎")} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
+              <a href={wa("Hi Red Apple! I need directions. 🍎")} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.04] px-6 py-3.5 text-[14px] font-semibold text-white transition-colors hover:bg-white/[0.08]">
                 💬 WhatsApp
               </a>
             </div>
-          </div>
-          <div className="overflow-hidden rounded-3xl border border-white/10">
-            <iframe
-              title="Red Apple Mobile Repair — Halasuru, Bengaluru"
+          </Reveal>
+
+          <Reveal delay={120} className="overflow-hidden rounded-[32px] border border-white/[0.06]">
+            <iframe title="Red Apple Mobile Repair — Halasuru, Bengaluru"
               src="https://www.google.com/maps?q=Halasuru%20Police%20Station%2C%20Bengaluru%20560008&output=embed"
-              className="h-full min-h-[320px] w-full grayscale-[35%] contrast-[1.05]"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-          </div>
+              className="h-full min-h-[400px] w-full opacity-90 grayscale-[40%] contrast-[1.1]"
+              loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen/>
+          </Reveal>
         </div>
       </div>
-    </Reveal>
+    </section>
   );
 }

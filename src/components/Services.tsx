@@ -2,41 +2,57 @@ import { REPAIRS, wa } from "@/lib/site";
 import Reveal from "./Reveal";
 
 export default function Services() {
+  const bentoItems = REPAIRS.filter((r) => r.bento);
+  const normalItems = REPAIRS.filter((r) => !r.bento);
+
   return (
-    <Reveal as="section" id="repairs" className="relative py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="mb-12 text-center">
-          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold text-red-300">
-            🍎 Every iPhone Repair
-          </span>
-          <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-            Specialist repairs. <span className="text-zinc-500">Transparent prices.</span>
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-zinc-400 sm:text-base">
-            Indicative starting prices — exact quote after free diagnosis. Every repair backed by a 90-day warranty.
-          </p>
+    <section id="repairs" className="section-apple">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+        <Reveal className="text-center">
+          <p className="font-apple text-[13px] font-semibold uppercase tracking-[0.2em] text-[#86868b]">Every iPhone repair</p>
+          <h2 className="section-title font-apple text-white mt-3">Specialist repairs.<br/>Transparent pricing.</h2>
+          <p className="section-subtitle mx-auto mt-5">Indicative starting prices. Final quote after free diagnosis. Every repair backed by a 90-day warranty.</p>
+        </Reveal>
+
+        {/* Bento grid — featured repairs */}
+        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {bentoItems.map((r, i) => (
+            <Reveal key={r.id} delay={i * 80} className="glass-card group relative overflow-hidden rounded-[28px] p-8 transition-all duration-500 hover:border-[#ff2d55]/20 hover:shadow-2xl hover:shadow-[#ff2d55]/5 lg:row-span-1">
+              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#ff2d55]/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"/>
+              <div className="flex items-start justify-between">
+                <span className="text-4xl">{r.icon}</span>
+                <span className="rounded-full bg-[#ff9500]/10 px-4 py-1.5 text-[12px] font-bold text-[#ff9500]">from {r.price}</span>
+              </div>
+              <h3 className="mt-5 font-apple text-[20px] font-bold text-white">{r.name}</h3>
+              <p className="mt-2 text-[14px] leading-relaxed text-[#86868b]">{r.desc}</p>
+              <div className="mt-5 flex items-center justify-between text-[13px]">
+                <span className="text-[#86868b]">⏱️ {r.time}</span>
+                <a href={wa(`Hi! Quote for ${r.name} (${r.price}) 🍎`)} target="_blank" rel="noopener noreferrer"
+                  className="font-semibold text-[#ff2d55] transition-colors hover:text-[#ff9500]">Get Quote →</a>
+              </div>
+            </Reveal>
+          ))}
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {REPAIRS.map((r, i) => (
-            <Reveal key={r.id} delay={i * 60}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/40 hover:shadow-2xl hover:shadow-red-500/10">
-              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-red-500/10 blur-3xl transition-opacity duration-300 group-hover:opacity-100 opacity-0" />
+        {/* Normal grid */}
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {normalItems.map((r, i) => (
+            <Reveal key={r.id} delay={i * 60} className="glass-card group rounded-[24px] p-6 transition-all duration-300 hover:border-[#ff2d55]/20">
               <div className="flex items-start justify-between">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-white/10 to-white/5 text-2xl">{r.icon}</span>
-                <span className="rounded-full bg-orange-400/10 px-3 py-1 text-xs font-bold text-orange-300">from {r.price}</span>
+                <span className="text-2xl">{r.icon}</span>
+                <span className="text-[12px] font-bold text-[#ff9500]">from {r.price}</span>
               </div>
-              <h3 className="mt-4 font-display text-lg font-bold text-white">{r.name}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">{r.desc}</p>
-              <div className="mt-4 flex items-center justify-between text-xs">
-                <span className="text-zinc-500">⏱️ {r.time}</span>
-                <a href={wa(`Hi! I need quote for ${r.name} (${r.price} starting). 🍎`)} target="_blank" rel="noopener noreferrer"
-                  className="font-bold text-red-400 transition-colors hover:text-orange-300">Get Quote →</a>
+              <h3 className="mt-3 font-apple text-[16px] font-bold text-white">{r.name}</h3>
+              <p className="mt-1 text-[13px] text-[#86868b]">{r.desc}</p>
+              <div className="mt-3 flex items-center justify-between text-[12px]">
+                <span className="text-[#86868b]">⏱️ {r.time}</span>
+                <a href={wa(`Hi! Quote for ${r.name} 🍎`)} target="_blank" rel="noopener noreferrer"
+                  className="font-semibold text-[#ff2d55]">Get Quote →</a>
               </div>
             </Reveal>
           ))}
         </div>
       </div>
-    </Reveal>
+    </section>
   );
 }

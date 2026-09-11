@@ -1,144 +1,67 @@
 "use client";
-
-import { useRef, useState } from "react";
 import { SITE, wa } from "@/lib/site";
 
 export default function Hero() {
-  const wrap = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-
-  const onMove = (e: React.MouseEvent) => {
-    const r = wrap.current?.getBoundingClientRect();
-    if (!r) return;
-    const px = (e.clientX - r.left) / r.width - 0.5;
-    const py = (e.clientY - r.top) / r.height - 0.5;
-    setTilt({ x: py * -10, y: px * 12 });
-  };
-
   return (
-    <section id="top" className="relative overflow-hidden pb-16 pt-32 lg:pt-40">
-      {/* ambient glows */}
+    <section id="top" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+      {/* Cinematic gradient background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-red-600/20 blur-[140px]" />
-        <div className="absolute right-[-120px] top-40 h-72 w-72 rounded-full bg-orange-500/10 blur-[100px]" />
-        <div className="absolute bottom-0 left-[-80px] h-72 w-72 rounded-full bg-red-500/10 blur-[100px]" />
-        <div className="absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.045)_1px,transparent_1px)] [background-size:32px_32px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a14] via-[#0a0a0a] to-[#000]"/>
+        <div className="absolute top-[10%] left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-[#ff2d55]/8 blur-[180px]"/>
+        <div className="absolute bottom-[10%] right-[-10%] h-[400px] w-[400px] rounded-full bg-[#ff9500]/5 blur-[140px]"/>
+        <div className="absolute top-[20%] left-[-5%] h-[300px] w-[300px] rounded-full bg-[#ff2d55]/5 blur-[120px]"/>
+        <div className="absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.025)_1px,transparent_1px)] [background-size:40px_40px]"/>
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-2 lg:gap-10 lg:px-8">
-        <div>
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-zinc-300 backdrop-blur">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-400" />
-            Halasuru · Bangalore · Open today {SITE.hours}
-          </div>
-          <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-            Precision repair.
-            <span className="block bg-gradient-to-r from-red-400 via-red-500 to-orange-400 bg-clip-text text-transparent">
-              Premium care.
-            </span>
-          </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-            Bangalore&apos;s expert iPhone repair studio — genuine-grade parts, 90-day warranty,
-            free doorstep pickup, and most repairs done in{" "}
-            <span className="font-semibold text-white">30 minutes</span> while you wait.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href="#selector"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-orange-400 px-7 py-3.5 text-sm font-bold text-white shadow-xl shadow-red-500/30 transition-all hover:scale-[1.03] hover:shadow-red-500/50"
-            >
-              Get Instant Quote
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-            <a
-              href={wa("Hi Red Apple! I need an iPhone repair. Please help. 🍎")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
-            >
-              💬 WhatsApp Us
-            </a>
-            <a
-              href={SITE.phoneHref}
-              className="inline-flex items-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold text-zinc-300 transition-colors hover:text-white"
-            >
-              📞 {SITE.phone}
-            </a>
-          </div>
-
-          <div className="mt-10 grid grid-cols-3 gap-4 border-t border-white/10 pt-7 sm:max-w-md">
-            {[
-              { v: SITE.rating + "★", l: `${SITE.ratingCount} reviews` },
-              { v: "30 min", l: "avg. repair time" },
-              { v: SITE.customers, l: "devices repaired" },
-            ].map((s) => (
-              <div key={s.l}>
-                <div className="font-display text-xl font-extrabold text-white sm:text-2xl">{s.v}</div>
-                <div className="mt-0.5 text-[11px] leading-tight text-zinc-500">{s.l}</div>
-              </div>
-            ))}
-          </div>
+      <div className="relative z-10 mx-auto max-w-[1200px] px-6 pt-32 pb-20 text-center lg:px-8">
+        {/* Badge */}
+        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-5 py-2 text-[13px] font-medium text-[#86868b] backdrop-blur-sm">
+          <span className="flex h-1.5 w-1.5 rounded-full bg-[#30d158]"/>
+          Open now · Halasuru, Bangalore
         </div>
 
-        {/* 3D phone */}
-        <div
-          ref={wrap}
-          onMouseMove={onMove}
-          onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-          className="relative mx-auto w-full max-w-[380px] [perspective:1200px]"
-        >
-          <div
-            className="relative transition-transform duration-200 ease-out"
-            style={{ transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
-          >
-            {/* phone frame */}
-            <div className="relative mx-auto aspect-[9/19] w-full max-w-[300px] rounded-[2.6rem] border border-white/15 bg-gradient-to-b from-zinc-800 via-zinc-900 to-black p-2 shadow-2xl shadow-black/80">
-              <div className="relative h-full w-full overflow-hidden rounded-[2.1rem] bg-gradient-to-b from-red-600 via-red-700 to-black">
-                <div className="absolute inset-0 opacity-30 [background-image:radial-gradient(rgba(255,255,255,0.25)_1px,transparent_1px)] [background-size:18px_18px]" />
-                <div className="absolute left-1/2 top-2.5 h-6 w-24 -translate-x-1/2 rounded-full bg-black" />
-                <div className="absolute bottom-6 left-0 right-0 px-5">
-                  <div className="rounded-2xl bg-white/10 p-3 backdrop-blur">
-                    <div className="text-[10px] uppercase tracking-widest text-red-200">Repair Status</div>
-                    <div className="mt-1 text-sm font-bold text-white">Screen Replacement</div>
-                    <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/20">
-                      <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-orange-300 to-white" />
-                    </div>
-                    <div className="mt-2 flex items-center justify-between text-[10px] text-red-100">
-                      <span>45 min</span><span>Done ✅</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        {/* Apple-style massive heading */}
+        <h1 className="hero-apple font-apple text-white">
+          The best place
+          <br />
+          <span className="gradient-text">to fix your iPhone.</span>
+        </h1>
+
+        <p className="mx-auto mt-7 max-w-[600px] font-apple text-[17px] leading-[1.6] text-[#86868b] lg:text-[19px]">
+          Expert technicians. Genuine-grade parts. 90-day warranty. Most repairs done in 30 minutes while you wait — right next to Halasuru Metro.
+        </p>
+
+        {/* CTAs */}
+        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href="#selector" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ff2d55] to-[#ff9500] px-8 py-4 text-[15px] font-bold text-white shadow-xl shadow-[#ff2d55]/20 transition-all hover:scale-[1.03] hover:shadow-[#ff2d55]/35">
+            Get your instant quote
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href={wa("Hi Red Apple! I need a repair. 🍎")} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.04] px-7 py-4 text-[15px] font-semibold text-white backdrop-blur transition-colors hover:bg-white/[0.08]">
+            💬 Chat on WhatsApp
+          </a>
+        </div>
+
+        {/* Stats row — Apple minimal style */}
+        <div className="mx-auto mt-20 grid max-w-[700px] grid-cols-2 gap-8 border-t border-white/[0.06] pt-10 sm:grid-cols-4">
+          {[
+            { v: SITE.rating + "★", l: "from " + SITE.ratingCount + " reviews" },
+            { v: SITE.avgRepairTime + " min", l: "average repair" },
+            { v: SITE.warrantyDays + "-day", l: "warranty on all repairs" },
+            { v: SITE.customers, l: "devices fixed" },
+          ].map((s) => (
+            <div key={s.l}>
+              <div className="font-apple text-[28px] font-bold text-white lg:text-[32px]">{s.v}</div>
+              <div className="mt-1 text-[12px] text-[#86868b]">{s.l}</div>
             </div>
-
-            {/* floating chips */}
-            {[
-              { top: "6%", left: "-10%", t: "🔋 Battery", s: "30 min" },
-              { top: "30%", right: "-14%", t: "🪞 Back Glass", s: "60 min" },
-              { bottom: "8%", left: "-14%", t: "📱 OLED Display", s: "45 min" },
-            ].map((c, i) => (
-              <div
-                key={i}
-                style={c as React.CSSProperties}
-                className="absolute z-10 animate-float rounded-2xl border border-white/15 bg-zinc-950/90 px-4 py-2.5 shadow-xl backdrop-blur-xl"
-              >
-                <div className="text-xs font-bold text-white">{c.t}</div>
-                <div className="text-[10px] text-zinc-400">{c.s}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* trusted strip */}
-      <div className="relative mx-auto mt-16 max-w-7xl px-5 lg:px-8">
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-zinc-600">Repair specialists for</span>
-          {["iPhone 16 Pro Max", "iPhone 15 Pro", "iPhone 14", "iPhone 13", "iPhone 12", "iPhone 11", "iPhone X", "& older"].map((m) => (
-            <span key={m} className="text-xs font-semibold text-zinc-400">{m}</span>
           ))}
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+        <svg viewBox="0 0 24 24" className="h-5 w-5 text-white" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
       </div>
     </section>
   );

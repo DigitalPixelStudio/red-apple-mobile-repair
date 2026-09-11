@@ -3,36 +3,31 @@ import Reveal from "./Reveal";
 
 export default function Testimonials() {
   return (
-    <section id="reviews" className="relative py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="mb-12 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
-          <div>
-            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold text-red-300">
-              ⭐ Customer Love
-            </span>
-            <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              4.9/5 from <span className="text-orange-400">{TESTIMONIALS.length * 200}+ customers</span>
-            </h2>
-          </div>
-          <div className="rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-center">
-            <div className="flex gap-1 text-xl text-amber-400">★★★★★</div>
-            <div className="mt-1 text-sm font-bold text-white">{TESTIMONIALS.length * 200}+ verified reviews</div>
-            <div className="text-xs text-zinc-500">Google & JustDial · Bengaluru</div>
-          </div>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <section id="reviews" className="section-apple">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+        <Reveal className="text-center">
+          <p className="font-apple text-[13px] font-semibold uppercase tracking-[0.2em] text-[#86868b]">Customer love</p>
+          <h2 className="section-title font-apple text-white mt-3">4.9/5 from <span className="gradient-text">905+ customers.</span></h2>
+          <p className="section-subtitle mx-auto mt-5">Real feedback from real people. Verified across Google, JustDial, and word-of-mouth referrals.</p>
+        </Reveal>
+
+        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {TESTIMONIALS.map((t, i) => (
-            <Reveal key={t.name} delay={i * 70} className="flex flex-col rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-              <div className="flex gap-0.5 text-sm text-amber-400">★★★★★</div>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-300">"{t.text}"</p>
-              <div className="mt-4 border-t border-white/10 pt-4">
-                <div className="text-sm font-bold text-white">{t.name}</div>
-                <div className="text-xs text-zinc-500">{t.area} · {t.service}</div>
+            <Reveal key={t.name} delay={i * 70} className="glass-card group flex flex-col rounded-[28px] p-7 transition-all duration-300 hover:border-[#ff2d55]/15">
+              <div className="flex items-center gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[#ff2d55] to-[#ff9500] text-[13px] font-bold text-white">{t.avatar}</div>
+                <div>
+                  <div className="text-[14px] font-bold text-white">{t.name}</div>
+                  <div className="text-[12px] text-[#86868b]">{t.area} · {t.service}</div>
+                </div>
               </div>
+              <div className="mt-4 flex gap-0.5 text-[13px] text-[#ff9500]">★★★★★</div>
+              <p className="mt-3 flex-1 text-[14px] leading-relaxed text-[#a1a1a6]">&ldquo;{t.text}&rdquo;</p>
             </Reveal>
           ))}
         </div>
-        <p className="mt-6 text-center text-xs text-zinc-600">Representative customer feedback shared on public review platforms. Individual experiences may vary.</p>
+
+        <p className="mt-8 text-center text-[12px] text-[#6e6e73]">Representative customer feedback shared on public review platforms. Individual experiences may vary.</p>
       </div>
     </section>
   );

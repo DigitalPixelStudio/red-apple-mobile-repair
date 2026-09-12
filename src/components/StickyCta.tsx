@@ -1,31 +1,34 @@
 "use client";
 import { useEffect, useState } from "react";
 import { SITE, wa } from "@/lib/site";
+import { track } from "@/lib/analytics";
 
 export default function StickyCta() {
   const [show, setShow] = useState(false);
+
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 500);
+    const onScroll = () => setShow(window.scrollY > 640);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <div className={`fixed inset-x-0 bottom-0 z-40 transition-transform duration-500 lg:hidden ${show ? "translate-y-0" : "translate-y-full"}`}>
-      <div className="mx-3 mb-3 grid grid-cols-3 gap-2 rounded-[22px] border border-black/[0.06] bg-white/90 p-2 shadow-2xl backdrop-blur-xl">
-        <a href={SITE.phoneHref} className="flex flex-col items-center justify-center gap-1 rounded-2xl bg-[#f5f5f7] py-3 text-[#1d1d1f]">
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-          <span className="text-[11px] font-semibold">Call</span>
+    <div className={`fixed bottom-5 left-1/2 z-[60] w-[calc(100vw-2rem)] max-w-[560px] -translate-x-1/2 transition-all duration-500 ${
+      show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-24 opacity-0"
+    }`}>
+      <div className="glass flex items-center gap-2 rounded-full bg-white/85 p-2 shadow-2xl backdrop-blur-2xl">
+        <a href="#quote" onClick={() => track("quote_started", { source: "sticky" })}
+          className="flex-1 rounded-full bg-gradient-to-r from-[#ff2d55] to-[#ff9500] px-5 py-3 text-center text-[13.5px] font-bold text-white">
+          🧮 Get Estimate
         </a>
-        <a href="#selector" className="flex flex-col items-center justify-center gap-1 rounded-2xl bg-gradient-to-r from-[#ff2d55] to-[#ff9500] py-3 text-[#1d1d1f] shadow-lg shadow-[#ff2d55]/20">
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M12 5v14M5 12h14"/></svg>
-          <span className="text-[11px] font-bold">Get Quote</span>
+        <a href={wa("Hi Red Apple Mobile Repair! I need a repair. 🍎")} target="_blank" rel="noopener noreferrer"
+          onClick={() => track("whatsapp_click", { source: "sticky" })}
+          className="flex-1 rounded-full bg-[#25D366] px-5 py-3 text-center text-[13.5px] font-bold text-white">
+          💬 WhatsApp
         </a>
-        <a href={wa("Hi Red Apple! 🍎")} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-1 rounded-2xl bg-[#30d158]/90 py-3 text-[#1d1d1f]">
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
-          <span className="text-[11px] font-bold">WhatsApp</span>
-        </a>
+        <a href={SITE.phoneHref} onClick={() => track("call_click", { source: "sticky" })}
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#1d1d1f] text-white">📞</a>
       </div>
     </div>
   );

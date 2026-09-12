@@ -1,109 +1,230 @@
 export const SITE = {
-  name: "Red Apple Mobile Store",
-  tagline: "Precision repair. Premium care.",
+  name: "Red Apple Mobile Repair",
+  legalName: "RED APPLE MOBILE REPAIR",
+  tagline: "Apple care, perfected.",
+  shortDescription:
+    "Bangalore's specialist Apple repair studio in Halasuru. iPhone, iPad, AirPods, Apple Watch, MacBook & Mac repairs — displays, batteries, back glass, water damage, firmware, data recovery & more.",
   phone: "+918660663776",
   phoneHref: "tel:+918660663776",
   whatsapp: "918660663776",
-  address: "#36, Opposite Halasuru Police Station, Halasuru Metro Road, Bengaluru, Karnataka 560008",
-  hours: "10:30 AM – 9:00 PM (All days)",
+  email: "redapplemobilerepairing48@gmail.com",
+  // Verified from the client's official Google Maps listing
+  address: "No. 1, Mahatma Gandhi Rd, opp. Bhadra Landmark, Halasuru, Bengaluru, Karnataka 560008",
+  area: "Halasuru, Bengaluru",
+  city: "Bengaluru",
+  pincode: "560008",
+  state: "Karnataka",
+  country: "IN",
+  hours: "10:30 AM – 9:00 PM (Open all 7 days)",
+  hoursSchema: "Mo-Su 10:30-21:00",
+  geo: { lat: 12.9748, lng: 77.6249 },
   rating: "4.9",
   ratingCount: "905",
-  customers: "10,000+",
-  founding: "2015",
   yearsActive: "9+",
-  avgRepairTime: "30",
   warrantyDays: "90",
-  cities: "Bangalore",
-};
+  avgRepairTime: "30",
+  // Google Maps links (client-provided)
+  mapsUrl: "https://maps.app.goo.gl/hAVKyH8oXTajihfz8",
+  mapsReviewUrl: "https://maps.app.goo.gl/hAVKyH8oXTajihfz8",
+  mapsEmbed:
+    "https://www.google.com/maps?q=RED%20APPLE%20MOBILE%20REPAIR%20Halasuru%20Bengaluru&z=16&output=embed",
+  gmbUrl: "https://share.google/mG09cFuGwiO85aYIJ",
+} as const;
+
+export const baseUrl = "https://red-apple-repair.vercel.app";
 
 export const wa = (message: string) =>
   `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(message)}`;
 
-export const MODELS = [
-  "iPhone 16 / 16 Plus",
-  "iPhone 16 Pro / Pro Max",
-  "iPhone 15 / 15 Plus",
-  "iPhone 15 Pro / Pro Max",
-  "iPhone 14 / 14 Plus",
-  "iPhone 14 Pro / Pro Max",
-  "iPhone 13 / 13 Mini",
-  "iPhone 13 Pro / Pro Max",
-  "iPhone 12 / 12 Mini",
-  "iPhone 12 Pro / Pro Max",
-  "iPhone 11 / 11 Pro / Pro Max",
-  "iPhone X / XS / XR",
-  "Older models (8 and below)",
+// ---------- Apple ecosystem device families ----------
+export const DEVICE_FAMILIES = [
+  { id: "iphone", name: "iPhone", icon: "🍎", tag: "All models", desc: "Displays, batteries, cameras, back glass & full hardware service." },
+  { id: "ipad", name: "iPad", icon: "📱", tag: "All models", desc: "iPad, iPad Pro, iPad Air & iPad mini — screens, battery & logic." },
+  { id: "watch", name: "Apple Watch", icon: "⌚", tag: "All series", desc: "Screens, batteries, sensors & straps across all Watch series." },
+  { id: "airpods", name: "AirPods", icon: "🎧", tag: "All generations", desc: "Battery, charging case, speaker & microphone repair." },
+  { id: "macbook", name: "MacBook", icon: "💻", tag: "Pro · Air · Mini", desc: "MacBook Pro, Air, Mac mini & iMac — display, battery, board." },
+  { id: "software", name: "Software & Recovery", icon: "🛠️", tag: "iOS · macOS · firmware", desc: "OS install, firmware, boot loops, data recovery & unlocking." },
 ] as const;
 
-export const REPAIRS: {
-  id: string;
-  name: string;
-  icon: string;
-  desc: string;
-  price: string;
-  time: string;
-  bento?: boolean;
+// ---------- Devices for the quote engine dropdowns ----------
+export const QUOTE_DEVICES = [
+  {
+    id: "iphone", label: "iPhone",
+    models: ["iPhone 16 Pro Max", "iPhone 16 Pro", "iPhone 16 Plus", "iPhone 16",
+      "iPhone 15 Pro Max", "iPhone 15 Pro", "iPhone 15 Plus", "iPhone 15",
+      "iPhone 14 Pro Max", "iPhone 14 Pro", "iPhone 14 Plus", "iPhone 14",
+      "iPhone 13 Pro Max", "iPhone 13 Pro", "iPhone 13 mini", "iPhone 13",
+      "iPhone 12 Pro Max", "iPhone 12 Pro", "iPhone 12 mini", "iPhone 12",
+      "iPhone SE (3rd Gen)", "iPhone 11 Pro Max", "iPhone 11 Pro", "iPhone 11",
+      "iPhone XS Max", "iPhone XS", "iPhone XR", "iPhone X",
+      "iPhone 8 Plus", "iPhone 8", "iPhone 7 Plus", "iPhone 7", "Older iPhone"],
+  },
+  {
+    id: "ipad", label: "iPad",
+    models: ["iPad Pro (M4)", "iPad Pro (M2)", "iPad Air (M2)", "iPad Air 5", "iPad Air 4",
+      "iPad 10", "iPad 9", "iPad mini 6", "iPad mini 5", "Older iPad"],
+  },
+  {
+    id: "watch", label: "Apple Watch",
+    models: ["Apple Watch Ultra 2", "Apple Watch Ultra", "Apple Watch Series 10", "Series 9",
+      "Series 8", "Series 7", "Series 6", "SE (2nd Gen)", "Series 5", "Older Watch"],
+  },
+  {
+    id: "airpods", label: "AirPods",
+    models: ["AirPods Pro 2", "AirPods Pro 1", "AirPods 4", "AirPods 3", "AirPods 2",
+      "AirPods Max", "AirPods Case Only"],
+  },
+  {
+    id: "macbook", label: "Mac & MacBook",
+    models: ["MacBook Pro 16\" (M3/M4)", "MacBook Pro 14\" (M3/M4)", "MacBook Pro 13\" (M2)",
+      "MacBook Air 15\" (M3)", "MacBook Air 13\" (M2/M3)", "Mac mini", "iMac", "Mac Studio", "Other Mac"],
+  },
+  {
+    id: "iPod", label: "iPod",
+    models: ["iPod touch 7", "iPod touch 6", "Older iPod"],
+  },
+  { id: "other", label: "Other Apple Device", models: ["Apple TV", "Magic Keyboard", "Trackpad / Mouse", "Battery / Accessory", "Not sure — show me at store"] },
+] as const;
+
+export const REPAIR_TYPES = [
+  "Front Display Replacement",
+  "Back Glass Replacement",
+  "Battery Replacement",
+  "Camera Repair",
+  "Charging Port / Flex",
+  "Speaker / Mic / Haptics",
+  "Motherboard / IC Repair",
+  "Water Damage Revival",
+  "Software / iOS Issue",
+  "Data Recovery",
+  "Unlocking (lawful)",
+  "OS / Firmware Installation",
+  "Dent / Body / Frame Repair",
+  "Other / Not sure",
+] as const;
+
+// ---------- Core services (hardware + software) ----------
+export const SERVICES: {
+  id: string; title: string; icon: string; desc: string; time: string;
+  devices: string; featured?: boolean; points: string[];
 }[] = [
-  { id: "display", name: "Front Display Replacement", icon: "📱", desc: "Original-grade OLED with True Tone. Clear, vibrant, exact-fit.", price: "₹1,499", time: "45 min", bento: true },
-  { id: "backglass", name: "Back Glass Repair", icon: "🪞", desc: "Factory-grade panel. Camera lens protected. Seamless finish.", price: "₹1,799", time: "60 min" },
-  { id: "battery", name: "Battery Replacement", icon: "🔋", desc: "High-capacity cell + full health diagnostic report. 6-month guarantee.", price: "₹1,299", time: "30 min", bento: true },
-  { id: "charging", name: "Charging Port / Flex", icon: "🔌", desc: "Original flex restores fast-charge capability.", price: "₹999", time: "40 min" },
-  { id: "camera", name: "Camera Repair", icon: "📸", desc: "Rear & front modules. Focus, OIS, zoom fix.", price: "₹1,499", time: "60 min" },
-  { id: "water", name: "Water Damage Revival", icon: "💧", desc: "Ultrasonic cleaning + corrosion treatment. Bring it fast.", price: "₹2,499", time: "Same day", bento: true },
-  { id: "speaker", name: "Speaker / Mic / Haptics", icon: "🔊", desc: "Earpiece, loudspeaker, microphone & Taptic Engine.", price: "₹999", time: "40 min" },
-  { id: "motherboard", name: "Motherboard / IC Repair", icon: "🧠", desc: "Chip-level micro-soldering by senior engineers.", price: "₹2,999", time: "1–2 days" },
-  { id: "software", name: "Software & Unlock", icon: "⚙️", desc: "iOS restore, boot loops, network, setup.", price: "₹499", time: "30 min" },
+  {
+    id: "display", title: "Front Display Replacement", icon: "📱",
+    desc: "OLED-grade panels with True Tone, installed in ~45 minutes while you wait.",
+    time: "~45 min", devices: "iPhone · iPad · MacBook",
+    featured: true,
+    points: ["True Tone preserved", "OEM-grade panel", "90-day warranty"],
+  },
+  {
+    id: "backglass", title: "Back Glass Replacement", icon: "🪞",
+    desc: "Laser-aligned factory-grade back glass. MagSafe-compatible, seamless finish.",
+    time: "~60 min", devices: "iPhone 8 → 16 series",
+    featured: true,
+    points: ["MagSafe compatible", "Camera lens protected", "Seamless blend"],
+  },
+  {
+    id: "battery", title: "Battery Replacement", icon: "🔋",
+    desc: "High-capacity cells with a free health check before and after.",
+    time: "~30 min", devices: "iPhone · iPad · Watch · MacBook",
+    points: ["85%+ health guaranteed", "Free health report", "6-month guarantee"],
+  },
+  {
+    id: "camera", title: "Camera Repair", icon: "📸",
+    desc: "Rear & front modules, OIS, zoom and lens replacement.",
+    time: "~60 min", devices: "iPhone · iPad",
+    points: ["OEM modules", "OIS calibration", "Focus tested"],
+  },
+  {
+    id: "charging", title: "Charging Port / Flex", icon: "🔌",
+    desc: "Lightning / USB-C port, charging flex and fast-charge restoration.",
+    time: "~40 min", devices: "iPhone · iPad · MacBook",
+    points: ["Fast charge restored", "Data transfer tested", "Clean port install"],
+  },
+  {
+    id: "water", title: "Water Damage Revival", icon: "💧",
+    desc: "Ultrasonic cleaning + corrosion treatment at chip level. Bring it in fast.",
+    time: "Same day", devices: "iPhone · iPad · Watch",
+    points: ["Ultrasonic bath", "Corrosion treatment", "Highest success rate"],
+  },
+  {
+    id: "logicboard", title: "Motherboard / IC Repair", icon: "🧠",
+    desc: "Micro-soldering, board-level diagnosis, NAND, PMIC & baseband.",
+    time: "1–2 days", devices: "iPhone · iPad · MacBook",
+    points: ["Microscope precision", "Chip-level fix", "Data preserved"],
+  },
+  {
+    id: "speaker", title: "Speaker / Mic / Haptics", icon: "🔊",
+    desc: "Earpiece, loudspeaker, microphones and Taptic Engine.",
+    time: "~40 min", devices: "iPhone · iPad",
+    points: ["Full audio system", "OEM parts", "Tested after install"],
+  },
+  {
+    id: "os", title: "OS · Firmware · Recovery", icon: "⚙️",
+    desc: "iOS/iPadOS/macOS install, firmware restore, boot loops, DFU & setup issues.",
+    time: "30–120 min", devices: "All Apple devices",
+    points: ["Genuine Apple OS", "Data-safe first", "Full testing"],
+  },
+  {
+    id: "data", title: "Data Recovery", icon: "💾",
+    desc: "Recover photos, chats, files & documents from damaged or locked devices.",
+    time: "1–3 days", devices: "iPhone · iPad · Mac",
+    points: ["Logical + board-level", "Confidential handling", "Recover before repair"],
+  },
 ];
 
-export const TESTIMONIALS = [
-  { name: "Rahul S.", area: "Halasuru", text: "Screen replaced in 45 minutes with perfect True Tone. Feels like a brand new phone.", service: "Display", avatar: "RS" },
-  { name: "Priya M.", area: "Indiranagar", text: "Transparent pricing, genuine parts, and they actually showed me the battery health before and after. Trustworthy.", service: "Battery", avatar: "PM" },
-  { name: "Arjun K.", area: "Ulsoor", text: "Water damaged phone came back to life in one day. Ultrasonic cleaning worked like magic.", service: "Water Damage", avatar: "AK" },
-  { name: "Sneha R.", area: "MG Road", text: "Free doorstep pickup, zero waiting. Repaired and returned same evening. Absolutely seamless.", service: "Pickup & Drop", avatar: "SR" },
-  { name: "Vikram D.", area: "Koramangala", text: "Motherboard repair no one else could do. Chip-level work saved me from buying a new phone.", service: "Motherboard", avatar: "VD" },
-  { name: "Nisha T.", area: "Whitefield", text: "Quick camera fix with original module. Photos are sharp again. Highly recommend Red Apple.", service: "Camera", avatar: "NT" },
-];
+// ---------- Repair journey ----------
+export const PROCESS_STEPS = [
+  { step: "01", title: "Walk In or WhatsApp", desc: "Tell us your device & issue. Free inspection & honest diagnosis.", icon: "💬" },
+  { step: "02", title: "Free Diagnosis", desc: "We open, test and show you exactly what's wrong — with photos.", icon: "🔍" },
+  { step: "03", title: "Transparent Quote", desc: "Fixed price confirmed before any work. No hidden charges, ever.", icon: "💰" },
+  { step: "04", title: "Expert Repair", desc: "Certified technicians repair with genuine-grade parts & precision tools.", icon: "🔧" },
+  { step: "05", title: "Quality Check", desc: "Every repair passes a 21-point test — display, battery, sensors, audio.", icon: "✅" },
+  { step: "06", title: "90-Day Warranty", desc: "Collect your device with warranty. We stand behind every fix.", icon: "🛡️" },
+] as const;
 
-export const FAQS = [
-  { q: "How long does a typical iPhone repair take?", a: "Most repairs — screen, battery, charging port — are completed in 30–60 minutes while you wait. Motherboard and water damage repairs take 1–2 days depending on severity." },
-  { q: "Do you use genuine Apple parts?", a: "We use original-grade, OEM-quality parts with full quality checks. Every replacement comes with a written diagnostic report so you know exactly what was done and the health of your device." },
-  { q: "What warranty do you offer?", a: "Every repair includes a 90-day service warranty on parts and labour. Display and battery replacements carry a 6-month health guarantee." },
-  { q: "Do you provide free pickup and drop?", a: "Yes. For customers inside Bangalore, we offer free doorstep pickup and drop. Book via WhatsApp and we'll arrange a convenient time slot." },
-  { q: "Can you fix water-damaged phones?", a: "Yes. We perform ultrasonic cleaning, corrosion treatment, and chip-level repair. The key is speed — don't power the phone on, and get it to us as soon as possible." },
-  { q: "Where is your store?", a: "#36, Opposite Halasuru Police Station, Halasuru Metro Road, Bengaluru 560008 — one minute from Halasuru Metro station. Open 10:30 AM to 9:00 PM every day." },
-  { q: "Do I need an appointment?", a: "Walk-ins are welcome, but booking via WhatsApp reserves a technician slot so there's zero waiting time when you arrive." },
-  { q: "Which iPhone models do you support?", a: "All models from iPhone 6 to the latest iPhone 16 Pro Max — including Pro, Mini, Plus, and SE variants." },
-];
+// ---------- Repair status pipeline ----------
+export const REPAIR_STATUS_FLOW = [
+  { key: "received", label: "Received", icon: "📦", desc: "Device handed over & logged in" },
+  { key: "inspection", label: "Inspection", icon: "🔍", desc: "Diagnosis & fault isolation" },
+  { key: "repair", label: "Repair in Progress", icon: "🔧", desc: "Parts fitted & board-level work" },
+  { key: "quality", label: "Quality Check", icon: "✅", desc: "21-point test & calibration" },
+  { key: "ready", label: "Ready for Pickup", icon: "📦", desc: "Tested, cleaned & packaged" },
+  { key: "completed", label: "Completed", icon: "🏁", desc: "Handed back with warranty" },
+] as const;
 
-export const CHAT_ANSWERS: { keys: string[]; reply: string }[] = [
-  { keys: ["hi", "hello", "hey"], reply: "Hi! 👋 Welcome to Red Apple. Ask me about prices, repairs, pickup or timings — or tap a quick question below." },
-  { keys: ["price", "cost", "quote", "rate", "how much"], reply: "Starting prices: 📱 Display ₹1,499 · 🔋 Battery ₹1,299 · 🔌 Charging ₹999 · 📸 Camera ₹1,499 · 💧 Water ₹2,499. Final quote after free diagnosis." },
-  { keys: ["screen", "display", "cracked"], reply: "Display replacement from ₹1,499, ~45 min. Original-grade panels with True Tone support. Back glass from ₹1,799." },
-  { keys: ["battery", "charging", "drain"], reply: "Battery from ₹1,299 — 30 min, free health report, 6-month guarantee. 🔋" },
-  { keys: ["water", "liquid"], reply: "Water damage from ₹2,499 — ultrasonic cleaning + corrosion treatment. Don't power on. Get it to us fast. 💧" },
-  { keys: ["pickup", "doorstep", "delivery"], reply: "Free doorstep pickup & drop across Bangalore. Book via WhatsApp — zero hassle. 🚗" },
-  { keys: ["warranty", "guarantee"], reply: "90-day warranty on every repair. Displays & batteries carry 6-month health guarantees. 🛡️" },
-  { keys: ["time", "duration", "how long", "fast"], reply: "Most repairs: 30–60 min. We're open 10:30 AM – 9:00 PM daily. ⏱️" },
-  { keys: ["where", "location", "address", "store", "shop"], reply: "#36, Opp. Halasuru Police Station, Halasuru Metro Road, Bengaluru 560008. 📍" },
-  { keys: ["open", "timing", "hours", "close"], reply: "Open every day 10:30 AM – 9:00 PM including weekends. 📅" },
-  { keys: ["model", "support", "iphone"], reply: "We repair every iPhone from iPhone 6 to iPhone 16 Pro Max. 📱" },
-  { keys: ["book", "appointment", "reserve", "slot"], reply: "Tap 'Book on WhatsApp' — your details are pre-filled, zero waiting. ✅" },
-  { keys: ["thank", "thanks"], reply: "You're welcome! 🙏 Anything else? I'm right here." },
-  { keys: ["bye"], reply: "Goodbye! 👋 One WhatsApp tap away anytime." },
-];
-
+// ---------- Trust signals ----------
 export const STATS = [
-  { value: "10000", suffix: "+", label: "Devices Repaired", icon: "📱" },
-  { value: "905", suffix: "+", label: "Verified Reviews", icon: "⭐" },
-  { value: "9", suffix: "+", label: "Years of Trust", icon: "🗓️" },
-  { value: "4.9", suffix: "/5", label: "Average Rating", icon: "💎" },
-];
+  { value: "4.9★", label: "Google Rating", sub: "905+ reviews" },
+  { value: "9+ yrs", label: "Apple Specialists", sub: "Halasuru, Bengaluru" },
+  { value: "30 min", label: "Avg. repair time", sub: "Most repairs" },
+  { value: "90 days", label: "Warranty", sub: "On every repair" },
+] as const;
 
-export const TIPS = [
-  { title: "Never charge overnight", desc: "Unplug when full to protect battery health and reduce heat damage.", icon: "🔋" },
-  { title: "Use a tempered glass protector", desc: "First line of defence against drops. Saves you ₹1,499+ easily.", icon: "🛡️" },
-  { title: "Restart weekly", desc: "Clears RAM and prevents background process buildup that slows your phone.", icon: "🔄" },
-  { title: "Avoid extreme temperatures", desc: "Don't leave your iPhone in direct sun or a freezing car — battery degrades fast.", icon: "🌡️" },
-  { title: "Backup before any repair", desc: "We recommend iCloud backup before any hardware service as a precaution.", icon: "☁️" },
-  { title: "Water damage? Don't charge it", desc: "Power off immediately and bring it to us. Charging = corrosion. Time = survival.", icon: "💧" },
-];
+// ---------- FAQ (honest, no invented claims) ----------
+export const FAQS: { q: string; a: string }[] = [
+  { q: "Which Apple devices do you repair?", a: "iPhone (all models), iPad, iPod touch, AirPods, Apple Watch, MacBook Pro/Air, Mac mini, iMac and Mac Studio — plus Apple accessories." },
+  { q: "How long does a typical repair take?", a: "Most common repairs — screen, battery, charging port — take 30–60 minutes. Board-level and water damage repairs may take 1–2 days. We'll always give you a realistic time before starting." },
+  { q: "Do you give a warranty?", a: "Yes — every repair includes a 90-day service warranty. Battery and display work also carries a 6-month health guarantee." },
+  { q: "Are parts genuine?", a: "We use genuine-grade, OEM-quality parts and explain your options (original, tested-grade, compatible) before any work so you can choose what fits your budget." },
+  { q: "Do I need an appointment?", a: "Walk-ins are welcome all day. For faster service, WhatsApp us your device model and issue and we'll keep a slot ready for you." },
+  { q: "Can you recover my data after a screen or water issue?", a: "Yes — data recovery is one of our specialities. We attempt logical and board-level recovery. We never wipe data without your permission." },
+  { q: "Do you offer pickup and delivery?", a: "Yes, free doorstep pickup and drop is available across Bengaluru for eligible repairs. WhatsApp us your location to arrange it." },
+  { q: "Where are you located?", a: "No. 1, Mahatma Gandhi Rd, opp. Bhadra Landmark, Halasuru, Bengaluru 560008 — 1 minute from Halasuru Metro, open 10:30 AM – 9:00 PM daily." },
+  { q: "Will my data stay safe?", a: "Absolutely. We keep your data private, never access your accounts, and return your device with locks intact." },
+  { q: "What if you can't fix it?", a: "If we can't repair your device, there is no charge for the failed attempt — you only pay for successful repairs and used parts." },
+] as const;
+
+// ---------- SEO service pages ----------
+export const SERVICE_PAGES: {
+  slug: string; title: string; short: string; desc: string; icon: string; keywords: string[];
+}[] = [
+  { slug: "iphone-repair", title: "iPhone Repair — All Models", icon: "📱", short: "Screen, battery, camera & more", desc: "Complete iPhone repair for every generation — displays, batteries, cameras, back glass, charging, water damage, motherboard and software.", keywords: ["iPhone repair Bangalore", "iPhone repair Halasuru", "iPhone service near me"] },
+  { slug: "iphone-display-repair", title: "iPhone Display / Screen Replacement", icon: "📱", short: "OEM-grade OLED, True Tone preserved", desc: "Front display replacement on all iPhone models with True Tone, 3D Touch and original-grade panels — typically done in 45 minutes.", keywords: ["iPhone screen replacement", "iPhone display repair Bangalore", "iPhone screen fix Halasuru"] },
+  { slug: "iphone-back-glass-repair", title: "iPhone Back Glass Replacement", icon: "🪞", short: "Laser-aligned, MagSafe compatible", desc: "Factory-grade back glass replacement for iPhone 8 through iPhone 16 series — seamless finish, MagSafe compatible, camera protected.", keywords: ["iPhone back glass repair", "iPhone back glass replacement Bangalore", "iPhone back cover repair"] },
+  { slug: "ipad-repair", title: "iPad Repair — All Models", icon: "📱", short: "Screens, batteries & board-level", desc: "iPad, iPad Pro, iPad Air and iPad mini repairs — display replacement, battery, charging, cameras and logic board service.", keywords: ["iPad repair Bangalore", "iPad screen replacement", "iPad service Halasuru"] },
+  { slug: "apple-watch-repair", title: "Apple Watch Repair", icon: "⌚", short: "Screens, batteries & sensors", desc: "Apple Watch screen, battery, sensor, speaker and strap repairs across Series 1 to Ultra 2.", keywords: ["Apple Watch repair Bangalore", "Apple Watch screen replacement", "Apple Watch battery service"] },
+  { slug: "airpods-repair", title: "AirPods Repair", icon: "🎧", short: "Battery, case, audio issues", desc: "AirPods and AirPods Pro battery replacement, charging case repair, speaker and microphone fixes.", keywords: ["AirPods repair Bangalore", "AirPods battery replacement", "AirPods case repair"] },
+  { slug: "macbook-repair", title: "MacBook & Mac Repair", icon: "💻", short: "Displays, batteries & logic boards", desc: "MacBook Pro, MacBook Air, Mac mini and iMac repairs — display, keyboard, battery, storage, thermal and logic board.", keywords: ["MacBook repair Bangalore", "MacBook screen replacement", "Mac service Halasuru"] },
+  { slug: "software-recovery", title: "Apple Software & Firmware", icon: "⚙️", short: "iOS, macOS, restore & firmware", desc: "Genuine Apple OS installation, iTunes/DFU restore, boot-loop fixes, firmware updates and software troubleshooting for all Apple devices.", keywords: ["iPhone software fix", "iOS restore Bangalore", "Mac OS installation"] },
+  { slug: "data-recovery", title: "Data Recovery for Apple Devices", icon: "💾", short: "Photos, contacts, chats & files", desc: "Professional data recovery from damaged, locked or water-damaged iPhones, iPads and Macs — logical and board-level recovery.", keywords: ["iPhone data recovery Bangalore", "recover deleted photos iPhone", "Mac data recovery"] },
+] as const;

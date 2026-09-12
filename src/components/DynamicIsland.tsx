@@ -1,34 +1,48 @@
 "use client";
 import { useEffect, useState } from "react";
+import { track } from "@/lib/analytics";
 
 const STATES = [
-  { icon: "📱", text: "Display · 45 min", sub: "from ₹1,499" },
-  { icon: "🔋", text: "Battery · 30 min", sub: "from ₹1,299" },
-  { icon: "🪞", text: "Back Glass · 60 min", sub: "from ₹1,799" },
-  { icon: "💧", text: "Water Rescue · Same day", sub: "from ₹2,499" },
+  { icon: "📱", text: "iPhone display replaced in ~45 min", sub: "True Tone preserved · 90-day warranty" },
+  { icon: "🪞", text: "Back glass repair, MagSafe-compatible", sub: "Laser-aligned · seamless finish" },
+  { icon: "⌚", text: "Apple Watch battery swap", sub: "All Series · fast turnaround" },
+  { icon: "💾", text: "Data recovery before repair", sub: "Photos, chats & files saved first" },
+  { icon: "🚗", text: "Free pickup & drop in Bengaluru", sub: "WhatsApp us your location" },
 ];
 
 export default function DynamicIsland() {
   const [idx, setIdx] = useState(0);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const t = setInterval(() => setIdx((i) => (i + 1) % STATES.length), 3500);
-    return () => clearInterval(t);
+    const t = setInterval(() => setIdx((i) => (i + 1) % STATES.length), 3200);
+    const show = setTimeout(() => setVisible(true), 600);
+    return () => { clearInterval(t); clearTimeout(show); };
   }, []);
 
   const s = STATES[idx];
 
   return (
-    <a href="#selector" className="fixed left-1/2 top-[58px] z-40 hidden -translate-x-1/2 items-center gap-3 rounded-full border border-black/[0.06] bg-white/80 px-5 py-2.5 shadow-2xl backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-[#ff2d55]/30 md:flex">
-      <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-[#ff2d55] to-[#ff9500] text-sm shadow-md shadow-[#ff2d55]/20">{s.icon}</span>
-      <span className="leading-tight">
-        <span className="block text-[13px] font-semibold text-[#1d1d1f]">{s.text}</span>
-        <span className="block text-[10px] text-[#86868b]">Live · {s.sub}</span>
-      </span>
-      <span className="relative ml-1 flex h-1.5 w-1.5">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#30d158] opacity-60"/>
-        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#30d158]"/>
-      </span>
-    </a>
+    <div
+      className={`fixed left-1/2 top-[70px] z-40 -translate-x-1/2 transition-all duration-700 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+      }`}
+    >
+      <a
+        href="#quote"
+        onClick={() => track("quote_started", { source: "dynamic_island" })}
+        className="dynamic-island hidden items-center gap-3 rounded-full px-5 py-2.5 text-white md:flex"
+      >
+        <span className="grid h-8 w-8 place-items-center rounded-full bg-white/10 text-[15px]">{s.icon}</span>
+        <span className="leading-tight">
+          <span className="block text-[12.5px] font-semibold">{s.text}</span>
+          <span className="block text-[10.5px] text-white/60">{s.sub}</span>
+        </span>
+        <span className="relative ml-1 flex h-1.5 w-1.5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#30d158] opacity-60" />
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#30d158]" />
+        </span>
+      </a>
+    </div>
   );
 }

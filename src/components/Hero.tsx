@@ -1,66 +1,73 @@
 "use client";
 import { SITE, wa } from "@/lib/site";
+import { track } from "@/lib/analytics";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#f5f5f7]">
-      {/* Subtle gradient overlay */}
+    <section id="top" className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#f5f5f7]">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f5f5f7] to-[#f5f5f7]"/>
-        <div className="absolute top-[5%] left-[10%] h-[500px] w-[500px] rounded-full bg-[#ff2d55]/[0.04] blur-[160px]"/>
-        <div className="absolute bottom-[10%] right-[5%] h-[400px] w-[400px] rounded-full bg-[#ff9500]/[0.04] blur-[140px]"/>
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f5f5f7] to-white" />
+        <div className="absolute left-[8%] top-[8%] h-[520px] w-[520px] rounded-full bg-[#ff2d55]/[0.07] blur-[160px]" />
+        <div className="absolute bottom-[6%] right-[6%] h-[460px] w-[460px] rounded-full bg-[#ff9500]/[0.08] blur-[150px]" />
+        <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-black/[0.03]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1200px] px-6 pt-32 pb-20 text-center lg:px-8">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-black/[0.06] bg-white/60 px-5 py-2 text-[13px] font-medium text-[#86868b] shadow-sm backdrop-blur-sm">
-          <span className="flex h-1.5 w-1.5 rounded-full bg-[#30d158]"/>
-          Open now · Halasuru, Bangalore
+      <div className="relative z-10 mx-auto max-w-[1200px] px-6 pb-16 pt-32 text-center lg:px-8">
+        <div className="mb-7 inline-flex items-center gap-2 rounded-full glass px-5 py-2 text-[13px] font-semibold text-[#1d1d1f]">
+          <span className="flex h-2 w-2 rounded-full bg-[#30d158]"><span className="h-full w-full animate-ping rounded-full bg-[#30d158] opacity-70" /></span>
+          Open now · {SITE.area} · {SITE.hours.split("(")[0].trim()}
         </div>
 
         <h1 className="hero-apple font-apple text-[#1d1d1f]">
-          The best place
+          Apple repairs,
           <br />
-          <span className="gradient-text">to fix your iPhone.</span>
+          <span className="gradient-text">mastered.</span>
         </h1>
 
         <p className="hero-sub mt-7 font-apple">
-          Expert technicians. Genuine-grade parts. 90-day warranty. Most repairs done in 30 minutes while you wait — right next to Halasuru Metro.
+          iPhone · iPad · AirPods · Apple Watch · MacBook. Displays, back glass, batteries,
+          water damage, firmware & data recovery — done right, done fast, with a 90-day warranty.
         </p>
 
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a href="#selector" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ff2d55] to-[#ff9500] px-8 py-4 text-[15px] font-bold text-white shadow-lg shadow-[#ff2d55]/15 transition-all hover:scale-[1.03] hover:shadow-xl hover:shadow-[#ff2d55]/25">
-            Get your instant quote
-            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#quote" onClick={() => track("quote_started", { source: "hero" })} className="cta-primary">
+            Get Instant Estimate →
           </a>
-          <a href={wa("Hi Red Apple! I need a repair. 🍎")} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-7 py-4 text-[15px] font-semibold text-[#1d1d1f] shadow-sm transition-all hover:bg-black/[0.03]">
-            💬 Chat on WhatsApp
+          <a
+            href={wa("Hi Red Apple Mobile Repair! I need help with my Apple device. 🍎")}
+            target="_blank" rel="noopener noreferrer"
+            onClick={() => track("whatsapp_click", { source: "hero" })}
+            className="cta-outline"
+          >
+            💬 WhatsApp Us
           </a>
         </div>
 
-        {/* Hero image */}
-        <div className="mx-auto mt-16 max-w-[900px] overflow-hidden rounded-[32px] shadow-2xl shadow-black/10">
-          <img src="https://images.unsplash.com/photo-1621768216002-5ac171876625?w=1200&q=80" alt="iPhone repair in progress at Red Apple" className="h-[300px] w-full object-cover sm:h-[450px] lg:h-[520px]" loading="eager"/>
+        <div className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12.5px] font-medium text-[#86868b]">
+          <span>✅ 4.9★ Google rating</span>
+          <span>✅ 90-day warranty</span>
+          <span>✅ Free pickup &amp; drop</span>
+          <span>✅ Most repairs in 30 min</span>
         </div>
 
-        {/* Stats row */}
-        <div className="mx-auto mt-16 grid max-w-[700px] grid-cols-2 gap-8 border-t border-black/[0.06] pt-10 sm:grid-cols-4">
-          {[
-            { v: SITE.rating + "★", l: "from " + SITE.ratingCount + " reviews" },
-            { v: SITE.avgRepairTime + " min", l: "average repair" },
-            { v: SITE.warrantyDays + "-day", l: "warranty" },
-            { v: SITE.customers, l: "devices fixed" },
-          ].map((s) => (
-            <div key={s.l}>
-              <div className="font-apple text-[28px] font-bold text-[#1d1d1f] lg:text-[32px]">{s.v}</div>
-              <div className="mt-1 text-[12px] text-[#86868b]">{s.l}</div>
-            </div>
-          ))}
+        {/* Device showcase */}
+        <div className="tilt-wrap mx-auto mt-16 max-w-[900px]">
+          <div className="tilt-inner grid grid-cols-2 gap-4 md:grid-cols-5">
+            {[
+              { label: "iPhone", sub: "Display · Back glass · Battery", emoji: "📱", grad: "from-[#ff2d55] to-[#ff9500]" },
+              { label: "iPad", sub: "Screens & logic boards", emoji: "🖥️", grad: "from-[#ff9500] to-[#ff5e3a]" },
+              { label: "Apple Watch", sub: "Screens · battery · sensors", emoji: "⌚", grad: "from-[#ff5e3a] to-[#ff2d55]" },
+              { label: "AirPods", sub: "Battery & case repair", emoji: "🎧", grad: "from-[#ff2d55] to-[#ff9500]" },
+              { label: "MacBook & Mac", sub: "Display · battery · boards", emoji: "💻", grad: "from-[#ff9500] to-[#ff2d55]" },
+            ].map((d) => (
+              <div key={d.label} className={`glass-card rounded-3xl p-5 text-left col-span-2 md:col-span-1 ${d.label === "iPhone" ? "row-span-1" : ""}`}>
+                <div className={`grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br ${d.grad} text-[22px] shadow-lg`}>{d.emoji}</div>
+                <div className="mt-4 text-[14.5px] font-bold text-[#1d1d1f]">{d.label}</div>
+                <div className="mt-1 text-[11.5px] leading-relaxed text-[#86868b]">{d.sub}</div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
-        <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#1d1d1f]" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
       </div>
     </section>
   );

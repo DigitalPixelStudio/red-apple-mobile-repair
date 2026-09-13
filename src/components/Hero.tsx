@@ -5,10 +5,10 @@ import { LineIcon, type IconName } from "./Icons";
 
 export default function Hero() {
   const devices = [
-    { label: "iPhone", sub: "Display · Back glass · Battery", icon: "phone" as IconName, img: "/images/v3/hero-iphone-repair.jpg" },
+    { label: "iPhone", sub: "Display · Back glass · Battery", icon: "phone" as IconName, img: "/images/v4/iphone-product.jpg" },
     { label: "iPad", sub: "Screens & logic boards", icon: "ipad" as IconName, img: "/images/v3/ipad-repair.jpg" },
-    { label: "Apple Watch", sub: "Screens · battery · sensors", icon: "watch" as IconName, img: "/images/v3/apple-watch.jpg" },
-    { label: "AirPods", sub: "Battery & case repair", icon: "airpods" as IconName, img: "/images/v3/airpods-closeup.jpg" },
+    { label: "Apple Watch", sub: "Screens · battery · sensors", icon: "watch" as IconName, img: "/images/v4/apple-watch.jpg" },
+    { label: "AirPods", sub: "Battery & case repair", icon: "airpods" as IconName, img: "/images/v4/airpods-real.jpg" },
     { label: "MacBook & Mac", sub: "Display · battery · boards", icon: "macbook" as IconName, img: "/images/v3/macbook-pro.jpg" },
   ];
 

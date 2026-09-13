@@ -10,7 +10,6 @@ import TechProcess from "@/components/TechProcess";
 import PartsCatalog from "@/components/PartsCatalog";
 import SoftwareRecovery from "@/components/SoftwareRecovery";
 import ProcessSection from "@/components/ProcessSection";
-import BeforeAfter from "@/components/BeforeAfter";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import TrustProof from "@/components/TrustProof";
 import PricingSection from "@/components/PricingSection";
@@ -40,7 +39,6 @@ export default function Home() {
         <PartsCatalog />
         <SoftwareRecovery />
         <ProcessSection />
-        <BeforeAfter />
         <WhyChooseUs />
         <TrustProof />
         <PricingSection />

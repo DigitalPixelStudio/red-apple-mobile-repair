@@ -44,7 +44,7 @@ export const DEVICE_FAMILIES = [
   { id: "iphone", name: "iPhone", icon: "phone", tag: "All models", desc: "Displays, batteries, cameras, back glass & full hardware service.", img: "/images/v4/iphone-17-pro-max.jpg" },
   { id: "ipad", name: "iPad", icon: "ipad", tag: "All models", desc: "iPad, iPad Pro, iPad Air & iPad mini — screens, battery & logic.", img: "/images/v4/repair-process.jpg" },
   { id: "watch", name: "Apple Watch", icon: "watch", tag: "All series", desc: "Screens, batteries, sensors & straps across all Watch series.", img: "/images/v4/apple-watch-ultra.jpg" },
-  { id: "airpods", name: "AirPods", icon: "airpods", tag: "All generations", desc: "Battery, charging case, speaker & microphone repair.", img: "/images/v3/airpods-closeup.jpg" },
+  { id: "airpods", name: "AirPods", icon: "airpods", tag: "All generations", desc: "Battery, charging case, speaker & microphone repair.", img: "/images/v4/airpods-real.jpg" },
   { id: "macbook", name: "MacBook", icon: "macbook", tag: "Pro · Air · Mini", desc: "MacBook Pro, Air, Mac mini & iMac — display, battery, board.", img: "/images/v3/macbook-pro.jpg" },
   { id: "software", name: "Software & Recovery", icon: "wrench", tag: "iOS · macOS · firmware", desc: "OS install, firmware, boot loops, data recovery & unlocking.", img: "/images/v3/circuit-board.jpg" },
 ] as const;
@@ -132,7 +132,7 @@ export const SERVICES: {
     id: "camera", title: "Camera Repair", icon: "camera",
     desc: "Rear & front modules, OIS, zoom and lens replacement.",
     time: "~60 min", devices: "iPhone · iPad",
-    img: "/images/v3/tech-diagnosis.jpg",
+    img: "/images/v4/camera-repair.jpg",
     points: ["OEM modules", "OIS calibration", "Focus tested"],
   },
   {
@@ -146,7 +146,7 @@ export const SERVICES: {
     id: "water", title: "Water Damage Revival", icon: "water",
     desc: "Ultrasonic cleaning + corrosion treatment at chip level.",
     time: "Same day", devices: "iPhone · iPad · Watch",
-    img: "/images/v3/water-damage.jpg",
+    img: "/images/v4/water-damage-iphone.jpg",
     points: ["Ultrasonic bath", "Corrosion treatment", "Highest success rate"],
   },
   {
@@ -174,7 +174,7 @@ export const SERVICES: {
     id: "data", title: "Data Recovery", icon: "data",
     desc: "Recover photos, chats, files & documents from damaged or locked devices.",
     time: "1–3 days", devices: "iPhone · iPad · Mac",
-    img: "/images/v3/quality-check.jpg",
+    img: "/images/v4/data-recovery-tech.jpg",
     points: ["Logical + board-level", "Confidential handling", "Recover before repair"],
   },
 ];
@@ -182,10 +182,10 @@ export const SERVICES: {
 // ---------- Repair journey ----------
 export const PROCESS_STEPS = [
   { step: "01", title: "Walk In or WhatsApp", desc: "Tell us your device & issue. Free inspection & honest diagnosis.", icon: "chat", img: "/images/v3/phone-broken.jpg" },
-  { step: "02", title: "Free Diagnosis", desc: "We open, test and show you exactly what's wrong — with photos.", icon: "search", img: "/images/v3/tech-diagnosis.jpg" },
+  { step: "02", title: "Free Diagnosis", desc: "We open, test and show you exactly what's wrong — with photos.", icon: "search", img: "/images/v4/camera-repair.jpg" },
   { step: "03", title: "Transparent Quote", desc: "Fixed price confirmed before any work. No hidden charges, ever.", icon: "price", img: "/images/v3/team-work.jpg" },
   { step: "04", title: "Expert Repair", desc: "Certified technicians repair with genuine-grade parts & precision tools.", icon: "wrench", img: "/images/v3/tech-workbench.jpg" },
-  { step: "05", title: "Quality Check", desc: "Every repair passes a 21-point test — display, battery, sensors, audio.", icon: "check", img: "/images/v3/quality-check.jpg" },
+  { step: "05", title: "Quality Check", desc: "Every repair passes a 21-point test — display, battery, sensors, audio.", icon: "check", img: "/images/v4/data-recovery-tech.jpg" },
   { step: "06", title: "90-Day Warranty", desc: "Collect your device with warranty. We stand behind every fix.", icon: "shield", img: "/images/v3/store-interior.jpg" },
 ] as const;
 

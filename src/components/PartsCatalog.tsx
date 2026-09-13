@@ -3,12 +3,12 @@ import Reveal from "./Reveal";
 import { LineIcon } from "./Icons";
 
 const PARTS = [
-  { name: "OLED Display Panel", device: "iPhone 14 / 15 / 16 Series", quality: "OEM-Grade True Tone", img: "/images/v4/parts-display.jpg", icon: "display" },
-  { name: "Battery Cell", device: "iPhone, iPad, MacBook", quality: "Genuine Capacity Cells", img: "/images/v4/parts-battery.jpg", icon: "battery" },
+  { name: "OLED Display Panel", device: "iPhone 14 / 15 / 16 Series", quality: "OEM-Grade True Tone", img: "/images/v4/oled-display-panel.jpg", icon: "display" },
+  { name: "Battery Cell", device: "iPhone, iPad, MacBook", quality: "Genuine Capacity Cells", img: "/images/v4/iphone-battery.jpg", icon: "battery" },
   { name: "Back Glass Panel", device: "iPhone 13 / 14 / 15 / 16", quality: "MagSafe Compatible", img: "/images/v3/iphone-backglass.jpg", icon: "backglass" },
-  { name: "Camera Module", device: "iPhone 14 Pro / 15 Pro / 16 Pro", quality: "OEM Sensor Assembly", img: "/images/v3/tech-diagnosis.jpg", icon: "camera" },
+  { name: "Camera Module", device: "iPhone 14 Pro / 15 Pro / 16 Pro", quality: "OEM Sensor Assembly", img: "/images/v4/camera-repair.jpg", icon: "camera" },
   { name: "Charging Port Flex", device: "iPhone, iPad, AirPods", quality: "Precision Connector", img: "/images/v3/charging-port.jpg", icon: "charging" },
-  { name: "Logic Board Components", device: "MacBook, iPhone, iPad", quality: "Micro-soldered IC Chips", img: "/images/v3/logic-board.jpg", icon: "board" },
+  { name: "Logic Board Components", device: "MacBook, iPhone, iPad", quality: "Micro-soldered IC Chips", img: "/images/v4/logic-board-real.jpg", icon: "board" },
 ];
 
 export default function PartsCatalog() {

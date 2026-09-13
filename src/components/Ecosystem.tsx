@@ -8,7 +8,7 @@ const DEVICES = [
   { id: "iphone", name: "iPhone 17 Pro Max", icon: "phone", tag: "All models", desc: "Displays, batteries, cameras, back glass & full hardware service.", img: "/images/v4/iphone-17-pro-max.jpg" },
   { id: "ipad", name: "iPad", icon: "ipad", tag: "All models", desc: "iPad, iPad Pro, iPad Air & iPad mini — screens, battery & logic.", img: "/images/v4/repair-process.jpg" },
   { id: "watch", name: "Apple Watch Ultra 3", icon: "watch", tag: "All series", desc: "Screens, batteries, sensors & straps across all Watch series.", img: "/images/v4/apple-watch-ultra.jpg" },
-  { id: "airpods", name: "AirPods", icon: "airpods", tag: "All generations", desc: "Battery, charging case, speaker & microphone repair.", img: "/images/v3/airpods-closeup.jpg" },
+  { id: "airpods", name: "AirPods", icon: "airpods", tag: "All generations", desc: "Battery, charging case, speaker & microphone repair.", img: "/images/v4/airpods-real.jpg" },
   { id: "macbook", name: "MacBook", icon: "macbook", tag: "Pro / Air / Mini", desc: "MacBook Pro, Air, Mac mini & iMac — display, battery, board.", img: "/images/v3/macbook-pro.jpg" },
   { id: "software", name: "Software & Recovery", icon: "wrench", tag: "iOS / macOS", desc: "OS install, firmware, boot loops, data recovery & unlocking.", img: "/images/v3/circuit-board.jpg" },
 ] as const;

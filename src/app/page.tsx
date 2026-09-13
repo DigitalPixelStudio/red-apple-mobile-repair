@@ -6,8 +6,14 @@ import TrustBar from "@/components/TrustBar";
 import Ecosystem from "@/components/Ecosystem";
 import DisplayFocus from "@/components/DisplayFocus";
 import ServicesGrid from "@/components/ServicesGrid";
+import TechProcess from "@/components/TechProcess";
+import PartsCatalog from "@/components/PartsCatalog";
 import SoftwareRecovery from "@/components/SoftwareRecovery";
 import ProcessSection from "@/components/ProcessSection";
+import BeforeAfter from "@/components/BeforeAfter";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import TrustProof from "@/components/TrustProof";
+import PricingSection from "@/components/PricingSection";
 import QuoteSection from "@/components/QuoteSection";
 import ConciergeLaunch from "@/components/ConciergeLaunch";
 import ReviewsSection from "@/components/ReviewsSection";
@@ -29,9 +35,15 @@ export default function Home() {
         <TrustBar />
         <Ecosystem />
         <DisplayFocus />
+        <TechProcess />
         <ServicesGrid />
+        <PartsCatalog />
         <SoftwareRecovery />
         <ProcessSection />
+        <BeforeAfter />
+        <WhyChooseUs />
+        <TrustProof />
+        <PricingSection />
         <QuoteSection />
         <ConciergeLaunch />
         <ReviewsSection />

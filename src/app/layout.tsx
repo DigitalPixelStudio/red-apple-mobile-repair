@@ -9,19 +9,19 @@ const space = Space_Grotesk({ subsets: ["latin"], variable: "--font-space", disp
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Red Apple Mobile Repair | iPhone, iPad, MacBook & Apple Watch Repair in Halasuru, Bengaluru",
-    template: "%s | Red Apple Mobile Repair",
+    default: "Red Apple Mobile Repair Store | iPhone, iPad, MacBook & Apple Watch Repair in Halasuru, Bengaluru",
+    template: "%s | Red Apple Mobile Repair Store",
   },
   description: SITE.shortDescription,
   keywords: [
     "iPhone repair Bangalore", "iPhone screen replacement Halasuru", "iPhone back glass repair",
     "iPad repair Bangalore", "MacBook repair Halasuru", "Apple Watch repair Bengaluru",
     "AirPods repair", "iPhone battery replacement", "iPhone data recovery", "Mac repair store",
-    "Apple repair specialist Bangalore", "Red Apple Mobile Repair",
+    "Apple repair specialist Bangalore", "Red Apple Mobile Repair Store",
   ],
   authors: [{ name: SITE.name }],
   openGraph: {
-    title: "Red Apple Mobile Repair — Apple Repair Specialists, Halasuru Bengaluru",
+    title: "Red Apple Mobile Repair Store — Apple Repair Specialists, Halasuru Bengaluru",
     description: SITE.shortDescription,
     url: baseUrl,
     siteName: SITE.name,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Red Apple Mobile Repair — Halasuru, Bengaluru",
+    title: "Red Apple Mobile Repair Store — Halasuru, Bengaluru",
     description: SITE.shortDescription,
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
@@ -92,7 +92,7 @@ const serviceListSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${space.variable} bg-white text-[#1d1d1f] antialiased`}>
+      <body className={`${inter.variable} ${space.variable} bg-white text-[var(--text)] antialiased`}>
         {children}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceListSchema) }} />

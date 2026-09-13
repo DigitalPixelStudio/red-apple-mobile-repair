@@ -10,7 +10,7 @@ export default function PricingSection() {
   const group = PRICING_GROUPS[active];
 
   return (
-    <section className="section-apple" id="pricing">
+    <section className="section-apple gradient-border" id="pricing">
       <div className="max-w-6xl mx-auto px-5">
         <Reveal className="text-center mb-12">
           <p className="text-sm font-semibold tracking-widest uppercase text-[var(--accent)] mb-3">
@@ -45,7 +45,7 @@ export default function PricingSection() {
         {/* Pricing table */}
         <Reveal key={active} className="glass-card rounded-2xl overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="pricing-table">
+            <table className="pricing-table smooth-120">
               <thead>
                 <tr>
                   <th className="min-w-[200px]">Model / Device</th>

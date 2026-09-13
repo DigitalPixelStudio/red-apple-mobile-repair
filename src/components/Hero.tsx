@@ -16,9 +16,16 @@ export default function Hero() {
     <section id="top" className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[var(--bg-alt)]">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-[var(--bg-alt)] to-white" />
-        <div className="absolute left-[8%] top-[8%] h-[520px] w-[520px] rounded-full bg-[var(--accent)]/[0.07] blur-[160px]" />
-        <div className="absolute bottom-[6%] right-[6%] h-[460px] w-[460px] rounded-full bg-[var(--accent2)]/[0.08] blur-[150px]" />
+        <div className="orb left-[8%] top-[8%] h-[520px] w-[520px] bg-[var(--accent)]" />
+        <div className="orb orb-reverse bottom-[6%] right-[6%] h-[460px] w-[460px] bg-[var(--accent2)]" />
+        <div className="aurora-layer left-[20%] top-[15%] h-[300px] w-[300px] bg-[#ff2d55]/40" />
+        <div className="aurora-layer right-[18%] bottom-[18%] h-[350px] w-[350px] bg-[#ff9500]/40" />
         <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-black/[0.03]" />
+        <div className="chip-float left-[12%] top-[22%] h-3 w-3 bg-[#ff2d55]/40" />
+        <div className="chip-float right-[15%] top-[18%] h-2 w-2 bg-[#ff9500]/50" />
+        <div className="chip-float left-[30%] bottom-[22%] h-2.5 w-2.5 bg-[#ff2d55]/30" />
+        <div className="chip-float right-[28%] bottom-[28%] h-4 w-4 bg-[#ff9500]/30" />
+        <div className="chip-float left-[45%] top-[10%] h-2 w-2 bg-[var(--accent2)]/40" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1200px] px-6 pb-16 pt-32 text-center lg:px-8">

@@ -8,8 +8,11 @@ export default function FinalCta() {
   return (
     <section className="relative overflow-hidden bg-[var(--cta-dark)] py-24 text-white">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[15%] top-[-20%] h-[400px] w-[400px] rounded-full bg-[var(--accent)]/[0.18] blur-[140px]" />
-        <div className="absolute bottom-[-20%] right-[10%] h-[400px] w-[400px] rounded-full bg-[var(--accent2)]/[0.15] blur-[140px]" />
+        <div className="orb left-[15%] top-[-20%] h-[400px] w-[400px] bg-[var(--accent)] opacity-[0.18]" />
+        <div className="orb orb-reverse bottom-[-20%] right-[10%] h-[400px] w-[400px] bg-[var(--accent2)] opacity-[0.15]" />
+        <div className="chip-float left-[22%] top-[30%] h-3 w-3 bg-[var(--accent)]/50" />
+        <div className="chip-float right-[20%] bottom-[25%] h-2 w-2 bg-[var(--accent2)]/50" />
+        <div className="chip-float left-[40%] top-[15%] h-2 w-2 bg-white/20" />
       </div>
       <div className="relative mx-auto max-w-[820px] px-6 text-center lg:px-8">
         <Reveal>

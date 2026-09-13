@@ -45,8 +45,8 @@ export default function Navbar() {
             <LineIcon name="apple" size={20} color="#fff" />
           </span>
           <span className="leading-tight">
-            <span className="block font-apple text-[14px] font-bold tracking-tight text-[var(--text)]">Red Apple Mobile</span>
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">Repair Store</span>
+            <span className="block font-apple text-[16px] font-extrabold tracking-tight text-[var(--text)] animate-brand-breathe">Red Apple</span>
+            <span className="block text-[11px] font-extrabold uppercase tracking-[0.2em] text-[var(--accent)]">Mobile Repair Store</span>
           </span>
         </a>
 

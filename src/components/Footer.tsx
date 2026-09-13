@@ -20,12 +20,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--cta-dark)]">
-                <LineIcon name="apple" size={20} color="#fff" />
+              <span className="grid h-12 w-12 place-items-center rounded-xl bg-[var(--cta-dark)] shadow-lg animate-float">
+                <LineIcon name="apple" size={24} color="#fff" />
               </span>
               <div>
-                <div className="font-apple text-[15px] font-bold">Red Apple Mobile</div>
-                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--accent2)]">Repair Store</div>
+                <div className="font-apple text-[18px] font-extrabold tracking-tight animate-brand-breathe">Red Apple</div>
+                <div className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[var(--accent2)]">Mobile Repair Store</div>
               </div>
             </div>
             <p className="mt-4 text-[13px] leading-relaxed text-white/50">The Apple repair specialist of Halasuru, Bengaluru. iPhone, iPad, Watch, AirPods, Mac &amp; MacBook — hardware, software and data recovery.</p>

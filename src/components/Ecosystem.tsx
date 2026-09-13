@@ -5,7 +5,7 @@ import { track } from "@/lib/analytics";
 import { LineIcon, type IconName } from "./Icons";
 
 const DEVICES = [
-  { id: "iphone", name: "iPhone 18 Pro Max", icon: "phone", tag: "All models", desc: "Displays, batteries, cameras, back glass & full hardware service.", img: "/images/v4/iphone-18-pro-max.jpg" },
+  { id: "iphone", name: "iPhone 17 Pro Max", icon: "phone", tag: "All models", desc: "Displays, batteries, cameras, back glass & full hardware service.", img: "/images/v4/iphone-17-pro-max.jpg" },
   { id: "ipad", name: "iPad", icon: "ipad", tag: "All models", desc: "iPad, iPad Pro, iPad Air & iPad mini — screens, battery & logic.", img: "/images/v4/repair-process.jpg" },
   { id: "watch", name: "Apple Watch Ultra 3", icon: "watch", tag: "All series", desc: "Screens, batteries, sensors & straps across all Watch series.", img: "/images/v4/apple-watch-ultra.jpg" },
   { id: "airpods", name: "AirPods", icon: "airpods", tag: "All generations", desc: "Battery, charging case, speaker & microphone repair.", img: "/images/v3/airpods-closeup.jpg" },
@@ -20,7 +20,7 @@ export default function Ecosystem() {
         <Reveal className="text-center">
           <p className="font-apple text-[12.5px] font-bold uppercase tracking-[0.22em] text-[var(--accent)]">The whole Apple ecosystem</p>
           <h2 className="section-title font-apple mt-3 text-[var(--text)]">One specialist store for <span className="gradient-text">every Apple device.</span></h2>
-          <p className="section-subtitle mx-auto mt-5">From the latest iPhone 18 Pro Max to a classic MacBook — if Apple made it, we can fix it.</p>
+          <p className="section-subtitle mx-auto mt-5">From the latest iPhone 17 Pro Max to a classic MacBook — if Apple made it, we can fix it.</p>
         </Reveal>
 
         <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3">

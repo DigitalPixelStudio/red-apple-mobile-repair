@@ -41,7 +41,7 @@ export const wa = (message: string) =>
 
 // ---------- Apple ecosystem device families ----------
 export const DEVICE_FAMILIES = [
-  { id: "iphone", name: "iPhone", icon: "phone", tag: "All models", desc: "Displays, batteries, cameras, back glass & full hardware service.", img: "/images/v4/iphone-18-pro-max.jpg" },
+  { id: "iphone", name: "iPhone", icon: "phone", tag: "All models", desc: "Displays, batteries, cameras, back glass & full hardware service.", img: "/images/v4/iphone-17-pro-max.jpg" },
   { id: "ipad", name: "iPad", icon: "ipad", tag: "All models", desc: "iPad, iPad Pro, iPad Air & iPad mini — screens, battery & logic.", img: "/images/v4/repair-process.jpg" },
   { id: "watch", name: "Apple Watch", icon: "watch", tag: "All series", desc: "Screens, batteries, sensors & straps across all Watch series.", img: "/images/v4/apple-watch-ultra.jpg" },
   { id: "airpods", name: "AirPods", icon: "airpods", tag: "All generations", desc: "Battery, charging case, speaker & microphone repair.", img: "/images/v3/airpods-closeup.jpg" },
@@ -53,7 +53,7 @@ export const DEVICE_FAMILIES = [
 export const QUOTE_DEVICES = [
   {
     id: "iphone", label: "iPhone",
-    models: ["iPhone 18 Pro Max", "iPhone 17 Pro Max", "iPhone 16 Pro Max", "iPhone 16 Pro", "iPhone 16 Plus", "iPhone 16",
+    models: ["iPhone 17 Pro Max", "iPhone 17 Pro Max", "iPhone 16 Pro Max", "iPhone 16 Pro", "iPhone 16 Plus", "iPhone 16",
       "iPhone 15 Pro Max", "iPhone 15 Pro", "iPhone 15 Plus", "iPhone 15",
       "iPhone 14 Pro Max", "iPhone 14 Pro", "iPhone 14 Plus", "iPhone 14",
       "iPhone 13 Pro Max", "iPhone 13 Pro", "iPhone 13 mini", "iPhone 13",

@@ -398,3 +398,31 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   50% { transform: translateY(-28px) translateX(12px); }
 }
 .chip-float { position: absolute; border-radius: 999px; animation: chip-float 14s ease-in-out infinite; will-change: transform; transform: translateZ(0); }
+
+/* Red Apple Header & Brand Animations */
+@keyframes redGlowBar {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes textShift {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.25); }
+}
+
+.red-header-bar {
+  background: linear-gradient(90deg, #dc2626, #f97316, #dc2626);
+  background-size: 200% 100%;
+  animation: redGlowBar 9s ease infinite;
+}
+
+.red-brand-text {
+  animation: textShift 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .red-header-bar, .red-brand-text {
+    animation: none !important;
+  }
+}

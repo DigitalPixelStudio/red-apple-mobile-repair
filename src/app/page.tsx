@@ -32,6 +32,7 @@ export default function Home() {
       <div className="relative z-10">
         <Hero />
         <TrustBar />
+      <QuoteSection />
         <Ecosystem />
         <DisplayFocus />
         <TechProcess />
@@ -42,8 +43,7 @@ export default function Home() {
         <WhyChooseUs />
         <TrustProof />
         <PricingSection />
-        <QuoteSection />
-        <ConciergeLaunch />
+          <ConciergeLaunch />
         <ReviewsSection />
         <FaqSection />
         <LocationSection />

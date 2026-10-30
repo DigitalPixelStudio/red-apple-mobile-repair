@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { SITE, wa } from "@/lib/site";
 import { track } from "@/lib/analytics";
 import { LineIcon } from "./Icons";
+import BrandMark from "./BrandMark";
 
 const LINKS = [
   { href: "#ecosystem", label: "Devices" },
@@ -27,7 +28,6 @@ export default function Navbar() {
     const update = () => {
       ticking = false;
       const y = window.scrollY;
-      // only setState when the VALUE actually changes — prevents a re-render per pixel
       setScrolled((prev) => {
         const next = y > 24;
         return prev === next ? prev : next;
@@ -56,13 +56,12 @@ export default function Navbar() {
         hidden ? "-translate-y-full" : "translate-y-0"
       } ${scrolled ? "bg-white/95 border-b border-black/[0.06] shadow-sm" : "bg-white/80"}`}
     >
+      <div className="absolute inset-x-0 bottom-0 h-[2px] red-header-bar pointer-events-none" />
       <nav className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-3 lg:px-8">
-        <a href="#top" className="group flex items-center gap-2.5" aria-label="Red Apple Mobile Repair Store home">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-[var(--cta-dark)] shadow-lg transition-transform group-hover:scale-105">
-            <LineIcon name="apple" size={20} color="#fff" />
-          </span>
+        <a href="#top" className="group flex items-center gap-3" aria-label="Red Apple Mobile Repair Store home">
+          <BrandMark className="w-11 h-11 transition-transform group-hover:scale-105 shadow-sm" />
           <span className="leading-tight">
-            <span className="block font-apple text-[16px] font-extrabold tracking-tight text-[var(--text)] animate-brand-breathe">Red Apple</span>
+            <span className="block font-apple text-[17px] font-extrabold tracking-tight text-[var(--text)] red-brand-text">Red Apple</span>
             <span className="block text-[11px] font-extrabold uppercase tracking-[0.2em] text-[var(--accent)]">Mobile Repair Store</span>
           </span>
         </a>

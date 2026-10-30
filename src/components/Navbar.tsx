@@ -21,23 +21,40 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    let last = window.scrollY;
-    const onScroll = () => {
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
       const y = window.scrollY;
-      setScrolled(y > 24);
-      setHidden(y > 400 && y > last && !open);
-      last = y;
+      // only setState when the VALUE actually changes — prevents a re-render per pixel
+      setScrolled((prev) => {
+        const next = y > 24;
+        return prev === next ? prev : next;
+      });
+      setHidden((prev) => {
+        const next = y > 400 && y > lastY && !open;
+        lastY = y;
+        return prev === next ? prev : next;
+      });
     };
-    onScroll();
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [open]);
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-transform duration-300 will-change-transform ${
         hidden ? "-translate-y-full" : "translate-y-0"
-      } ${scrolled ? "glass border-b border-black/[0.06]" : "bg-transparent"}`}
+      } ${scrolled ? "bg-white/95 border-b border-black/[0.06] shadow-sm" : "bg-white/80"}`}
     >
       <nav className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-3 lg:px-8">
         <a href="#top" className="group flex items-center gap-2.5" aria-label="Red Apple Mobile Repair Store home">
@@ -63,7 +80,7 @@ export default function Navbar() {
             href={wa("Hi Red Apple Mobile Repair Store! I need a repair estimate.")}
             target="_blank" rel="noopener noreferrer"
             onClick={() => track("whatsapp_click", { source: "navbar" })}
-            className="hidden sm:inline-flex items-center gap-2 rounded-[var(--cta-radius)] bg-[var(--cta-dark)] px-4 py-2 text-[13px] font-bold text-white transition-all hover:brightness-105 hover:scale-[1.03] shadow-md"
+            className="hidden sm:inline-flex items-center gap-2 rounded-[var(--cta-radius)] bg-[var(--cta-dark)] px-4 py-2 text-[13px] font-bold text-white transition-transform hover:scale-[1.03] shadow-md"
           >
             <LineIcon name="whatsapp" size={16} />
             WhatsApp
@@ -71,14 +88,14 @@ export default function Navbar() {
           <a
             href={SITE.phoneHref}
             onClick={() => track("call_click", { source: "navbar" })}
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-[var(--cta-radius)] border border-black/10 bg-white/70 px-4 py-2 text-[13px] font-semibold text-[var(--text)] backdrop-blur-xl transition-colors hover:bg-white"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-[var(--cta-radius)] border border-black/10 bg-white/70 px-4 py-2 text-[13px] font-semibold text-[var(--text)] transition-colors hover:bg-white"
           >
             <LineIcon name="call" size={14} />
             Call
           </a>
           <button
             onClick={() => setOpen(!open)} aria-label="Menu" aria-expanded={open}
-            className="grid h-10 w-10 place-items-center rounded-xl glass text-[var(--text)] xl:hidden"
+            className="grid h-10 w-10 place-items-center rounded-xl bg-black/[0.05] text-[var(--text)] xl:hidden"
           >
             <LineIcon name={open ? "close" : "menu"} size={20} />
           </button>
@@ -86,7 +103,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="mx-4 mb-4 rounded-3xl glass p-6 shadow-2xl xl:hidden">
+        <div className="mx-4 mb-4 rounded-3xl bg-white p-6 shadow-2xl xl:hidden">
           <div className="grid gap-1">
             {LINKS.map((l) => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 text-[15px] font-medium text-[var(--text)] hover:bg-black/[0.04]">

@@ -10,10 +10,9 @@ const customerSchema = z.object({
   phone: z.string().regex(/^[0-9+\-\s]{10,15}$/, "Enter a valid phone number"),
   email: z.string().email("Enter a valid email").optional().or(z.literal("")),
   condition: z.string().min(1, "Please select device condition"),
-  urgency: z.string().min(1, "Please select urgency"),
-  pickup: z.string().min(1, "Please select pickup option"),
+  urgency: z.string().optional(),
+  pickup: z.string().optional(),
   preferredTime: z.string().optional(),
-  insurance: z.string().optional(),
   description: z.string().min(5, "Briefly describe the issue"),
 });
 
@@ -38,14 +37,6 @@ const PICKUP_OPTIONS = [
   "Free pickup & drop",
   "Courier / delivery",
   "Online consultation first",
-];
-
-const INSURANCE_OPTIONS = [
-  "AppleCare+",
-  "Third-party insurance",
-  "Employer / company warranty",
-  "No insurance — self pay",
-  "Not sure — check for me",
 ];
 
 const CONDITIONS = [
@@ -76,7 +67,6 @@ export default function QuoteWizard({ compact = false }: { compact?: boolean }) 
   const [urgency, setUrgency] = useState("");
   const [pickup, setPickup] = useState("");
   const [preferredTime, setPreferredTime] = useState("");
-  const [insurance, setInsurance] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
 
@@ -91,7 +81,7 @@ export default function QuoteWizard({ compact = false }: { compact?: boolean }) 
   const goRepair = (r: string) => { setRepair(r); track("quote_started", { device, model, repair: r }); setStep("details"); };
 
   const submit = () => {
-    const res = customerSchema.safeParse({ name, phone, email, condition, urgency, pickup, preferredTime, insurance, description });
+    const res = customerSchema.safeParse({ name, phone, email, condition, urgency, pickup, preferredTime, description });
     if (!res.success) {
       const e: Record<string, string> = {};
       for (const issue of res.error.issues) e[issue.path[0] as string] = issue.message;
@@ -118,7 +108,6 @@ export default function QuoteWizard({ compact = false }: { compact?: boolean }) 
       `▸ Email: ${email || "Not provided"}\n` +
       `▸ Service: ${pickup || "Walk-in"}\n` +
       `▸ Preferred Time: ${preferredTime || "Flexible"}\n` +
-      `▸ Insurance: ${insurance || "Self pay"}\n\n` +
       `Please share the estimate. Thank you! 🙏`;
     const url = wa(msg);
     // open synchronously inside the click handler — popup blockers allow this
@@ -156,7 +145,7 @@ export default function QuoteWizard({ compact = false }: { compact?: boolean }) 
           </div>
           <h3 className="mt-4 font-apple text-[22px] font-bold text-green-800">Quotation Request Sent</h3>
           <p className="mt-2 text-[14px] text-green-700">We have received your details via WhatsApp. Our team will respond with an estimate within 15 minutes.</p>
-          <button onClick={() => { setSent(false); setStep("device"); setDevice(""); setModel(""); setRepair(""); setName(""); setPhone(""); setEmail(""); setCondition(""); setDescription(""); setUrgency(""); setPickup(""); setPreferredTime(""); setInsurance(""); }}
+          <button onClick={() => { setSent(false); setStep("device"); setDevice(""); setModel(""); setRepair(""); setName(""); setPhone(""); setEmail(""); setCondition(""); setDescription(""); setUrgency(""); setPickup(""); setPreferredTime(""); }}
             className="cta-dark mt-6 press">Submit Another Request</button>
         </div>
       ) : (
@@ -299,18 +288,6 @@ export default function QuoteWizard({ compact = false }: { compact?: boolean }) 
                   <input type="text" value={preferredTime} onChange={(e) => setPreferredTime(e.target.value)} placeholder="e.g., Saturday morning, 11 AM"
                     className="w-full rounded-[12px] border border-black/[0.1] px-4 py-3 text-[14px] focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]/30" />
                 </div>
-                <div>
-                  <label className="mb-1.5 block text-[12.5px] font-bold text-[var(--text)]">Insurance / Warranty</label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {INSURANCE_OPTIONS.map((ins) => (
-                      <button key={ins} type="button" onClick={() => setInsurance(ins)}
-                        className={`rounded-[10px] border px-3 py-2 text-left text-[12px] font-medium transition-all hover:-translate-y-0.5 ${
-                          insurance === ins ? "border-[var(--accent)] bg-[var(--accent)]/5 shadow-sm" : "border-black/[0.06] hover:border-[var(--accent)]/40"
-                        }`}>{ins}</button>
-                    ))}
-                  </div>
-                </div>
-
               <button onClick={submit} className="cta-dark mt-6 w-full justify-center text-[14px] press">
                 <LineIcon name="whatsapp" size={16} />
                 Send Quotation via WhatsApp

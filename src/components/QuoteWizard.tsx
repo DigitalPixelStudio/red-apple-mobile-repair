@@ -91,7 +91,7 @@ export default function QuoteWizard({ compact = false }: { compact?: boolean }) 
   const goRepair = (r: string) => { setRepair(r); track("quote_started", { device, model, repair: r }); setStep("details"); };
 
   const submit = () => {
-    const res = customerSchema.safeParse({ name, phone, email, condition, description });
+    const res = customerSchema.safeParse({ name, phone, email, condition, urgency, pickup, preferredTime, insurance, description });
     if (!res.success) {
       const e: Record<string, string> = {};
       for (const issue of res.error.issues) e[issue.path[0] as string] = issue.message;
@@ -101,7 +101,6 @@ export default function QuoteWizard({ compact = false }: { compact?: boolean }) 
     setErrors({});
     track("quote_completed", { device, model, repair });
     track("lead_created", { device, model, repair, source: "quote_wizard" });
-    setSent(true);
     const msg =
       `🔴 *RED APPLE MOBILE REPAIR STORE*\n` +
       `━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
@@ -121,7 +120,11 @@ export default function QuoteWizard({ compact = false }: { compact?: boolean }) 
       `▸ Preferred Time: ${preferredTime || "Flexible"}\n` +
       `▸ Insurance: ${insurance || "Self pay"}\n\n` +
       `Please share the estimate. Thank you! 🙏`;
-    window.open(wa(msg), "_blank", "noopener,noreferrer");
+    const url = wa(msg);
+    // open synchronously inside the click handler — popup blockers allow this
+    const win = window.open(url, "_blank", "noopener,noreferrer");
+    if (!win) window.location.href = url;   // fallback if blocked
+    setSent(true);
   };
 
   return (

@@ -74,9 +74,9 @@ export default function Hero() {
             {devices.map((d) => (
               <div key={d.label} className="glass-card rounded-3xl overflow-hidden text-left col-span-2 md:col-span-1 group">
                 <div className="relative h-28 overflow-hidden">
-                  <img src={d.img} alt={d.label} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                  <img src={d.img} alt={d.label} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="eager" decoding="async" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute bottom-2 left-2 grid h-8 w-8 place-items-center rounded-lg bg-white/20 backdrop-blur-sm">
+                  <div className="absolute bottom-2 left-2 grid h-8 w-8 place-items-center rounded-lg bg-white/20">
                     <LineIcon name={d.icon} size={16} color="#fff" />
                   </div>
                 </div>
